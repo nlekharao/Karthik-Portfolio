@@ -34,6 +34,7 @@
       line-height: 1.6;
     }
 
+
     /* NAVIGATION */
 
     .nav {
@@ -446,76 +447,55 @@
     /* BEYOND ENGINEERING */
 
     .beyond {
-      margin-top: 70px;
-      background: var(--navy);
-      border-radius: 14px;
-      overflow: hidden;
-      color: white;
+      border-top: 1px solid var(--line);
+      margin-top: 65px;
+      padding-top: 55px;
     }
 
     .beyond-grid {
       display: grid;
-      grid-template-columns: 1fr 420px;
-      min-height: 330px;
-    }
-
-    .beyond-content {
-      padding: 52px 50px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      grid-template-columns: 1fr 250px;
+      gap: 55px;
+      align-items: center;
     }
 
     .beyond-label {
-      color: #7fa5ff;
+      color: var(--blue);
       font-size: 12px;
       font-weight: 700;
-      letter-spacing: 1.4px;
+      letter-spacing: 1.3px;
       text-transform: uppercase;
-      margin-bottom: 14px;
+      margin-bottom: 10px;
     }
 
     .beyond h2 {
-      margin: 0 0 16px;
-      font-size: 31px;
-      letter-spacing: -.8px;
+      margin: 0 0 12px;
+      color: var(--navy);
+      font-size: 24px;
+      letter-spacing: -.5px;
     }
 
     .beyond p {
       margin: 0;
-      max-width: 520px;
-      color: #c5cedd;
-      font-size: 16px;
-      line-height: 1.75;
+      max-width: 590px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.7;
     }
 
     .dj-photo-wrap {
-      position: relative;
-      min-height: 330px;
+      width: 250px;
+      height: 180px;
       overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(24,37,61,.10);
     }
 
     .dj-photo {
       width: 100%;
       height: 100%;
-      min-height: 330px;
       object-fit: cover;
-      object-position: center;
       display: block;
-    }
-
-    .dj-photo-wrap::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(
-          90deg,
-          rgba(24,37,61,.72) 0%,
-          rgba(24,37,61,.15) 34%,
-          rgba(24,37,61,0) 70%
-        );
-      pointer-events: none;
     }
 
 
@@ -547,10 +527,6 @@
       .hero-photo {
         width: 240px;
         height: 285px;
-      }
-
-      .beyond-grid {
-        grid-template-columns: 1fr 340px;
       }
     }
 
@@ -592,24 +568,13 @@
 
       .beyond-grid {
         grid-template-columns: 1fr;
+        gap: 24px;
       }
 
-      .beyond-content {
-        padding: 38px 28px;
-      }
-
-      .dj-photo-wrap,
-      .dj-photo {
-        min-height: 300px;
-      }
-
-      .dj-photo-wrap::after {
-        background:
-          linear-gradient(
-            180deg,
-            rgba(24,37,61,.35) 0%,
-            rgba(24,37,61,0) 45%
-          );
+      .dj-photo-wrap {
+        width: 100%;
+        max-width: 320px;
+        height: 220px;
       }
     }
 
@@ -623,6 +588,7 @@
 <!-- NAVIGATION -->
 
 <nav class="nav">
+
   <div class="nav-inner">
 
     <a class="brand" href="index.html">
@@ -630,17 +596,25 @@
     </a>
 
     <div class="nav-links">
-      <a href="#work">Work</a>
-      <a href="#focus">Technical Focus</a>
-      <a href="#beyond">Beyond Engineering</a>
+
+      <a href="#work">
+        Work
+      </a>
+
+      <a href="#focus">
+        Technical Focus
+      </a>
+
       <a href="https://www.linkedin.com/in/mkarthikrao"
          target="_blank"
          rel="noopener noreferrer">
         LinkedIn
       </a>
+
     </div>
 
   </div>
+
 </nav>
 
 
@@ -657,7 +631,7 @@
       </div>
 
       <h1>
-        Building secure, scalable systems that solve real-world problems.
+        Turning business complexity into software that simplifies, connects and scales.
       </h1>
 
       <div class="hero-intro">
@@ -679,10 +653,12 @@
 
 
     <div>
+
       <img
         class="hero-photo"
         src="karthik-profile.png"
         alt="Karthik Rao">
+
     </div>
 
   </div>
@@ -720,7 +696,7 @@
       <div class="project-content">
 
         <div class="project-number">
-          PROJECT 01 · SOFTWARE ENGINEERING & IDENTITY
+          PROJECT 01 · SOFTWARE ENGINEERING &amp; IDENTITY
         </div>
 
         <h3 class="project-title">
@@ -737,6 +713,7 @@
         </p>
 
         <div class="tags">
+
           <span class="tag">Application Engineering</span>
           <span class="tag">Microsoft Entra ID</span>
           <span class="tag">Azure</span>
@@ -744,6 +721,7 @@
           <span class="tag">SAML</span>
           <span class="tag">OAuth 2.0</span>
           <span class="tag">OIDC</span>
+
         </div>
 
         <a class="project-link" href="entra-id.html">
@@ -768,14 +746,19 @@
           <div class="connector"></div>
 
           <div class="protocols">
+
             <div class="protocol">SAML</div>
             <div class="protocol">OAuth 2.0</div>
             <div class="protocol">OIDC</div>
+
           </div>
 
           <div class="apps">
+
             <strong>70+</strong>
+
             Enterprise Applications
+
           </div>
 
         </div>
@@ -796,7 +779,7 @@
       <div class="project-content">
 
         <div class="project-number">
-          PROJECT 02 · MACHINE LEARNING & PREDICTIVE ANALYTICS
+          PROJECT 02 · MACHINE LEARNING &amp; PREDICTIVE ANALYTICS
         </div>
 
         <h3 class="project-title">
@@ -811,15 +794,18 @@
         </p>
 
         <div class="tags">
+
           <span class="tag">Machine Learning</span>
           <span class="tag">Regression</span>
           <span class="tag">Predictive Modeling</span>
           <span class="tag">Feature Engineering</span>
           <span class="tag">Python</span>
           <span class="tag">scikit-learn</span>
+
         </div>
 
-        <a class="project-link" href="predictive-analytics.html">
+        <a class="project-link"
+           href="predictive-analytics.html">
           Explore the technical case study →
         </a>
 
@@ -854,8 +840,15 @@
           </div>
 
           <div class="ml-output">
-            <strong>Conversion Likelihood</strong>
-            <span>Prediction + drop-off factor analysis</span>
+
+            <strong>
+              Conversion Likelihood
+            </strong>
+
+            <span>
+              Prediction + drop-off factor analysis
+            </span>
+
           </div>
 
         </div>
@@ -892,14 +885,17 @@
         </p>
 
         <div class="tags">
+
           <span class="tag">ASP.NET</span>
           <span class="tag">Sencha Ext JS</span>
           <span class="tag">MongoDB</span>
           <span class="tag">REST APIs</span>
           <span class="tag">System Integration</span>
+
         </div>
 
-        <a class="project-link" href="commercial-lines.html">
+        <a class="project-link"
+           href="commercial-lines.html">
           Explore the technical case study →
         </a>
 
@@ -915,10 +911,13 @@
           </div>
 
           <div class="policy-layer">
+
             Policy Workflow
+
             <div class="policy-db">
               Commercial Lines
             </div>
+
           </div>
 
           <div class="policy-connector"></div>
@@ -953,10 +952,13 @@
           <div class="policy-connector"></div>
 
           <div class="policy-layer">
+
             API Integration
+
             <div class="policy-db">
               External Systems
             </div>
+
           </div>
 
         </div>
@@ -1034,7 +1036,7 @@
 
     <div class="beyond-grid">
 
-      <div class="beyond-content">
+      <div>
 
         <div class="beyond-label">
           Beyond Engineering
@@ -1045,9 +1047,9 @@
         </h2>
 
         <p>
-          Outside of engineering, music is a big part of my life.
-          I DJ in my spare time and have played sets at events in
-          New York.
+          Away from code, music is a big part of my life.
+          I DJ in my spare time and have played sets at events
+          in New York.
         </p>
 
       </div>
