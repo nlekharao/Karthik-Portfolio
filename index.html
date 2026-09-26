@@ -132,12 +132,6 @@
       color: white;
     }
 
-    .button-secondary {
-      background: white;
-      color: var(--navy);
-      border: 1px solid var(--line);
-    }
-
     /* SECTIONS */
 
     .section {
@@ -170,6 +164,7 @@
       border: 1px solid var(--line);
       border-radius: 14px;
       overflow: hidden;
+      margin-bottom: 32px;
       transition: transform .2s ease, box-shadow .2s ease;
     }
 
@@ -232,7 +227,7 @@
       font-weight: 700;
     }
 
-    /* ARCHITECTURE PREVIEW */
+    /* PROJECT VISUAL */
 
     .project-visual {
       background: var(--navy);
@@ -242,6 +237,8 @@
       justify-content: center;
       min-height: 360px;
     }
+
+    /* PROJECT 01 - ARCHITECTURE PREVIEW */
 
     .architecture {
       width: 100%;
@@ -302,6 +299,75 @@
       margin-bottom: 2px;
     }
 
+    /* PROJECT 02 - ML PREVIEW */
+
+    .ml-visual {
+      width: 100%;
+      max-width: 360px;
+      color: white;
+    }
+
+    .ml-visual-title {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1.3px;
+      color: rgba(255,255,255,.65);
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .ml-pipeline {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+    }
+
+    .ml-stage {
+      flex: 1;
+      min-width: 0;
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 7px;
+      padding: 13px 5px;
+      text-align: center;
+      font-size: 10px;
+      line-height: 1.35;
+      color: rgba(255,255,255,.72);
+    }
+
+    .ml-stage strong {
+      display: block;
+      color: white;
+      font-size: 11px;
+      margin-bottom: 3px;
+    }
+
+    .ml-arrow {
+      color: rgba(255,255,255,.45);
+      font-size: 16px;
+    }
+
+    .ml-output {
+      margin-top: 25px;
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 8px;
+      padding: 16px 12px;
+      text-align: center;
+      background: rgba(255,255,255,.04);
+    }
+
+    .ml-output strong {
+      display: block;
+      color: white;
+      font-size: 18px;
+      margin-bottom: 3px;
+    }
+
+    .ml-output span {
+      color: rgba(255,255,255,.68);
+      font-size: 11px;
+    }
+
     /* TECHNICAL FOCUS */
 
     .focus {
@@ -347,7 +413,10 @@
       font-size: 13px;
     }
 
+    /* MOBILE */
+
     @media(max-width:760px) {
+
       .nav-links {
         display:none;
       }
@@ -375,11 +444,27 @@
       .focus-grid {
         grid-template-columns:1fr;
       }
+
+      .ml-pipeline {
+        gap:4px;
+      }
+
+      .ml-stage {
+        padding:11px 3px;
+        font-size:9px;
+      }
+
+      .ml-stage strong {
+        font-size:10px;
+      }
     }
+
   </style>
 </head>
 
 <body>
+
+<!-- NAVIGATION -->
 
 <nav class="nav">
   <div class="nav-inner">
@@ -396,6 +481,8 @@
   </div>
 </nav>
 
+
+<!-- HERO -->
 
 <header class="hero">
 
@@ -420,7 +507,7 @@
       Explore my work
     </a>
 
-      </div>
+  </div>
 
 </header>
 
@@ -430,14 +517,18 @@
 <section class="section" id="work">
 
   <div class="section-heading">
+
     <h2>Featured Work</h2>
 
     <p>
       Selected engineering projects explored through architecture,
       implementation decisions and technical challenges.
     </p>
+
   </div>
 
+
+  <!-- PROJECT 01 -->
 
   <article class="project-card">
 
@@ -454,10 +545,10 @@
         </h3>
 
         <p class="project-description">
-           Modernization of authentication for a leading U.S. insurance
-  carrier, migrating 70+ enterprise applications from SiteMinder
-  to Microsoft Entra ID while standardizing Single Sign-On and
-  modern authentication protocols.
+          Modernization of authentication for a leading U.S. insurance
+          carrier, migrating 70+ enterprise applications from SiteMinder
+          to Microsoft Entra ID while standardizing Single Sign-On and
+          modern authentication protocols.
         </p>
 
         <div class="tags">
@@ -511,6 +602,92 @@
   </article>
 
 
+  <!-- PROJECT 02 -->
+
+  <article class="project-card">
+
+    <div class="project-grid">
+
+      <div class="project-content">
+
+        <div class="project-number">
+          PROJECT 02 · MACHINE LEARNING & PREDICTIVE ANALYTICS
+        </div>
+
+        <h3 class="project-title">
+          Predicting Conversion Through Machine Learning
+        </h3>
+
+        <p class="project-description">
+          Built regression-based machine learning models for a
+          U.S. property & casualty insurance carrier to predict
+          user conversion likelihood, identify key drop-off factors
+          and support more targeted, data-driven engagement decisions.
+        </p>
+
+        <div class="tags">
+          <span class="tag">Machine Learning</span>
+          <span class="tag">Regression</span>
+          <span class="tag">Predictive Modeling</span>
+          <span class="tag">Feature Engineering</span>
+          <span class="tag">Python</span>
+          <span class="tag">scikit-learn</span>
+        </div>
+
+        <a class="project-link" href="predictive-analytics.html">
+          Explore the technical case study →
+        </a>
+
+      </div>
+
+
+      <div class="project-visual">
+
+        <div class="ml-visual">
+
+          <div class="ml-visual-title">
+            ML workflow snapshot
+          </div>
+
+          <div class="ml-pipeline">
+
+            <div class="ml-stage">
+              <strong>Data</strong>
+              User behavior
+            </div>
+
+            <div class="ml-arrow">→</div>
+
+            <div class="ml-stage">
+              <strong>Features</strong>
+              Engineering
+            </div>
+
+            <div class="ml-arrow">→</div>
+
+            <div class="ml-stage">
+              <strong>Model</strong>
+              Regression
+            </div>
+
+          </div>
+
+          <div class="ml-output">
+            <strong>Conversion Likelihood</strong>
+            <span>Prediction + drop-off factor analysis</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </article>
+
+
+  <!-- TECHNICAL FOCUS -->
+
   <div class="focus" id="focus">
 
     <div class="section-heading">
@@ -520,27 +697,38 @@
     <div class="focus-grid">
 
       <div class="focus-item">
+
         <h3>Identity & Security</h3>
+
         <p>
           Enterprise authentication, SSO, federation,
           identity lifecycle, RBAC and Zero Trust.
         </p>
+
       </div>
 
+
       <div class="focus-item">
+
         <h3>Software Engineering</h3>
+
         <p>
           Full-stack systems, APIs, application architecture
           and production-grade enterprise software.
         </p>
+
       </div>
 
+
       <div class="focus-item">
+
         <h3>Machine Learning</h3>
+
         <p>
           Predictive modelling, classification, regression,
           feature engineering and data-driven applications.
         </p>
+
       </div>
 
     </div>
@@ -553,9 +741,11 @@
 
 
 <footer>
+
   <div class="footer-inner">
     © Karthik Rao · Technical Portfolio
   </div>
+
 </footer>
 
 </body>
