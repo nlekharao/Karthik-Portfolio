@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Karthik Rao | Technical Portfolio</title>
+
+  <style>
+    :root {
+      --bg: #f7f8fa;
+      --surface: #ffffff;
+      --text: #172033;
+      --muted: #667085;
+      --line: #e5e7eb;
+      --navy: #18253d;
+      --blue: #356ae6;
+      --tag: #f2f4f7;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* NAVIGATION */
+
+    .nav {
+      background: rgba(255,255,255,.96);
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-inner {
+      max-width: 1120px;
+      margin: auto;
+      height: 68px;
+      padding: 0 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      color: var(--blue);
+    }
+
+    /* HERO */
+
+    .hero {
+      max-width: 1120px;
+      margin: auto;
+      padding: 105px 28px 85px;
+    }
+
+    .eyebrow {
+      color: var(--blue);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 850px;
+      font-size: clamp(42px, 6vw, 70px);
+      line-height: 1.05;
+      letter-spacing: -2.5px;
+      color: var(--navy);
+    }
+
+    .hero-intro {
+      max-width: 730px;
+      margin-top: 28px;
+      font-size: 20px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      margin-top: 34px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 20px;
+      border-radius: 7px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .button-primary {
+      background: var(--navy);
+      color: white;
+    }
+
+    .button-secondary {
+      background: white;
+      color: var(--navy);
+      border: 1px solid var(--line);
+    }
+
+    /* SECTIONS */
+
+    .section {
+      max-width: 1120px;
+      margin: auto;
+      padding: 30px 28px 90px;
+    }
+
+    .section-heading {
+      margin-bottom: 30px;
+    }
+
+    .section-heading h2 {
+      font-size: 30px;
+      margin: 0 0 8px;
+      color: var(--navy);
+      letter-spacing: -.8px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      margin: 0;
+      max-width: 650px;
+    }
+
+    /* PROJECT */
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 35px rgba(20,32,55,.08);
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+    }
+
+    .project-content {
+      padding: 42px;
+    }
+
+    .project-number {
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 14px;
+    }
+
+    .project-title {
+      font-size: 29px;
+      line-height: 1.25;
+      margin: 0 0 16px;
+      color: var(--navy);
+      letter-spacing: -.6px;
+    }
+
+    .project-description {
+      color: var(--muted);
+      margin-bottom: 24px;
+      max-width: 620px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+
+    .tag {
+      background: var(--tag);
+      border-radius: 20px;
+      padding: 6px 11px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #475467;
+    }
+
+    .project-link {
+      text-decoration: none;
+      color: var(--blue);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    /* ARCHITECTURE PREVIEW */
+
+    .project-visual {
+      background: var(--navy);
+      padding: 40px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 360px;
+    }
+
+    .architecture {
+      width: 100%;
+      max-width: 350px;
+      color: white;
+      text-align: center;
+    }
+
+    .architecture-title {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1.3px;
+      opacity: .65;
+      margin-bottom: 22px;
+    }
+
+    .identity-box {
+      background: white;
+      color: var(--navy);
+      border-radius: 8px;
+      padding: 14px;
+      font-weight: 700;
+      font-size: 14px;
+      margin: auto;
+      max-width: 190px;
+    }
+
+    .connector {
+      height: 28px;
+      width: 1px;
+      background: rgba(255,255,255,.4);
+      margin: auto;
+    }
+
+    .protocols {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 8px;
+    }
+
+    .protocol {
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 6px;
+      padding: 10px 4px;
+      font-size: 12px;
+    }
+
+    .apps {
+      margin-top: 26px;
+      font-size: 13px;
+      color: rgba(255,255,255,.72);
+    }
+
+    .apps strong {
+      display: block;
+      color: white;
+      font-size: 25px;
+      margin-bottom: 2px;
+    }
+
+    /* TECHNICAL FOCUS */
+
+    .focus {
+      border-top: 1px solid var(--line);
+      padding-top: 60px;
+      margin-top: 65px;
+    }
+
+    .focus-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 32px;
+    }
+
+    .focus-item {
+      padding: 10px 0;
+    }
+
+    .focus-item h3 {
+      font-size: 17px;
+      margin: 0 0 8px;
+      color: var(--navy);
+    }
+
+    .focus-item p {
+      margin: 0;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    /* FOOTER */
+
+    footer {
+      border-top: 1px solid var(--line);
+      background: white;
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: auto;
+      padding: 30px 28px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media(max-width:760px) {
+      .nav-links {
+        display:none;
+      }
+
+      .hero {
+        padding-top:70px;
+      }
+
+      h1 {
+        letter-spacing:-1.5px;
+      }
+
+      .project-grid {
+        grid-template-columns:1fr;
+      }
+
+      .project-content {
+        padding:28px;
+      }
+
+      .project-visual {
+        min-height:290px;
+      }
+
+      .focus-grid {
+        grid-template-columns:1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+
+    <div class="brand">Karthik Rao</div>
+
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#focus">Technical Focus</a>
+      <a href="https://www.linkedin.com/in/mkarthikrao"
+         target="_blank">LinkedIn</a>
+    </div>
+
+  </div>
+</nav>
+
+
+<header class="hero">
+
+  <div class="eyebrow">
+    Software Engineering · Identity · Machine Learning
+  </div>
+
+  <h1>
+    Building secure, scalable systems that solve real-world problems.
+  </h1>
+
+  <div class="hero-intro">
+    I'm Karthik Rao, a software engineer with experience across
+    enterprise identity modernization, full-stack development and
+    machine learning — including production systems in the insurance
+    domain.
+  </div>
+
+  <div class="hero-actions">
+
+    <a href="#work" class="button button-primary">
+      Explore my work
+    </a>
+
+    <a href="https://www.linkedin.com/in/mkarthikrao"
+       target="_blank"
+       class="button button-secondary">
+      LinkedIn
+    </a>
+
+  </div>
+
+</header>
+
+
+<main>
+
+<section class="section" id="work">
+
+  <div class="section-heading">
+    <h2>Featured Work</h2>
+
+    <p>
+      Selected engineering projects explored through architecture,
+      implementation decisions and technical challenges.
+    </p>
+  </div>
+
+
+  <article class="project-card">
+
+    <div class="project-grid">
+
+      <div class="project-content">
+
+        <div class="project-number">
+          PROJECT 01 · IDENTITY & ACCESS MANAGEMENT
+        </div>
+
+        <h3 class="project-title">
+          Enterprise Authentication Modernization
+        </h3>
+
+        <p class="project-description">
+          Modernization of authentication across 70+ enterprise
+          applications using Microsoft Entra ID, implementing
+          centralized identity, Single Sign-On and modern authentication
+          protocols while maintaining business continuity.
+        </p>
+
+        <div class="tags">
+          <span class="tag">Microsoft Entra ID</span>
+          <span class="tag">SSO</span>
+          <span class="tag">SAML</span>
+          <span class="tag">OAuth 2.0</span>
+          <span class="tag">OIDC</span>
+          <span class="tag">MFA</span>
+          <span class="tag">Zero Trust</span>
+        </div>
+
+        <a class="project-link" href="entra-id.html">
+          Explore the technical case study →
+        </a>
+
+      </div>
+
+
+      <div class="project-visual">
+
+        <div class="architecture">
+
+          <div class="architecture-title">
+            Architecture snapshot
+          </div>
+
+          <div class="identity-box">
+            Microsoft Entra ID
+          </div>
+
+          <div class="connector"></div>
+
+          <div class="protocols">
+            <div class="protocol">SAML</div>
+            <div class="protocol">OAuth 2.0</div>
+            <div class="protocol">OIDC</div>
+          </div>
+
+          <div class="apps">
+            <strong>70+</strong>
+            Enterprise Applications
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </article>
+
+
+  <div class="focus" id="focus">
+
+    <div class="section-heading">
+      <h2>Technical Focus</h2>
+    </div>
+
+    <div class="focus-grid">
+
+      <div class="focus-item">
+        <h3>Identity & Security</h3>
+        <p>
+          Enterprise authentication, SSO, federation,
+          identity lifecycle, RBAC and Zero Trust.
+        </p>
+      </div>
+
+      <div class="focus-item">
+        <h3>Software Engineering</h3>
+        <p>
+          Full-stack systems, APIs, application architecture
+          and production-grade enterprise software.
+        </p>
+      </div>
+
+      <div class="focus-item">
+        <h3>Machine Learning</h3>
+        <p>
+          Predictive modelling, classification, regression,
+          feature engineering and data-driven applications.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<footer>
+  <div class="footer-inner">
+    © Karthik Rao · Technical Portfolio
+  </div>
+</footer>
+
+</body>
+</html>
