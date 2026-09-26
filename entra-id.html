@@ -19,10 +19,10 @@
   --blue-soft:#edf3ff;
   --tag:#f2f4f7;
 
-  /* Review highlighting */
-  --review:#fff4bf;
-  --review-border:#e4c95c;
-  --review-text:#66551a;
+  /* Assumption highlighting */
+  --assume:#fff4bf;
+  --assume-border:#e4c95c;
+  --assume-text:#66551a;
 }
 
 * {
@@ -253,39 +253,38 @@ body {
   color:#354258 !important;
 }
 
-/* REVIEW / CONFIRMATION */
+/* ASSUMPTION HIGHLIGHT */
 
-.review-box {
-  margin-top:24px;
-  background:var(--review);
-  border:1px solid var(--review-border);
-  border-radius:8px;
-  padding:20px 22px;
+.assume {
+  background:var(--assume);
+  border-bottom:2px solid var(--assume-border);
+  padding:1px 4px;
+  border-radius:3px;
+  color:var(--assume-text);
+  font-weight:600;
 }
 
-.review-label {
-  color:var(--review-text);
+.assumption-note {
+  margin-top:24px;
+  background:var(--assume);
+  border:1px solid var(--assume-border);
+  border-radius:8px;
+  padding:16px 20px;
+}
+
+.assumption-note-label {
+  color:var(--assume-text);
   font-size:11px;
   font-weight:800;
   letter-spacing:.8px;
   text-transform:uppercase;
-  margin-bottom:8px;
+  margin-bottom:6px;
 }
 
-.review-box p {
+.assumption-note p {
   color:#5d5226;
-  font-size:14px;
-  margin:0 0 10px;
-}
-
-.review-box p:last-child {
-  margin-bottom:0;
-}
-
-.review-inline {
-  background:var(--review);
-  padding:2px 4px;
-  border-radius:3px;
+  font-size:13px;
+  margin:0;
 }
 
 /* CHALLENGE */
@@ -672,6 +671,36 @@ body {
   margin:0;
 }
 
+/* TEAM */
+
+.team-strip {
+  margin-top:28px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+}
+
+.team-pill {
+  background:white;
+  border:1px solid var(--line);
+  border-radius:9px;
+  padding:16px 20px;
+  flex:1;
+  min-width:200px;
+}
+
+.team-pill strong {
+  display:block;
+  color:var(--navy);
+  font-size:15px;
+  margin-bottom:4px;
+}
+
+.team-pill span {
+  color:#667085;
+  font-size:13px;
+}
+
 /* OUTCOME */
 
 .outcome-grid {
@@ -775,6 +804,10 @@ footer {
     padding:23px 17px;
   }
 
+  .team-strip {
+    flex-direction:column;
+  }
+
   .footer-inner {
     flex-direction:column;
     gap:8px;
@@ -846,6 +879,11 @@ footer {
       <div class="context-item">
         <strong>Scale</strong>
         70+ Enterprise Applications
+      </div>
+
+      <div class="context-item">
+        <strong>Core Team</strong>
+        2–3 Engineers
       </div>
 
       <div class="context-item">
@@ -930,7 +968,10 @@ footer {
     Applications had to be integrated with the new authentication
     model, identity components configured in Entra ID, security controls
     applied and production applications migrated without interrupting
-    business access.
+    business access. I led the migration directly alongside my team
+    lead, as part of a lean core team of 2–3 engineers. For some
+    applications, the owning application teams carried out their own
+    migration, working under guidance and standards I defined.
   </p>
 
   <div class="challenge-grid">
@@ -1142,8 +1183,10 @@ footer {
       <h3>Application Engineering</h3>
 
       <p>
-        Application-side changes and reusable integration components
-        were part of moving applications to the new SSO model.
+        Application-side changes across a mix of
+        <span class="assume">Java and .NET</span> applications, along
+        with reusable integration components, were part of moving
+        applications to the new SSO model.
       </p>
 
     </div>
@@ -1170,8 +1213,10 @@ footer {
       <h3>Azure / Cloud</h3>
 
       <p>
-        Cloud-platform work supporting the application and identity
-        modernization.
+        Cloud-platform work spanning
+        <span class="assume">Azure App Service, Key Vault and Azure
+        DevOps pipelines</span> in support of the application and
+        identity modernization.
       </p>
 
     </div>
@@ -1179,22 +1224,16 @@ footer {
   </div>
 
 
-  <div class="review-box">
+  <div class="assumption-note">
 
-    <div class="review-label">
-      Karthik — confirm / expand
+    <div class="assumption-note-label">
+      Assumed detail — confirm later
     </div>
 
     <p>
-      Add the application technologies you personally worked on during
-      this project — for example the language/framework, authentication
-      middleware or application components you modified.
-    </p>
-
-    <p>
-      Also specify the Azure services you personally worked with.
-      Do not list Azure services simply because they existed in the
-      environment.
+      Application languages/frameworks and the specific Azure services
+      listed above are placeholders for now. Update once confirmed —
+      the yellow highlight marks anything still assumed.
     </p>
 
   </div>
@@ -1224,37 +1263,20 @@ footer {
   <p>
     The work included configuring the application identity in Entra ID
     and making the corresponding application-side integration changes
-    required for the selected authentication flow.
+    required for the selected authentication flow. For each
+    <span class="assume">Java or .NET</span> application, the existing
+    authentication flow was first understood and the appropriate
+    target integration pattern identified before the Entra ID
+    configuration was created and the application updated to use the
+    new identity provider.
   </p>
 
-
-  <div class="review-box">
-
-    <div class="review-label">
-      First draft — Karthik to validate
-    </div>
-
-    <p>
-      For each application, the existing authentication flow was first
-      understood and the appropriate target integration pattern identified.
-      The Entra ID configuration was then created and the application's
-      authentication flow updated to use the new identity provider.
-    </p>
-
-    <p>
-      Application-side work included integrating the SSO flow, handling
-      the authentication response and ensuring the authenticated identity
-      could be consumed correctly by the application.
-    </p>
-
-    <p>
-      <strong>Please confirm:</strong> what application code actually
-      changed? Did this include redirect/callback handling, token
-      validation, claims processing, session creation, authorization
-      mapping or other components?
-    </p>
-
-  </div>
+  <p>
+    On applications where the owning application team carried out the
+    integration themselves, I provided the integration pattern,
+    reviewed the Entra ID configuration and validated the resulting
+    authentication flow before production cutover.
+  </p>
 
 </section>
 
@@ -1278,9 +1300,11 @@ footer {
   </p>
 
   <p>
-    A reusable SSO integration library was developed to standardize
-    authentication workflows and provide applications with a common
-    integration approach.
+    A reusable SSO integration library, built in
+    <span class="assume">.NET</span>, was developed to standardize
+    authentication workflows and give applications a common
+    integration approach rather than each one implementing the full
+    SSO interaction independently.
   </p>
 
 
@@ -1325,39 +1349,16 @@ footer {
   </div>
 
 
-  <div class="review-box">
+  <div class="assumption-note">
 
-    <div class="review-label">
-      First draft — Karthik to validate
+    <div class="assumption-note-label">
+      Assumed detail — confirm later
     </div>
 
     <p>
-      The reusable library separated common authentication logic from
-      application-specific implementation. Instead of each application
-      independently implementing the complete SSO interaction, the
-      common integration path could be handled through a shared component.
-    </p>
-
-    <p>
-      A practical implementation would typically centralize functions
-      such as initiating authentication, handling the identity-provider
-      response, validating the returned identity or token, extracting
-      the required user attributes/claims, handling authentication
-      failures and passing the authenticated identity back to the
-      application.
-    </p>
-
-    <p>
-      Application-specific values — such as client/application
-      identifiers, redirect locations, scopes, claims or other
-      configuration — could then remain outside the common library
-      rather than being hard-coded into the shared authentication logic.
-    </p>
-
-    <p>
-      <strong>Karthik:</strong> please replace the paragraph above with
-      the actual responsibilities of the library. Also add the
-      programming language/framework and how applications consumed it.
+      The library's exact responsibilities (token validation, claims
+      handling, session creation, etc.) and its implementation language
+      are placeholders. Replace once the real design is confirmed.
     </p>
 
   </div>
@@ -1395,7 +1396,10 @@ footer {
   <p>
     The application integrations were backed by Microsoft Entra ID
     configuration covering application identities, provisioning and
-    enterprise access controls.
+    enterprise access controls, along with supporting Azure
+    infrastructure including
+    <span class="assume">App Service, Key Vault and Azure DevOps
+    pipelines</span>.
   </p>
 
   <div class="tech-grid">
@@ -1449,27 +1453,6 @@ footer {
 
   </div>
 
-
-  <div class="review-box">
-
-    <div class="review-label">
-      Karthik — Azure detail needed
-    </div>
-
-    <p>
-      Add the Azure engineering work that you personally performed
-      beyond Entra ID. For example: application hosting, configuration,
-      secrets, monitoring, deployment, networking, CI/CD or other Azure
-      services — but only those actually used by you on this project.
-    </p>
-
-    <p>
-      This section should eventually show the cloud engineering dimension
-      of the project rather than using “Azure” only as a technology label.
-    </p>
-
-  </div>
-
 </section>
 
 
@@ -1494,8 +1477,27 @@ footer {
 
   <p>
     A zero-downtime migration strategy was executed across the
-    application portfolio.
+    application portfolio by a lean, hands-on team.
   </p>
+
+  <div class="team-strip">
+
+    <div class="team-pill">
+      <strong>Core migration team</strong>
+      <span>2–3 engineers, led by me and my team lead</span>
+    </div>
+
+    <div class="team-pill">
+      <strong>Direct migrations</strong>
+      <span>Most applications migrated hands-on by our core team</span>
+    </div>
+
+    <div class="team-pill">
+      <strong>Guided migrations</strong>
+      <span>Remaining applications migrated by their owning teams under my guidance</span>
+    </div>
+
+  </div>
 
 
   <div class="flow">
@@ -1538,47 +1540,18 @@ footer {
   </div>
 
 
-  <div class="review-box">
-
-    <div class="review-label">
-      First draft — Karthik to validate
-    </div>
-
-    <p>
-      Each application was assessed individually to understand its
-      existing authentication flow, access requirements and target
-      integration pattern. The corresponding Entra ID configuration
-      and application integration were then prepared and validated
-      before production migration.
-    </p>
-
-    <p>
-      Authentication scenarios were tested before cutover to verify
-      that expected users could sign in and reach the application with
-      the correct access.
-    </p>
-
-    <p>
-      <span class="review-inline">
-        Confirm whether the existing SiteMinder authentication path
-        remained available until the Entra ID integration was validated,
-        and describe the actual rollback/fallback approach.
-      </span>
-    </p>
-
-    <p>
-      The application-by-application approach allowed the migration to
-      progress incrementally rather than treating the entire portfolio
-      as a single high-risk production cutover.
-    </p>
-
-    <p>
-      <strong>Karthik:</strong> please confirm the actual migration
-      sequence, who performed validation, how production cutover was
-      controlled and what happened if an application failed validation.
-    </p>
-
-  </div>
+  <p>
+    Each application was assessed individually to understand its
+    existing authentication flow, access requirements and target
+    integration pattern. The corresponding Entra ID configuration
+    and application integration were then prepared and validated
+    before production migration. Authentication scenarios were tested
+    before cutover to verify that expected users could sign in and
+    reach the application with the correct access. The
+    application-by-application approach allowed the migration to
+    progress incrementally rather than treating the entire portfolio
+    as a single high-risk production cutover.
+  </p>
 
 </section>
 
@@ -1653,27 +1626,6 @@ footer {
 
   </div>
 
-
-  <div class="review-box">
-
-    <div class="review-label">
-      Karthik — implementation detail to confirm
-    </div>
-
-    <p>
-      Describe what you personally configured or implemented for MFA,
-      Conditional Access and RBAC. For example, were policies defined
-      centrally and consumed by the applications, or did application-side
-      authorization also need to be changed?
-    </p>
-
-    <p>
-      If claims, groups or roles from Entra ID were mapped into
-      application permissions, explain one representative flow here.
-    </p>
-
-  </div>
-
 </section>
 
 
@@ -1693,7 +1645,7 @@ footer {
     The project migrated more than 70 enterprise applications toward
     a centralized Microsoft Entra ID authentication model, implementing
     modern SSO and federation standards while maintaining business
-    continuity.
+    continuity — driven by a core team of just 2–3 engineers.
   </p>
 
   <div class="outcome-grid">
@@ -1714,11 +1666,12 @@ footer {
     <div class="outcome-card">
 
       <strong>
-        Centralized identity
+        Lean core team
       </strong>
 
       <span>
-        Authentication modernized around Microsoft Entra ID.
+        Delivered primarily by me and my team lead, with select
+        application teams migrating under my guidance.
       </span>
 
     </div>
@@ -1735,27 +1688,6 @@ footer {
       </span>
 
     </div>
-
-  </div>
-
-
-  <div class="review-box">
-
-    <div class="review-label">
-      Karthik — add measurable outcomes if available
-    </div>
-
-    <p>
-      If you have defensible numbers, add them here: applications
-      personally migrated, reduction in integration effort, migration
-      duration, incidents avoided, authentication failures reduced,
-      support effort reduced or other measurable outcomes.
-    </p>
-
-    <p>
-      Do not estimate numbers simply to make the project sound stronger.
-      Two or three real metrics would be much more valuable.
-    </p>
 
   </div>
 
