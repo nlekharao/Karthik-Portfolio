@@ -85,6 +85,17 @@
       padding: 60px 28px 70px;
     }
 
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 280px;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .hero-content {
+      min-width: 0;
+    }
+
     .eyebrow {
       color: var(--blue);
       font-size: 14px;
@@ -96,7 +107,7 @@
 
     h1 {
       margin: 0;
-      max-width: 850px;
+      max-width: 760px;
       font-size: clamp(42px, 5vw, 56px);
       line-height: 1.05;
       letter-spacing: -1.8px;
@@ -104,7 +115,7 @@
     }
 
     .hero-intro {
-      max-width: 730px;
+      max-width: 700px;
       margin-top: 28px;
       font-size: 20px;
       color: var(--muted);
@@ -130,6 +141,23 @@
     .button-primary {
       background: var(--navy);
       color: white;
+    }
+
+    /* HERO PORTRAIT */
+
+    .hero-photo-wrap {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .hero-photo {
+      width: 280px;
+      height: 330px;
+      object-fit: cover;
+      object-position: center 28%;
+      display: block;
+      border-radius: 14px;
+      box-shadow: 0 18px 45px rgba(20,32,55,.13);
     }
 
     /* SECTIONS */
@@ -238,7 +266,7 @@
       min-height: 360px;
     }
 
-    /* PROJECT 01 - IDENTITY MODERNIZATION PREVIEW */
+    /* PROJECT 01 */
 
     .architecture {
       width: 100%;
@@ -298,7 +326,7 @@
       margin-bottom: 2px;
     }
 
-    /* PROJECT 02 - ML PREVIEW */
+    /* PROJECT 02 */
 
     .ml-visual {
       width: 100%;
@@ -412,6 +440,21 @@
       font-size: 13px;
     }
 
+    /* TABLET */
+
+    @media(max-width:900px) {
+
+      .hero-grid {
+        grid-template-columns: 1fr 220px;
+        gap: 38px;
+      }
+
+      .hero-photo {
+        width: 220px;
+        height: 270px;
+      }
+    }
+
     /* MOBILE */
 
     @media(max-width:760px) {
@@ -421,7 +464,21 @@
       }
 
       .hero {
-        padding-top:70px;
+        padding-top:50px;
+      }
+
+      .hero-grid {
+        grid-template-columns:1fr;
+        gap:36px;
+      }
+
+      .hero-photo-wrap {
+        justify-content:flex-start;
+      }
+
+      .hero-photo {
+        width:210px;
+        height:250px;
       }
 
       h1 {
@@ -485,26 +542,40 @@
 
 <header class="hero">
 
-  <div class="eyebrow">
-    Software Engineering · Identity · Machine Learning
-  </div>
+  <div class="hero-grid">
 
-  <h1>
-    Building secure, scalable systems that solve real-world problems.
-  </h1>
+    <div class="hero-content">
 
-  <div class="hero-intro">
-    I'm Karthik Rao, a software engineer with experience across
-    enterprise identity modernization, full-stack development and
-    machine learning — including production systems in the insurance
-    domain.
-  </div>
+      <div class="eyebrow">
+        Software Engineering · Identity · Machine Learning
+      </div>
 
-  <div class="hero-actions">
+      <h1>
+        Building secure, scalable systems that solve real-world problems.
+      </h1>
 
-    <a href="#work" class="button button-primary">
-      Explore my work
-    </a>
+      <div class="hero-intro">
+        I'm Karthik Rao, a software engineer with experience across
+        enterprise identity modernization, full-stack development and
+        machine learning — including production systems in the insurance
+        domain.
+      </div>
+
+      <div class="hero-actions">
+        <a href="#work" class="button button-primary">
+          Explore my work
+        </a>
+      </div>
+
+    </div>
+
+
+    <div class="hero-photo-wrap">
+      <img
+        src="karthik-profile.png"
+        alt="Karthik Rao"
+        class="hero-photo">
+    </div>
 
   </div>
 
