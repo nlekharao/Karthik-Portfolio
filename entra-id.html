@@ -1,820 +1,692 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Enterprise Authentication Modernization | Karthik Rao</title>
-
-<style>
-
-:root {
-  --bg:#f7f8fa;
-  --surface:#ffffff;
-  --text:#172033;
-  --muted:#667085;
-  --line:#e5e7eb;
-  --navy:#18253d;
-  --blue:#356ae6;
-  --blue-soft:#edf3ff;
-  --tag:#f2f4f7;
-
-  /* Assumption highlighting */
-  --assume:#fff4bf;
-  --assume-border:#e4c95c;
-  --assume-text:#66551a;
-}
-
-* {
-  box-sizing:border-box;
-}
-
-html {
-  scroll-behavior:smooth;
-}
-
-body {
-  margin:0;
-  font-family:Inter, Arial, Helvetica, sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  line-height:1.7;
-}
-
-/* NAVIGATION */
-
-.nav {
-  background:rgba(255,255,255,.97);
-  border-bottom:1px solid var(--line);
-  position:sticky;
-  top:0;
-  z-index:100;
-}
-
-.nav-inner {
-  max-width:1120px;
-  margin:auto;
-  height:68px;
-  padding:0 28px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-
-.brand {
-  font-size:22px;
-  font-weight:700;
-  color:var(--navy);
-  letter-spacing:-.3px;
-  text-decoration:none;
-}
-
-.nav-links {
-  display:flex;
-  gap:28px;
-}
-
-.nav-links a {
-  color:var(--muted);
-  text-decoration:none;
-  font-size:14px;
-  font-weight:500;
-}
-
-.nav-links a:hover {
-  color:var(--blue);
-}
-
-/* HERO */
-
-.project-hero {
-  background:var(--navy);
-  color:white;
-}
-
-.project-hero-inner {
-  max-width:1120px;
-  margin:auto;
-  padding:62px 28px 64px;
-}
-
-.back-link {
-  display:inline-block;
-  color:#aebbd1;
-  text-decoration:none;
-  font-size:13px;
-  margin-bottom:30px;
-}
-
-.back-link:hover {
-  color:white;
-}
-
-.project-label {
-  color:#7fa5ff;
-  font-size:13px;
-  font-weight:700;
-  letter-spacing:1.3px;
-  text-transform:uppercase;
-  margin-bottom:14px;
-}
-
-.project-hero h1 {
-  max-width:900px;
-  margin:0;
-  font-size:clamp(38px,5vw,56px);
-  line-height:1.08;
-  letter-spacing:-1.8px;
-}
-
-.project-summary {
-  max-width:850px;
-  margin-top:22px;
-  color:#c5cedd;
-  font-size:18px;
-  line-height:1.7;
-}
-
-.hero-context {
-  margin-top:28px;
-  display:flex;
-  flex-wrap:wrap;
-  gap:40px;
-}
-
-.context-item {
-  font-size:12px;
-  color:#aebbd1;
-}
-
-.context-item strong {
-  display:block;
-  color:white;
-  font-size:13px;
-  margin-bottom:2px;
-}
-
-.tags {
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  margin-top:27px;
-}
-
-.tag {
-  padding:6px 11px;
-  border-radius:20px;
-  border:1px solid rgba(255,255,255,.18);
-  color:#d8e0ed;
-  font-size:12px;
-  font-weight:600;
-}
-
-/* METRICS */
-
-.metrics {
-  max-width:1120px;
-  margin:-1px auto 0;
-  padding:0 28px;
-}
-
-.metrics-grid {
-  background:white;
-  border:1px solid var(--line);
-  border-radius:0 0 12px 12px;
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-}
-
-.metric {
-  padding:27px 28px;
-  border-right:1px solid var(--line);
-}
-
-.metric:last-child {
-  border-right:none;
-}
-
-.metric-value {
-  color:var(--navy);
-  font-size:23px;
-  font-weight:750;
-  margin-bottom:2px;
-}
-
-.metric-label {
-  color:var(--muted);
-  font-size:12px;
-}
-
-/* MAIN CONTENT */
-
-.content {
-  max-width:960px;
-  margin:auto;
-  padding:75px 28px 100px;
-}
-
-.content-section {
-  margin-bottom:86px;
-}
-
-.section-number {
-  color:var(--blue);
-  font-size:12px;
-  font-weight:700;
-  letter-spacing:1.2px;
-  margin-bottom:8px;
-}
-
-.content h2 {
-  color:var(--navy);
-  font-size:31px;
-  line-height:1.25;
-  letter-spacing:-.7px;
-  margin:0 0 20px;
-}
-
-.content h3 {
-  color:var(--navy);
-  font-size:17px;
-  margin:0 0 8px;
-}
-
-.content p {
-  color:#525f73;
-  font-size:16px;
-  margin:0 0 18px;
-}
-
-.lead {
-  font-size:19px !important;
-  line-height:1.65;
-  color:#354258 !important;
-}
-
-/* ASSUMPTION HIGHLIGHT */
-
-.assume {
-  background:var(--assume);
-  border-bottom:2px solid var(--assume-border);
-  padding:1px 4px;
-  border-radius:3px;
-  color:var(--assume-text);
-  font-weight:600;
-}
-
-.assumption-note {
-  margin-top:24px;
-  background:var(--assume);
-  border:1px solid var(--assume-border);
-  border-radius:8px;
-  padding:16px 20px;
-}
-
-.assumption-note-label {
-  color:var(--assume-text);
-  font-size:11px;
-  font-weight:800;
-  letter-spacing:.8px;
-  text-transform:uppercase;
-  margin-bottom:6px;
-}
-
-.assumption-note p {
-  color:#5d5226;
-  font-size:13px;
-  margin:0;
-}
-
-/* CHALLENGE */
-
-.challenge-grid {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:14px;
-  margin-top:30px;
-}
-
-.challenge-card {
-  background:white;
-  border:1px solid var(--line);
-  border-radius:9px;
-  padding:21px;
-}
-
-.challenge-label {
-  color:var(--blue);
-  font-size:11px;
-  font-weight:700;
-  letter-spacing:.8px;
-  text-transform:uppercase;
-  margin-bottom:7px;
-}
-
-.challenge-card p {
-  margin:0;
-  font-size:14px;
-}
-
-/* ARCHITECTURE */
-
-.architecture {
-  margin-top:34px;
-  background:white;
-  border:1px solid var(--line);
-  border-radius:12px;
-  padding:38px;
-}
-
-.arch-title {
-  text-align:center;
-  color:var(--muted);
-  font-size:11px;
-  font-weight:700;
-  letter-spacing:1px;
-  text-transform:uppercase;
-  margin-bottom:34px;
-}
-
-.architecture-grid {
-  display:grid;
-  grid-template-columns:1fr 70px 1.6fr;
-  gap:20px;
-  align-items:center;
-}
-
-.arch-column-title {
-  font-size:10px;
-  font-weight:800;
-  color:#7b8494;
-  letter-spacing:1px;
-  text-transform:uppercase;
-  margin-bottom:11px;
-  text-align:center;
-}
-
-.arch-box {
-  border-radius:8px;
-  padding:16px 12px;
-  text-align:center;
-  font-size:13px;
-  font-weight:700;
-}
-
-.legacy-box {
-  background:#f4f5f7;
-  border:1px solid #dce0e6;
-  color:#4e596a;
-}
-
-.entra-box {
-  background:var(--navy);
-  color:white;
-}
-
-.arch-line {
-  height:22px;
-  width:1px;
-  background:#cbd2dc;
-  margin:auto;
-}
-
-.app-box {
-  background:#fafbfc;
-  border:1px solid var(--line);
-  border-radius:7px;
-  padding:12px 8px;
-  text-align:center;
-  color:#596579;
-  font-size:11px;
-}
-
-.migration-arrow {
-  text-align:center;
-  color:var(--blue);
-}
-
-.migration-arrow .arrow {
-  font-size:30px;
-  line-height:1;
-}
-
-.migration-arrow .arrow-label {
-  margin-top:5px;
-  font-size:9px;
-  font-weight:700;
-  text-transform:uppercase;
-  letter-spacing:.8px;
-  color:#7b8494;
-}
-
-.protocol-row {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:7px;
-  margin-top:10px;
-}
-
-.protocol {
-  background:var(--blue-soft);
-  border:1px solid #d7e3ff;
-  color:#3159a8;
-  border-radius:6px;
-  padding:9px 4px;
-  text-align:center;
-  font-size:10px;
-  font-weight:700;
-}
-
-.app-row {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:7px;
-}
-
-.identity-layer {
-  margin-top:12px;
-  border:1px solid var(--line);
-  background:#fafbfc;
-  border-radius:7px;
-  padding:12px;
-}
-
-.identity-layer-title {
-  font-size:9px;
-  text-transform:uppercase;
-  letter-spacing:.7px;
-  color:#8a94a6;
-  text-align:center;
-  margin-bottom:8px;
-  font-weight:700;
-}
-
-.identity-items {
-  display:flex;
-  justify-content:center;
-  gap:6px;
-  flex-wrap:wrap;
-}
-
-.identity-item {
-  background:white;
-  border:1px solid var(--line);
-  border-radius:5px;
-  padding:6px 8px;
-  font-size:9px;
-  color:#596579;
-}
-
-.security-layer {
-  margin-top:9px;
-  display:flex;
-  justify-content:center;
-  gap:6px;
-  flex-wrap:wrap;
-}
-
-.security-pill {
-  background:#f1f3f6;
-  border-radius:15px;
-  padding:5px 8px;
-  font-size:9px;
-  color:#596579;
-  font-weight:600;
-}
-
-.arch-note {
-  margin-top:26px;
-  text-align:center;
-  font-size:10px;
-  color:#929bad;
-}
-
-/* ENGINEERING LAYERS */
-
-.engineering-layers {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:15px;
-  margin-top:30px;
-}
-
-.engineering-layer {
-  background:white;
-  border:1px solid var(--line);
-  border-top:3px solid var(--blue);
-  border-radius:8px;
-  padding:22px;
-}
-
-.layer-number {
-  font-size:10px;
-  color:var(--blue);
-  font-weight:800;
-  margin-bottom:8px;
-}
-
-.engineering-layer h3 {
-  font-size:16px;
-}
-
-.engineering-layer p {
-  font-size:13px;
-  margin:0;
-}
-
-/* TECH GRID */
-
-.tech-grid {
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:15px;
-  margin-top:27px;
-}
-
-.tech-card {
-  background:white;
-  border:1px solid var(--line);
-  border-radius:9px;
-  padding:23px;
-}
-
-.tech-card h3 {
-  font-size:16px;
-}
-
-.tech-card p {
-  font-size:14px;
-  margin:0;
-}
-
-/* LIBRARY */
-
-.library-diagram {
-  margin-top:30px;
-  background:white;
-  border:1px solid var(--line);
-  border-radius:10px;
-  padding:30px;
-}
-
-.library-top {
-  max-width:260px;
-  margin:auto;
-  background:var(--navy);
-  color:white;
-  padding:13px;
-  border-radius:7px;
-  text-align:center;
-  font-size:13px;
-  font-weight:700;
-}
-
-.library-line {
-  width:1px;
-  height:23px;
-  background:#cbd2dc;
-  margin:auto;
-}
-
-.library-core {
-  max-width:500px;
-  margin:auto;
-  border:2px solid #bfd1fb;
-  background:var(--blue-soft);
-  border-radius:9px;
-  padding:18px;
-  text-align:center;
-}
-
-.library-core strong {
-  color:var(--navy);
-  font-size:15px;
-}
-
-.library-core p {
-  margin:7px 0 0;
-  font-size:12px;
-}
-
-.library-apps {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:9px;
-  max-width:600px;
-  margin:auto;
-}
-
-.library-app {
-  border:1px solid var(--line);
-  background:#fafbfc;
-  border-radius:6px;
-  padding:11px;
-  text-align:center;
-  font-size:11px;
-  color:#596579;
-}
-
-/* FLOW */
-
-.flow {
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:8px;
-  margin-top:30px;
-}
-
-.flow-step {
-  background:white;
-  border:1px solid var(--line);
-  border-radius:8px;
-  padding:17px 12px;
-  min-height:100px;
-}
-
-.flow-number {
-  color:var(--blue);
-  font-size:10px;
-  font-weight:700;
-  margin-bottom:7px;
-}
-
-.flow-title {
-  color:var(--navy);
-  font-size:13px;
-  font-weight:700;
-  line-height:1.35;
-}
-
-/* CALLOUT */
-
-.callout {
-  background:var(--blue-soft);
-  border-left:4px solid var(--blue);
-  border-radius:5px;
-  padding:23px 25px;
-  margin-top:28px;
-}
-
-.callout-title {
-  color:#244d9c;
-  font-size:11px;
-  font-weight:800;
-  letter-spacing:.7px;
-  margin-bottom:6px;
-}
-
-.callout p {
-  color:#496080;
-  font-size:14px;
-  margin:0;
-}
-
-/* TEAM */
-
-.team-strip {
-  margin-top:28px;
-  display:flex;
-  flex-wrap:wrap;
-  gap:14px;
-}
-
-.team-pill {
-  background:white;
-  border:1px solid var(--line);
-  border-radius:9px;
-  padding:16px 20px;
-  flex:1;
-  min-width:200px;
-}
-
-.team-pill strong {
-  display:block;
-  color:var(--navy);
-  font-size:15px;
-  margin-bottom:4px;
-}
-
-.team-pill span {
-  color:#667085;
-  font-size:13px;
-}
-
-/* OUTCOME */
-
-.outcome-grid {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:14px;
-  margin-top:28px;
-}
-
-.outcome-card {
-  background:var(--navy);
-  color:white;
-  border-radius:9px;
-  padding:23px;
-}
-
-.outcome-card strong {
-  display:block;
-  font-size:18px;
-  margin-bottom:7px;
-}
-
-.outcome-card span {
-  display:block;
-  color:#c3ccda;
-  font-size:13px;
-  line-height:1.55;
-}
-
-/* FOOTER */
-
-footer {
-  background:white;
-  border-top:1px solid var(--line);
-}
-
-.footer-inner {
-  max-width:1120px;
-  margin:auto;
-  padding:30px 28px;
-  display:flex;
-  justify-content:space-between;
-  color:var(--muted);
-  font-size:13px;
-}
-
-.footer-inner a {
-  color:var(--blue);
-  text-decoration:none;
-}
-
-/* MOBILE */
-
-@media(max-width:760px) {
-
-  .nav-links {
-    display:none;
-  }
-
-  .project-hero-inner {
-    padding-top:45px;
-  }
-
-  .metrics-grid,
-  .challenge-grid,
-  .engineering-layers,
-  .tech-grid,
-  .outcome-grid {
-    grid-template-columns:1fr;
-  }
-
-  .metric {
-    border-right:none;
-    border-bottom:1px solid var(--line);
-  }
-
-  .metric:last-child {
-    border-bottom:none;
-  }
-
-  .architecture-grid {
-    grid-template-columns:1fr;
-  }
-
-  .migration-arrow {
-    transform:rotate(90deg);
-    padding:6px 0;
-  }
-
-  .app-row,
-  .library-apps {
-    grid-template-columns:1fr;
-  }
-
-  .flow {
-    grid-template-columns:1fr;
-  }
-
-  .architecture,
-  .library-diagram {
-    padding:23px 17px;
-  }
-
-  .team-strip {
-    flex-direction:column;
-  }
-
-  .footer-inner {
-    flex-direction:column;
-    gap:8px;
-  }
-}
-
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Enterprise Authentication Modernization | Karthik Rao</title>
+
+  <style>
+
+    :root {
+      --bg: #f7f8fa;
+      --surface: #ffffff;
+      --text: #172033;
+      --muted: #667085;
+      --line: #e5e7eb;
+      --navy: #18253d;
+      --blue: #356ae6;
+      --blue-soft: #eef4ff;
+      --tag: #f2f4f7;
+      --review: #fff4bf;
+      --review-border: #e4c95c;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+
+    /* NAVIGATION */
+
+    .nav {
+      background: rgba(255,255,255,.96);
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-inner {
+      max-width: 1120px;
+      margin: auto;
+      height: 68px;
+      padding: 0 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--navy);
+      text-decoration: none;
+      letter-spacing: -.3px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      color: var(--blue);
+    }
+
+
+    /* HERO */
+
+    .project-hero {
+      background: var(--navy);
+      color: white;
+    }
+
+    .project-hero-inner {
+      max-width: 1120px;
+      margin: auto;
+      padding: 54px 28px 58px;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 30px;
+      color: rgba(255,255,255,.65);
+      font-size: 13px;
+      text-decoration: none;
+    }
+
+    .back-link:hover {
+      color: white;
+    }
+
+    .project-label {
+      color: #8fb0ff;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 850px;
+      font-size: clamp(38px, 5vw, 54px);
+      line-height: 1.08;
+      letter-spacing: -1.6px;
+    }
+
+    .project-summary {
+      max-width: 820px;
+      margin: 22px 0 0;
+      color: rgba(255,255,255,.73);
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .hero-context {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 1px;
+      margin-top: 34px;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 9px;
+      overflow: hidden;
+    }
+
+    .context-item {
+      background: rgba(255,255,255,.035);
+      padding: 16px 18px;
+      color: rgba(255,255,255,.72);
+      font-size: 13px;
+    }
+
+    .context-item strong {
+      display: block;
+      margin-bottom: 4px;
+      color: white;
+      font-size: 11px;
+      letter-spacing: .7px;
+      text-transform: uppercase;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 24px;
+    }
+
+    .tag {
+      border: 1px solid rgba(255,255,255,.17);
+      background: rgba(255,255,255,.07);
+      color: rgba(255,255,255,.82);
+      border-radius: 20px;
+      padding: 6px 10px;
+      font-size: 12px;
+    }
+
+
+    /* MAIN */
+
+    .main {
+      max-width: 1120px;
+      margin: auto;
+      padding: 0 28px 65px;
+    }
+
+    .content-section {
+      padding: 48px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .content-section:last-child {
+      border-bottom: none;
+    }
+
+    .section-number {
+      color: var(--blue);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.3px;
+      text-transform: uppercase;
+      margin-bottom: 9px;
+    }
+
+    .content-section h2 {
+      margin: 0 0 17px;
+      color: var(--navy);
+      font-size: 28px;
+      line-height: 1.25;
+      letter-spacing: -.6px;
+    }
+
+    .content-section p {
+      max-width: 860px;
+      margin: 0 0 15px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .content-section p:last-child {
+      margin-bottom: 0;
+    }
+
+    .lead {
+      font-size: 17px !important;
+      line-height: 1.7;
+      color: #475467 !important;
+    }
+
+
+    /* CONTEXT STRIP */
+
+    .challenge-grid {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .challenge-card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      padding: 18px;
+    }
+
+    .challenge-card strong {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--navy);
+      font-size: 18px;
+    }
+
+    .challenge-card span {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+
+    /* ARCHITECTURE */
+
+    .architecture {
+      margin-top: 28px;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      padding: 32px;
+    }
+
+    .architecture-title {
+      margin-bottom: 27px;
+      color: #61708a;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+    }
+
+    .architecture-flow {
+      max-width: 660px;
+      margin: auto;
+    }
+
+    .arch-box {
+      border: 1px solid #d9dee8;
+      background: #fafbfc;
+      border-radius: 8px;
+      padding: 14px 18px;
+      text-align: center;
+      color: #44516a;
+      font-size: 14px;
+    }
+
+    .arch-box.primary {
+      background: var(--navy);
+      border-color: var(--navy);
+      color: white;
+      font-weight: 600;
+    }
+
+    .arch-box.middleware {
+      background: var(--blue-soft);
+      border-color: #cbdcff;
+      color: #214eae;
+      font-weight: 600;
+    }
+
+    .arch-arrow {
+      width: 1px;
+      height: 22px;
+      margin: auto;
+      background: #b9c1cf;
+      position: relative;
+    }
+
+    .arch-arrow::after {
+      content: "";
+      position: absolute;
+      bottom: -1px;
+      left: -3px;
+      width: 7px;
+      height: 7px;
+      border-right: 1px solid #8995a8;
+      border-bottom: 1px solid #8995a8;
+      transform: rotate(45deg);
+    }
+
+    .arch-note {
+      margin-top: 25px;
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 10px;
+    }
+
+    .arch-note-item {
+      background: #fafbfc;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      padding: 12px;
+      text-align: center;
+    }
+
+    .arch-note-item strong {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--navy);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+
+    .arch-note-item span {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .architecture-caption {
+      margin-top: 20px !important;
+      max-width: none !important;
+      text-align: center;
+      font-size: 11px !important;
+      color: #98a2b3 !important;
+    }
+
+
+    /* MIDDLEWARE */
+
+    .middleware-layout {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 38px;
+      align-items: start;
+      margin-top: 26px;
+    }
+
+    .middleware-flow {
+      background: var(--navy);
+      border-radius: 11px;
+      padding: 27px;
+      color: white;
+    }
+
+    .middleware-flow-title {
+      margin-bottom: 18px;
+      color: #8fb0ff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .middleware-step {
+      padding: 11px 13px;
+      border: 1px solid rgba(255,255,255,.17);
+      border-radius: 6px;
+      background: rgba(255,255,255,.04);
+      font-size: 12px;
+    }
+
+    .middleware-arrow {
+      height: 16px;
+      width: 1px;
+      margin: auto;
+      background: rgba(255,255,255,.25);
+    }
+
+    .middleware-note {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255,255,255,.12);
+      color: rgba(255,255,255,.6);
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+
+    /* TECH GRID */
+
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 13px;
+      margin-top: 25px;
+    }
+
+    .tech-card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      padding: 20px;
+    }
+
+    .tech-card h3 {
+      margin: 0 0 7px;
+      color: var(--navy);
+      font-size: 15px;
+    }
+
+    .tech-card p {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .security-strip {
+      margin-top: 14px;
+      padding: 15px 18px;
+      background: #eef2f7;
+      border-radius: 8px;
+      color: #475467;
+      font-size: 13px;
+    }
+
+    .security-strip strong {
+      color: var(--navy);
+    }
+
+
+    /* EDGE CASE */
+
+    .edge-case {
+      margin-top: 26px;
+      border-left: 4px solid var(--blue);
+      background: white;
+      border-top: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0 9px 9px 0;
+      padding: 21px 23px;
+    }
+
+    .edge-label {
+      margin-bottom: 7px;
+      color: var(--blue);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.1px;
+      text-transform: uppercase;
+    }
+
+    .edge-case h3 {
+      margin: 0 0 8px;
+      color: var(--navy);
+      font-size: 16px;
+    }
+
+    .edge-case p {
+      margin: 0;
+      font-size: 13px;
+    }
+
+
+    /* REVIEW NOTE */
+
+    .review-note {
+      margin-top: 14px;
+      padding: 13px 16px;
+      background: var(--review);
+      border: 1px solid var(--review-border);
+      border-radius: 7px;
+    }
+
+    .review-note strong {
+      display: block;
+      margin-bottom: 3px;
+      color: #67530a;
+      font-size: 10px;
+      letter-spacing: .8px;
+      text-transform: uppercase;
+    }
+
+    .review-note p {
+      margin: 0;
+      color: #67530a;
+      font-size: 12px;
+    }
+
+
+    /* MIGRATION */
+
+    .migration-flow {
+      display: grid;
+      grid-template-columns: repeat(6,1fr);
+      gap: 7px;
+      margin-top: 25px;
+      align-items: center;
+    }
+
+    .migration-step {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      color: var(--navy);
+      text-align: center;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .migration-models {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 13px;
+      margin-top: 15px;
+    }
+
+    .migration-model {
+      background: #eef2f7;
+      border-radius: 8px;
+      padding: 17px 19px;
+    }
+
+    .migration-model strong {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--navy);
+      font-size: 13px;
+    }
+
+    .migration-model span {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+
+    /* OUTCOMES */
+
+    .outcome-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 13px;
+      margin-top: 25px;
+    }
+
+    .outcome-card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      padding: 21px;
+    }
+
+    .outcome-card strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--navy);
+      font-size: 16px;
+    }
+
+    .outcome-card span {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+
+    /* FOOTER */
+
+    footer {
+      border-top: 1px solid var(--line);
+      background: white;
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: auto;
+      padding: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer-inner a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+
+    /* RESPONSIVE */
+
+    @media(max-width:850px) {
+
+      .hero-context,
+      .challenge-grid {
+        grid-template-columns: repeat(2,1fr);
+      }
+
+      .middleware-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .migration-flow {
+        grid-template-columns: repeat(3,1fr);
+      }
+
+    }
+
+
+    @media(max-width:760px) {
+
+      .nav-links {
+        display: none;
+      }
+
+      .project-hero-inner {
+        padding-top: 42px;
+        padding-bottom: 45px;
+      }
+
+      .content-section {
+        padding: 38px 0;
+      }
+
+      .hero-context,
+      .challenge-grid,
+      .tech-grid,
+      .outcome-grid,
+      .migration-models,
+      .arch-note {
+        grid-template-columns: 1fr;
+      }
+
+      .migration-flow {
+        grid-template-columns: repeat(2,1fr);
+      }
+
+      .architecture {
+        padding: 23px 17px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+    }
+
+  </style>
 </head>
 
 
@@ -832,10 +704,21 @@ footer {
     </a>
 
     <div class="nav-links">
-      <a href="index.html#work">Work</a>
-      <a href="index.html#focus">Technical Focus</a>
+
+      <a href="index.html#work">
+        Work
+      </a>
+
+      <a href="index.html#focus">
+        Technical Focus
+      </a>
+
       <a href="https://www.linkedin.com/in/mkarthikrao"
-         target="_blank">LinkedIn</a>
+         target="_blank"
+         rel="noopener noreferrer">
+        LinkedIn
+      </a>
+
     </div>
 
   </div>
@@ -854,7 +737,7 @@ footer {
     </a>
 
     <div class="project-label">
-      PROJECT 01 · ENTERPRISE IDENTITY MODERNIZATION
+      PROJECT 01 · SOFTWARE ENGINEERING &amp; IDENTITY
     </div>
 
     <h1>
@@ -863,10 +746,10 @@ footer {
 
     <p class="project-summary">
       Modernizing authentication for a leading U.S. insurance carrier
-      by migrating 70+ enterprise applications from SiteMinder to
-      Microsoft Entra ID — combining application engineering, identity
-      integration and cloud-based security controls while maintaining
-      business continuity.
+      by migrating 70+ .NET and .NET Core applications from SiteMinder
+      to Microsoft Entra ID — combining application engineering,
+      reusable authentication middleware and enterprise identity
+      integration while maintaining business continuity.
     </p>
 
     <div class="hero-context">
@@ -878,31 +761,31 @@ footer {
 
       <div class="context-item">
         <strong>Scale</strong>
-        70+ Enterprise Applications
+        70+ Applications
       </div>
 
       <div class="context-item">
-        <strong>Core Team</strong>
-        2–3 Engineers
+        <strong>Application Stack</strong>
+        .NET · .NET Core
       </div>
 
       <div class="context-item">
-        <strong>Engineering Focus</strong>
-        Application · Identity · Cloud
+        <strong>Migration</strong>
+        SiteMinder → Entra ID
       </div>
 
     </div>
 
     <div class="tags">
+
+      <span class="tag">.NET / .NET Core</span>
       <span class="tag">Microsoft Entra ID</span>
-      <span class="tag">Azure</span>
-      <span class="tag">SSO</span>
+      <span class="tag">SSO Middleware</span>
       <span class="tag">SAML</span>
       <span class="tag">OAuth 2.0</span>
       <span class="tag">OIDC</span>
-      <span class="tag">MFA</span>
-      <span class="tag">RBAC</span>
-      <span class="tag">Zero Trust</span>
+      <span class="tag">AWS Secrets Manager</span>
+
     </div>
 
   </div>
@@ -910,39 +793,7 @@ footer {
 </header>
 
 
-<!-- HIGHLIGHTS -->
-
-<section class="metrics">
-
-  <div class="metrics-grid">
-
-    <div class="metric">
-      <div class="metric-value">70+</div>
-      <div class="metric-label">
-        Enterprise applications migrated
-      </div>
-    </div>
-
-    <div class="metric">
-      <div class="metric-value">SAML · OAuth · OIDC</div>
-      <div class="metric-label">
-        Authentication standards implemented
-      </div>
-    </div>
-
-    <div class="metric">
-      <div class="metric-value">Zero-downtime</div>
-      <div class="metric-label">
-        Migration strategy
-      </div>
-    </div>
-
-  </div>
-
-</section>
-
-
-<main class="content">
+<main class="main">
 
 
 <!-- 01 -->
@@ -954,55 +805,56 @@ footer {
   </div>
 
   <h2>
-    Modernizing authentication across an enterprise application landscape
+    Modernizing authentication across 70+ production applications
   </h2>
 
   <p class="lead">
-    A leading U.S. insurance carrier was transitioning more than
-    70 enterprise applications from SiteMinder-based authentication
-    to Microsoft Entra ID.
+    The project involved moving a large portfolio of enterprise
+    applications from legacy SiteMinder authentication to Microsoft
+    Entra ID without disrupting access to business-critical systems.
   </p>
 
   <p>
-    This was not simply an identity-platform configuration exercise.
-    Applications had to be integrated with the new authentication
-    model, identity components configured in Entra ID, security controls
-    applied and production applications migrated without interrupting
-    business access. I led the migration directly alongside my team
-    lead, as part of a lean core team of 2–3 engineers. For some
-    applications, the owning application teams carried out their own
-    migration, working under guidance and standards I defined.
+    The application estate consisted of .NET and .NET Core applications
+    with existing authentication dependencies and different integration
+    requirements. The migration therefore needed to address both the
+    identity-platform change and the corresponding application-side
+    engineering required to adopt the new authentication model.
   </p>
+
+  <p>
+    The core migration team consisted of just three engineers, making
+    repeatability and standardization important to delivering the
+    migration across the application portfolio.
+  </p>
+
 
   <div class="challenge-grid">
 
     <div class="challenge-card">
-      <div class="challenge-label">Scale</div>
-      <p>
-        70+ enterprise applications requiring coordinated
-        authentication modernization.
-      </p>
+      <strong>70+</strong>
+      <span>Enterprise applications in the migration portfolio</span>
     </div>
 
     <div class="challenge-card">
-      <div class="challenge-label">Engineering</div>
-      <p>
-        Application-side integration combined with identity and
-        authentication configuration.
-      </p>
+      <strong>.NET / .NET Core</strong>
+      <span>Application technology landscape</span>
     </div>
 
     <div class="challenge-card">
-      <div class="challenge-label">Continuity</div>
-      <p>
-        Production migration had to preserve access to
-        business-critical applications.
-      </p>
+      <strong>SiteMinder → Entra</strong>
+      <span>Legacy-to-modern identity migration</span>
+    </div>
+
+    <div class="challenge-card">
+      <strong>3 Engineers</strong>
+      <span>Core team driving the modernization</span>
     </div>
 
   </div>
 
 </section>
+
 
 
 <!-- 02 -->
@@ -1010,148 +862,100 @@ footer {
 <section class="content-section">
 
   <div class="section-number">
-    02 · SYSTEM ARCHITECTURE
+    02 · TARGET AUTHENTICATION ARCHITECTURE
   </div>
 
   <h2>
-    Moving from legacy authentication to a centralized identity platform
+    Decoupling application authentication from the identity provider
   </h2>
 
   <p>
-    The modernization transitioned application authentication from
-    the existing SiteMinder environment to Microsoft Entra ID.
-    The target architecture provided a common identity layer while
-    allowing applications to integrate using SAML, OAuth 2.0 or
-    OpenID Connect based on their authentication requirements.
+    Rather than embedding Entra-specific authentication handling
+    independently within every application, the target design introduced
+    a reusable middleware layer between the application request pipeline
+    and Microsoft Entra ID.
+  </p>
+
+  <p>
+    This gave applications a common authentication pattern while keeping
+    the identity-provider interaction largely abstracted from individual
+    application functionality.
   </p>
 
 
   <div class="architecture">
 
-    <div class="arch-title">
-      Enterprise authentication modernization — conceptual architecture
+    <div class="architecture-title">
+      Target Authentication Flow
     </div>
 
-    <div class="architecture-grid">
+    <div class="architecture-flow">
 
-
-      <!-- LEGACY -->
-
-      <div>
-
-        <div class="arch-column-title">
-          Legacy Authentication
-        </div>
-
-        <div class="arch-box legacy-box">
-          SiteMinder
-        </div>
-
-        <div class="arch-line"></div>
-
-        <div class="app-box">
-          Enterprise Applications
-        </div>
-
+      <div class="arch-box">
+        User requests .NET / .NET Core application
       </div>
 
+      <div class="arch-arrow"></div>
 
-      <!-- MIGRATION -->
-
-      <div class="migration-arrow">
-
-        <div class="arrow">
-          →
-        </div>
-
-        <div class="arrow-label">
-          Application Migration
-        </div>
-
+      <div class="arch-box middleware">
+        Reusable SSO Middleware
       </div>
 
+      <div class="arch-arrow"></div>
 
-      <!-- TARGET -->
+      <div class="arch-box primary">
+        Microsoft Entra ID
+      </div>
 
-      <div>
+      <div class="arch-arrow"></div>
 
-        <div class="arch-column-title">
-          Target Identity Platform
-        </div>
+      <div class="arch-box">
+        Authentication · Token + Redirect
+      </div>
 
-        <div class="arch-box entra-box">
-          Microsoft Entra ID
-        </div>
+      <div class="arch-arrow"></div>
 
-        <div class="protocol-row">
-          <div class="protocol">SAML</div>
-          <div class="protocol">OAuth 2.0</div>
-          <div class="protocol">OIDC</div>
-        </div>
+      <div class="arch-box middleware">
+        Middleware processes authentication response
+      </div>
 
-        <div class="arch-line"></div>
+      <div class="arch-arrow"></div>
 
-        <div class="app-row">
-
-          <div class="app-box">
-            Enterprise Apps
-          </div>
-
-          <div class="app-box">
-            Web Applications
-          </div>
-
-          <div class="app-box">
-            APIs / Services
-          </div>
-
-        </div>
-
-        <div class="identity-layer">
-
-          <div class="identity-layer-title">
-            Identity Configuration
-          </div>
-
-          <div class="identity-items">
-
-            <span class="identity-item">
-              App Registrations
-            </span>
-
-            <span class="identity-item">
-              Service Principals
-            </span>
-
-            <span class="identity-item">
-              User / Group Provisioning
-            </span>
-
-          </div>
-
-        </div>
-
-        <div class="security-layer">
-
-          <span class="security-pill">MFA</span>
-          <span class="security-pill">Conditional Access</span>
-          <span class="security-pill">RBAC</span>
-          <span class="security-pill">Zero Trust</span>
-
-        </div>
-
+      <div class="arch-box">
+        Authenticated user returned to application
       </div>
 
     </div>
+
 
     <div class="arch-note">
-      Simplified conceptual representation. Client-specific architecture,
-      system names and security configuration are intentionally omitted.
+
+      <div class="arch-note-item">
+        <strong>Protocols</strong>
+        <span>SAML · OAuth 2.0 · OIDC</span>
+      </div>
+
+      <div class="arch-note-item">
+        <strong>Identity</strong>
+        <span>App Registrations · Service Principals · Provisioning</span>
+      </div>
+
+      <div class="arch-note-item">
+        <strong>Secrets</strong>
+        <span>AWS Secrets Manager</span>
+      </div>
+
     </div>
+
+    <p class="architecture-caption">
+      Simplified conceptual representation. Client-specific system names
+      and implementation details are intentionally omitted.
+    </p>
 
   </div>
 
 </section>
+
 
 
 <!-- 03 -->
@@ -1159,86 +963,106 @@ footer {
 <section class="content-section">
 
   <div class="section-number">
-    03 · ENGINEERING ACROSS THE STACK
+    03 · REUSABLE SSO MIDDLEWARE
   </div>
 
   <h2>
-    More than an identity configuration project
+    Abstracting Entra ID from the application layer
   </h2>
 
-  <p>
-    The modernization required work across the application, identity
-    and cloud layers. Authentication changes had to work within the
-    applications themselves while integrating correctly with the
-    enterprise identity platform and its security controls.
+  <p class="lead">
+    Implementing the complete authentication flow independently across
+    dozens of applications would have created repeated code and
+    inconsistent integration patterns.
   </p>
 
-  <div class="engineering-layers">
 
+  <div class="middleware-layout">
 
-    <div class="engineering-layer">
-
-      <div class="layer-number">01</div>
-
-      <h3>Application Engineering</h3>
+    <div>
 
       <p>
-        Application-side changes across a mix of
-        <span class="assume">Java and .NET</span> applications, along
-        with reusable integration components, were part of moving
-        applications to the new SSO model.
+        Reusable authentication middleware was developed to provide a
+        common integration layer across the .NET and .NET Core application
+        portfolio. Once integrated, the middleware participated in the
+        application's request pipeline rather than requiring application
+        functionality to explicitly invoke authentication functions.
+      </p>
+
+      <p>
+        When authentication was required, the middleware initiated the
+        redirect to Microsoft Entra ID. Following successful
+        authentication, Entra redirected the user back to the application
+        with the returned token.
+      </p>
+
+      <p>
+        The middleware processed the authentication response, extracted
+        the required user information and persisted the returned Entra
+        token in a cookie so the authenticated context could be maintained
+        within the application.
+      </p>
+
+      <p>
+        Token refresh was intentionally not handled as a separate
+        middleware function. When the token expired, the user was routed
+        through the Entra authentication flow again.
       </p>
 
     </div>
 
 
-    <div class="engineering-layer">
+    <div class="middleware-flow">
 
-      <div class="layer-number">02</div>
+      <div class="middleware-flow-title">
+        Middleware Responsibilities
+      </div>
 
-      <h3>Identity Engineering</h3>
+      <div class="middleware-step">
+        Detect authentication requirement
+      </div>
 
-      <p>
-        Entra ID configuration, application identities, federation,
-        provisioning and enterprise access controls.
-      </p>
+      <div class="middleware-arrow"></div>
+
+      <div class="middleware-step">
+        Redirect to Microsoft Entra ID
+      </div>
+
+      <div class="middleware-arrow"></div>
+
+      <div class="middleware-step">
+        Process returned token
+      </div>
+
+      <div class="middleware-arrow"></div>
+
+      <div class="middleware-step">
+        Extract user information
+      </div>
+
+      <div class="middleware-arrow"></div>
+
+      <div class="middleware-step">
+        Persist token in cookie
+      </div>
+
+      <div class="middleware-arrow"></div>
+
+      <div class="middleware-step">
+        Return authenticated context to application
+      </div>
+
+      <div class="middleware-note">
+        On token expiry, authentication is initiated again rather than
+        performing a separate token-refresh flow.
+      </div>
 
     </div>
-
-
-    <div class="engineering-layer">
-
-      <div class="layer-number">03</div>
-
-      <h3>Azure / Cloud</h3>
-
-      <p>
-        Cloud-platform work spanning
-        <span class="assume">Azure App Service, Key Vault and Azure
-        DevOps pipelines</span> in support of the application and
-        identity modernization.
-      </p>
-
-    </div>
-
-  </div>
-
-
-  <div class="assumption-note">
-
-    <div class="assumption-note-label">
-      Assumed detail — confirm later
-    </div>
-
-    <p>
-      Application languages/frameworks and the specific Azure services
-      listed above are placeholders for now. Update once confirmed —
-      the yellow highlight marks anything still assumed.
-    </p>
 
   </div>
 
 </section>
+
 
 
 <!-- 04 -->
@@ -1246,171 +1070,33 @@ footer {
 <section class="content-section">
 
   <div class="section-number">
-    04 · APPLICATION & SSO INTEGRATION
+    04 · IDENTITY &amp; SECRETS CONFIGURATION
   </div>
 
   <h2>
-    Integrating applications with the new authentication model
+    Configuring the identity platform behind the application flow
   </h2>
 
   <p>
-    Applications across the portfolio had different authentication
-    requirements. Integration therefore needed to accommodate SAML,
-    OAuth 2.0 and OpenID Connect while presenting a consistent
-    enterprise Single Sign-On experience.
+    The middleware-based application integration was supported by
+    Microsoft Entra ID configuration for application identities,
+    provisioning and enterprise access controls. Client secrets required
+    for the integrations were stored in AWS Secrets Manager rather than
+    embedded in application code or configuration.
   </p>
 
-  <p>
-    The work included configuring the application identity in Entra ID
-    and making the corresponding application-side integration changes
-    required for the selected authentication flow. For each
-    <span class="assume">Java or .NET</span> application, the existing
-    authentication flow was first understood and the appropriate
-    target integration pattern identified before the Entra ID
-    configuration was created and the application updated to use the
-    new identity provider.
-  </p>
-
-  <p>
-    On applications where the owning application team carried out the
-    integration themselves, I provided the integration pattern,
-    reviewed the Entra ID configuration and validated the resulting
-    authentication flow before production cutover.
-  </p>
-
-</section>
-
-
-<!-- 05 -->
-
-<section class="content-section">
-
-  <div class="section-number">
-    05 · REUSABLE SSO ENGINEERING
-  </div>
-
-  <h2>
-    Turning repeated authentication work into reusable engineering
-  </h2>
-
-  <p class="lead">
-    Migrating dozens of applications created a repeatable engineering
-    problem: common authentication behavior should not have to be
-    implemented independently in every application.
-  </p>
-
-  <p>
-    A reusable SSO integration library, built in
-    <span class="assume">.NET</span>, was developed to standardize
-    authentication workflows and give applications a common
-    integration approach rather than each one implementing the full
-    SSO interaction independently.
-  </p>
-
-
-  <div class="library-diagram">
-
-    <div class="library-top">
-      Microsoft Entra ID
-    </div>
-
-    <div class="library-line"></div>
-
-    <div class="library-core">
-
-      <strong>
-        Reusable SSO Integration Library
-      </strong>
-
-      <p>
-        Common authentication integration layer
-      </p>
-
-    </div>
-
-    <div class="library-line"></div>
-
-    <div class="library-apps">
-
-      <div class="library-app">
-        Application A
-      </div>
-
-      <div class="library-app">
-        Application B
-      </div>
-
-      <div class="library-app">
-        Application C
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <div class="assumption-note">
-
-    <div class="assumption-note-label">
-      Assumed detail — confirm later
-    </div>
-
-    <p>
-      The library's exact responsibilities (token validation, claims
-      handling, session creation, etc.) and its implementation language
-      are placeholders. Replace once the real design is confirmed.
-    </p>
-
-  </div>
-
-
-  <div class="callout">
-
-    <div class="callout-title">
-      ENGINEERING VALUE
-    </div>
-
-    <p>
-      The reusable approach reduced duplicated integration effort and
-      helped keep authentication behavior consistent as applications
-      were migrated across the portfolio.
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- 06 -->
-
-<section class="content-section">
-
-  <div class="section-number">
-    06 · AZURE & IDENTITY PLATFORM
-  </div>
-
-  <h2>
-    Configuring the platform behind application authentication
-  </h2>
-
-  <p>
-    The application integrations were backed by Microsoft Entra ID
-    configuration covering application identities, provisioning and
-    enterprise access controls, along with supporting Azure
-    infrastructure including
-    <span class="assume">App Service, Key Vault and Azure DevOps
-    pipelines</span>.
-  </p>
 
   <div class="tech-grid">
 
     <div class="tech-card">
 
-      <h3>App Registrations</h3>
+      <h3>
+        App Registrations
+      </h3>
 
       <p>
         Configured application identities within Microsoft Entra ID
-        to support authentication and integration.
+        to support authentication and application integration.
       </p>
 
     </div>
@@ -1418,11 +1104,13 @@ footer {
 
     <div class="tech-card">
 
-      <h3>Service Principals</h3>
+      <h3>
+        Service Principals
+      </h3>
 
       <p>
         Configured service principals representing enterprise
-        applications within the tenant.
+        applications within the Entra tenant.
       </p>
 
     </div>
@@ -1430,7 +1118,9 @@ footer {
 
     <div class="tech-card">
 
-      <h3>User & Group Provisioning</h3>
+      <h3>
+        User &amp; Group Provisioning
+      </h3>
 
       <p>
         Supported user and group provisioning as part of centralized
@@ -1442,18 +1132,182 @@ footer {
 
     <div class="tech-card">
 
-      <h3>Authentication Standards</h3>
+      <h3>
+        Secrets Management
+      </h3>
 
       <p>
-        Implemented application integrations using SAML, OAuth 2.0
-        and OpenID Connect.
+        Stored application client secrets in AWS Secrets Manager,
+        separating sensitive credentials from application code.
       </p>
 
     </div>
 
   </div>
 
+
+  <div class="security-strip">
+    <strong>Access controls:</strong>
+    Multi-Factor Authentication · Conditional Access · RBAC · Zero Trust
+  </div>
+
 </section>
+
+
+
+<!-- 05 -->
+
+<section class="content-section">
+
+  <div class="section-number">
+    05 · APPLICATION INTEGRATION &amp; EDGE CASES
+  </div>
+
+  <h2>
+    Applying a common pattern without assuming every application was identical
+  </h2>
+
+  <p>
+    The reusable middleware provided a standard authentication pattern,
+    but migration still required understanding each application's
+    existing authentication flow, dependencies and integration behaviour.
+  </p>
+
+  <p>
+    Application-specific configuration and engineering changes were made
+    where required while retaining the common authentication model
+    wherever possible.
+  </p>
+
+
+  <div class="edge-case">
+
+    <div class="edge-label">
+      Engineering Edge Case
+    </div>
+
+    <h3>
+      Third-party redirect causing anonymous authentication
+    </h3>
+
+    <p>
+      One application included a third-party integration whose redirect
+      behaviour resulted in an anonymous-authentication condition. The
+      application therefore required additional handling around the
+      redirect flow while still integrating with the common authentication
+      middleware.
+    </p>
+
+  </div>
+
+
+  <div class="review-note">
+
+    <strong>
+      Detail to confirm with Karthik
+    </strong>
+
+    <p>
+      Add the exact technical change used to resolve the anonymous
+      authentication condition once the implementation detail is recalled.
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<!-- 06 -->
+
+<section class="content-section">
+
+  <div class="section-number">
+    06 · MIGRATION &amp; CUTOVER
+  </div>
+
+  <h2>
+    Moving production authentication without disrupting users
+  </h2>
+
+  <p>
+    Authentication is a critical application dependency: a migration
+    failure can make an otherwise healthy application inaccessible.
+    Applications were therefore migrated incrementally rather than
+    treating the entire portfolio as a single production cutover.
+  </p>
+
+  <p>
+    Each application was assessed to understand its existing
+    authentication flow and integration requirements. The target
+    integration was then prepared, authentication scenarios validated,
+    and the application moved to the new authentication model.
+  </p>
+
+
+  <div class="migration-flow">
+
+    <div class="migration-step">
+      Assess
+    </div>
+
+    <div class="migration-step">
+      Integrate
+    </div>
+
+    <div class="migration-step">
+      Configure
+    </div>
+
+    <div class="migration-step">
+      Test
+    </div>
+
+    <div class="migration-step">
+      Cutover
+    </div>
+
+    <div class="migration-step">
+      Validate
+    </div>
+
+  </div>
+
+
+  <div class="migration-models">
+
+    <div class="migration-model">
+
+      <strong>
+        Direct Migration
+      </strong>
+
+      <span>
+        Applications where the core migration team performed the
+        authentication integration and migration directly.
+      </span>
+
+    </div>
+
+
+    <div class="migration-model">
+
+      <strong>
+        Guided Migration
+      </strong>
+
+      <span>
+        Application teams implemented the defined integration pattern,
+        with authentication guidance, Entra configuration review and
+        validation before production cutover.
+      </span>
+
+    </div>
+
+  </div>
+
+</section>
+
 
 
 <!-- 07 -->
@@ -1461,203 +1315,33 @@ footer {
 <section class="content-section">
 
   <div class="section-number">
-    07 · MIGRATION ENGINEERING
+    07 · ENGINEERING OUTCOME
   </div>
 
   <h2>
-    Moving production applications without disrupting access
+    A repeatable authentication model across the application portfolio
   </h2>
 
   <p>
-    Authentication is a critical application dependency. A migration
-    failure can leave an otherwise healthy application inaccessible.
-    The modernization therefore had to move applications incrementally
-    while maintaining business continuity.
+    The modernization moved the enterprise application portfolio from
+    legacy SiteMinder authentication toward a centralized Microsoft
+    Entra ID model, while introducing reusable application-level
+    authentication engineering rather than treating every migration
+    as an independent implementation.
   </p>
 
-  <p>
-    A zero-downtime migration strategy was executed across the
-    application portfolio by a lean, hands-on team.
-  </p>
-
-  <div class="team-strip">
-
-    <div class="team-pill">
-      <strong>Core migration team</strong>
-      <span>2–3 engineers, led by me and my team lead</span>
-    </div>
-
-    <div class="team-pill">
-      <strong>Direct migrations</strong>
-      <span>Most applications migrated hands-on by our core team</span>
-    </div>
-
-    <div class="team-pill">
-      <strong>Guided migrations</strong>
-      <span>Remaining applications migrated by their owning teams under my guidance</span>
-    </div>
-
-  </div>
-
-
-  <div class="flow">
-
-    <div class="flow-step">
-      <div class="flow-number">01</div>
-      <div class="flow-title">
-        Assess Existing Authentication
-      </div>
-    </div>
-
-    <div class="flow-step">
-      <div class="flow-number">02</div>
-      <div class="flow-title">
-        Configure Target Identity
-      </div>
-    </div>
-
-    <div class="flow-step">
-      <div class="flow-number">03</div>
-      <div class="flow-title">
-        Integrate Application
-      </div>
-    </div>
-
-    <div class="flow-step">
-      <div class="flow-number">04</div>
-      <div class="flow-title">
-        Validate Authentication
-      </div>
-    </div>
-
-    <div class="flow-step">
-      <div class="flow-number">05</div>
-      <div class="flow-title">
-        Production Cutover
-      </div>
-    </div>
-
-  </div>
-
-
-  <p>
-    Each application was assessed individually to understand its
-    existing authentication flow, access requirements and target
-    integration pattern. The corresponding Entra ID configuration
-    and application integration were then prepared and validated
-    before production migration. Authentication scenarios were tested
-    before cutover to verify that expected users could sign in and
-    reach the application with the correct access. The
-    application-by-application approach allowed the migration to
-    progress incrementally rather than treating the entire portfolio
-    as a single high-risk production cutover.
-  </p>
-
-</section>
-
-
-<!-- 08 -->
-
-<section class="content-section">
-
-  <div class="section-number">
-    08 · SECURITY & ACCESS CONTROLS
-  </div>
-
-  <h2>
-    Strengthening access as part of the modernization
-  </h2>
-
-  <p>
-    The target identity model combined centralized authentication
-    with enterprise access controls including Multi-Factor
-    Authentication, Conditional Access, RBAC and Zero Trust principles.
-  </p>
-
-
-  <div class="tech-grid">
-
-    <div class="tech-card">
-
-      <h3>Multi-Factor Authentication</h3>
-
-      <p>
-        Added stronger authentication controls beyond username
-        and password.
-      </p>
-
-    </div>
-
-
-    <div class="tech-card">
-
-      <h3>Conditional Access</h3>
-
-      <p>
-        Applied policy-driven access controls through the
-        Microsoft identity platform.
-      </p>
-
-    </div>
-
-
-    <div class="tech-card">
-
-      <h3>Role-Based Access Control</h3>
-
-      <p>
-        Supported access based on assigned roles and permissions
-        rather than broad application access.
-      </p>
-
-    </div>
-
-
-    <div class="tech-card">
-
-      <h3>Zero Trust</h3>
-
-      <p>
-        Applied identity-centric access principles as part of the
-        modernized authentication environment.
-      </p>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- 09 -->
-
-<section class="content-section">
-
-  <div class="section-number">
-    09 · SCALE & OUTCOME
-  </div>
-
-  <h2>
-    Enterprise authentication modernization at scale
-  </h2>
-
-  <p>
-    The project migrated more than 70 enterprise applications toward
-    a centralized Microsoft Entra ID authentication model, implementing
-    modern SSO and federation standards while maintaining business
-    continuity — driven by a core team of just 2–3 engineers.
-  </p>
 
   <div class="outcome-grid">
 
     <div class="outcome-card">
 
       <strong>
-        70+ applications
+        70+ Applications
       </strong>
 
       <span>
-        Migrated across the enterprise application portfolio.
+        Enterprise applications migrated from legacy authentication
+        to Microsoft Entra ID.
       </span>
 
     </div>
@@ -1666,12 +1350,12 @@ footer {
     <div class="outcome-card">
 
       <strong>
-        Lean core team
+        Reusable Authentication
       </strong>
 
       <span>
-        Delivered primarily by me and my team lead, with select
-        application teams migrating under my guidance.
+        Common middleware reduced the need to implement the complete
+        Entra authentication flow independently in each application.
       </span>
 
     </div>
@@ -1680,11 +1364,12 @@ footer {
     <div class="outcome-card">
 
       <strong>
-        Reusable engineering
+        Business Continuity
       </strong>
 
       <span>
-        Common SSO integration patterns standardized across applications.
+        Applications were migrated incrementally while maintaining
+        production access through the transition.
       </span>
 
     </div>
@@ -1705,8 +1390,8 @@ footer {
       © Karthik Rao · Technical Portfolio
     </span>
 
-    <a href="index.html">
-      ← Back to all projects
+    <a href="index.html#work">
+      ← View all featured work
     </a>
 
   </div>
