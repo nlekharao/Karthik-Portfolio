@@ -4,10 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ML & Predictive Analytics | Karthik Rao</title>
+<title>Predicting Conversion Through Machine Learning | Karthik Rao</title>
 
 <style>
-
 :root {
   --bg:#f7f8fa;
   --surface:#ffffff;
@@ -16,11 +15,10 @@
   --line:#e5e7eb;
   --navy:#18253d;
   --blue:#356ae6;
-  --blue-soft:#edf3ff;
-
+  --blue-soft:#eef4ff;
+  --tag:#f2f4f7;
   --review:#fff4bf;
   --review-border:#e4c95c;
-  --review-text:#66551a;
 }
 
 * { box-sizing:border-box; }
@@ -29,13 +27,14 @@ html { scroll-behavior:smooth; }
 
 body {
   margin:0;
-  font-family:Inter, Arial, Helvetica, sans-serif;
+  font-family:Inter,Arial,Helvetica,sans-serif;
   background:var(--bg);
   color:var(--text);
-  line-height:1.7;
+  line-height:1.65;
 }
 
-/* NAV */
+
+/* NAVIGATION */
 
 .nav {
   background:rgba(255,255,255,.97);
@@ -59,8 +58,8 @@ body {
   font-size:22px;
   font-weight:700;
   color:var(--navy);
-  letter-spacing:-.3px;
   text-decoration:none;
+  letter-spacing:-.3px;
 }
 
 .nav-links {
@@ -75,466 +74,485 @@ body {
   font-weight:500;
 }
 
-.nav-links a:hover { color:var(--blue); }
+.nav-links a:hover {
+  color:var(--blue);
+}
+
 
 /* HERO */
 
-.project-hero {
+.hero {
   background:var(--navy);
   color:white;
 }
 
-.project-hero-inner {
+.hero-inner {
   max-width:1120px;
   margin:auto;
-  padding:62px 28px 64px;
+  padding:48px 28px 42px;
 }
 
 .back-link {
   display:inline-block;
-  color:#aebbd1;
+  margin-bottom:25px;
+  color:rgba(255,255,255,.62);
   text-decoration:none;
   font-size:13px;
-  margin-bottom:30px;
 }
 
-.back-link:hover { color:white; }
+.back-link:hover {
+  color:white;
+}
 
-.project-label {
-  color:#7fa5ff;
-  font-size:13px;
+.hero-label {
+  color:#8fb0ff;
+  font-size:11px;
   font-weight:700;
-  letter-spacing:1.3px;
+  letter-spacing:1.4px;
   text-transform:uppercase;
-  margin-bottom:14px;
+  margin-bottom:11px;
 }
 
-.project-hero h1 {
-  max-width:900px;
-  margin:0;
-  font-size:clamp(38px,5vw,56px);
-  line-height:1.08;
-  letter-spacing:-1.8px;
-}
-
-.project-summary {
+.hero h1 {
   max-width:850px;
-  margin-top:22px;
-  color:#c5cedd;
-  font-size:18px;
+  margin:0;
+  font-size:clamp(40px,5vw,54px);
+  line-height:1.08;
+  letter-spacing:-1.6px;
+}
+
+.hero-summary {
+  max-width:880px;
+  margin:18px 0 0;
+  color:rgba(255,255,255,.75);
+  font-size:17px;
   line-height:1.7;
 }
 
-.hero-context {
+.hero-meta {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;
   margin-top:28px;
+  background:rgba(255,255,255,.13);
+  border:1px solid rgba(255,255,255,.13);
+  border-radius:9px;
+  overflow:hidden;
+}
+
+.meta-item {
+  padding:14px 17px;
+  background:rgba(255,255,255,.035);
+  color:rgba(255,255,255,.72);
+  font-size:12px;
+}
+
+.meta-item strong {
+  display:block;
+  margin-bottom:3px;
+  color:white;
+  font-size:10px;
+  letter-spacing:.7px;
+  text-transform:uppercase;
+}
+
+.hero-tags {
   display:flex;
   flex-wrap:wrap;
-  gap:40px;
+  gap:7px;
+  margin-top:19px;
 }
 
-.context-item {
-  font-size:12px;
-  color:#aebbd1;
+.hero-tag {
+  padding:5px 9px;
+  border:1px solid rgba(255,255,255,.17);
+  background:rgba(255,255,255,.06);
+  border-radius:20px;
+  color:rgba(255,255,255,.82);
+  font-size:10px;
 }
 
-.context-item strong {
-  display:block;
-  color:white;
-  font-size:13px;
-  margin-bottom:2px;
+
+/* MAIN */
+
+main {
+  max-width:1120px;
+  margin:auto;
+  padding:0 28px 60px;
 }
+
+.project-section {
+  padding:42px 0;
+  border-bottom:1px solid var(--line);
+}
+
+.project-section:last-child {
+  border-bottom:none;
+}
+
+.section-grid {
+  display:grid;
+  grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);
+  gap:48px;
+  align-items:start;
+}
+
+.section-number {
+  margin-bottom:8px;
+  color:var(--blue);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:1.3px;
+  text-transform:uppercase;
+}
+
+.project-section h2 {
+  margin:0 0 12px;
+  color:var(--navy);
+  font-size:28px;
+  line-height:1.25;
+  letter-spacing:-.55px;
+}
+
+.section-question {
+  margin:0 0 17px;
+  color:#475467;
+  font-size:16px;
+  font-weight:500;
+}
+
+.section-copy p {
+  margin:0 0 13px;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.7;
+}
+
+.section-copy p:last-child {
+  margin-bottom:0;
+}
+
+
+/* TAGS */
 
 .tags {
   display:flex;
   flex-wrap:wrap;
-  gap:8px;
-  margin-top:27px;
+  gap:7px;
+  margin-top:17px;
 }
 
 .tag {
-  padding:6px 11px;
+  padding:5px 9px;
   border-radius:20px;
-  border:1px solid rgba(255,255,255,.18);
-  color:#d8e0ed;
-  font-size:12px;
-  font-weight:600;
+  background:var(--tag);
+  color:#475467;
+  font-size:10px;
 }
 
-/* CONTENT */
 
-.content {
-  max-width:960px;
-  margin:auto;
-  padding:75px 28px 100px;
-}
+/* PANELS */
 
-.content-section {
-  margin-bottom:86px;
-}
-
-.section-number {
-  color:var(--blue);
-  font-size:12px;
-  font-weight:700;
-  letter-spacing:1.2px;
-  margin-bottom:8px;
-}
-
-.content h2 {
-  color:var(--navy);
-  font-size:31px;
-  line-height:1.25;
-  letter-spacing:-.7px;
-  margin:0 0 20px;
-}
-
-.content h3 {
-  color:var(--navy);
-  font-size:17px;
-  margin:0 0 8px;
-}
-
-.content p {
-  color:#525f73;
-  font-size:16px;
-  margin:0 0 18px;
-}
-
-.lead {
-  font-size:19px !important;
-  line-height:1.65;
-  color:#354258 !important;
-}
-
-/* REVIEW */
-
-.review-box {
-  margin-top:24px;
-  background:var(--review);
-  border:1px solid var(--review-border);
-  border-radius:8px;
-  padding:20px 22px;
-}
-
-.review-label {
-  color:var(--review-text);
-  font-size:11px;
-  font-weight:800;
-  letter-spacing:.8px;
-  text-transform:uppercase;
-  margin-bottom:8px;
-}
-
-.review-box p {
-  color:#5d5226;
-  font-size:14px;
-  margin:0 0 10px;
-}
-
-.review-box p:last-child { margin-bottom:0; }
-
-/* BUSINESS CHALLENGE */
-
-.challenge-grid {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:14px;
-  margin-top:30px;
-}
-
-.challenge-card {
+.panel {
   background:white;
   border:1px solid var(--line);
-  border-radius:9px;
-  padding:21px;
+  border-radius:11px;
+  padding:20px;
 }
 
-.challenge-label {
-  color:var(--blue);
-  font-size:11px;
-  font-weight:700;
-  letter-spacing:.8px;
-  text-transform:uppercase;
-  margin-bottom:7px;
-}
-
-.challenge-card p {
-  margin:0;
-  font-size:14px;
-}
-
-/* ML PIPELINE */
-
-.pipeline {
-  margin-top:34px;
-  background:white;
-  border:1px solid var(--line);
-  border-radius:12px;
-  padding:38px 30px;
-}
-
-.pipeline-title {
-  text-align:center;
-  color:var(--muted);
-  font-size:11px;
+.panel-title {
+  margin-bottom:16px;
+  color:#61708a;
+  font-size:10px;
   font-weight:700;
   letter-spacing:1px;
   text-transform:uppercase;
-  margin-bottom:30px;
 }
 
-.pipeline-row {
+
+/* OBJECTIVE */
+
+.objective-grid {
   display:grid;
-  grid-template-columns:1fr 35px 1fr 35px 1fr 35px 1fr 35px 1fr;
+  grid-template-columns:repeat(3,1fr);
+  gap:9px;
+}
+
+.objective-card {
+  min-height:120px;
+  padding:15px;
+  border:1px solid #dce1e9;
+  border-radius:7px;
+  background:#fafbfc;
+}
+
+.objective-card strong {
+  display:block;
+  margin-bottom:5px;
+  color:var(--navy);
+  font-size:12px;
+}
+
+.objective-card span {
+  color:var(--muted);
+  font-size:10px;
+  line-height:1.5;
+}
+
+
+/* ML FLOW */
+
+.ml-flow {
+  display:grid;
+  grid-template-columns:1fr 22px 1fr 22px 1fr 22px 1fr;
   align-items:center;
 }
 
-.pipeline-box {
-  min-height:92px;
+.flow-box {
+  min-height:105px;
+  padding:12px 8px;
+  border:1px solid #d9dee8;
+  border-radius:7px;
   background:#fafbfc;
-  border:1px solid var(--line);
-  border-radius:8px;
-  padding:15px 10px;
   text-align:center;
   display:flex;
   flex-direction:column;
   justify-content:center;
 }
 
-.pipeline-box strong {
-  color:var(--navy);
-  font-size:12px;
-  margin-bottom:4px;
+.flow-box.highlight {
+  background:var(--blue-soft);
+  border-color:#cbdcff;
 }
 
-.pipeline-box span {
+.flow-box.output {
+  background:var(--navy);
+  border-color:var(--navy);
+}
+
+.flow-box strong {
+  color:var(--navy);
+  font-size:11px;
+}
+
+.flow-box.output strong {
+  color:white;
+}
+
+.flow-box span {
+  margin-top:4px;
   color:var(--muted);
-  font-size:10px;
+  font-size:9px;
   line-height:1.4;
 }
 
-.pipeline-box.model {
-  background:var(--blue-soft);
-  border-color:#cbdafa;
+.flow-box.output span {
+  color:rgba(255,255,255,.65);
 }
 
-.pipeline-arrow {
+.arrow {
   text-align:center;
-  color:var(--blue);
-  font-size:21px;
+  color:#98a2b3;
+  font-size:16px;
 }
 
-.pipeline-note {
-  text-align:center;
-  color:#8a94a6;
-  font-size:10px;
-  margin-top:25px;
-}
 
-/* FEATURE CARDS */
+/* FEATURE ENGINEERING */
 
 .feature-grid {
   display:grid;
   grid-template-columns:repeat(2,1fr);
-  gap:15px;
-  margin-top:28px;
+  gap:9px;
 }
 
 .feature-card {
-  background:white;
-  border:1px solid var(--line);
-  border-radius:9px;
-  padding:23px;
+  min-height:115px;
+  padding:15px;
+  border:1px solid #dce1e9;
+  border-radius:7px;
+  background:#fafbfc;
 }
 
-.feature-card h3 {
-  font-size:16px;
-}
-
-.feature-card p {
-  font-size:14px;
-  margin:0;
-}
-
-/* MODEL WORKFLOW */
-
-.model-workflow {
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:10px;
-  margin-top:30px;
-}
-
-.model-step {
-  background:white;
-  border:1px solid var(--line);
-  border-radius:8px;
-  padding:20px 15px;
-}
-
-.model-step-number {
-  font-size:10px;
-  color:var(--blue);
-  font-weight:800;
-  margin-bottom:7px;
-}
-
-.model-step strong {
+.feature-card strong {
   display:block;
-  color:var(--navy);
-  font-size:13px;
   margin-bottom:5px;
-}
-
-.model-step span {
-  color:var(--muted);
-  font-size:11px;
-  line-height:1.45;
-}
-
-/* IMPORTANCE VISUAL */
-
-.importance-box {
-  margin-top:30px;
-  background:white;
-  border:1px solid var(--line);
-  border-radius:10px;
-  padding:30px;
-}
-
-.importance-title {
   color:var(--navy);
-  font-size:14px;
-  font-weight:700;
-  margin-bottom:22px;
+  font-size:12px;
+}
+
+.feature-card span {
+  color:var(--muted);
+  font-size:10px;
+  line-height:1.5;
+}
+
+
+/* MODEL */
+
+.model-stack {
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:9px;
+}
+
+.model-card {
+  min-height:108px;
+  padding:15px;
+  border:1px solid #dce1e9;
+  border-radius:7px;
+  background:#fafbfc;
+}
+
+.model-card.highlight {
+  background:var(--blue-soft);
+  border-color:#cbdcff;
+}
+
+.model-card strong {
+  display:block;
+  margin-bottom:5px;
+  color:var(--navy);
+  font-size:12px;
+}
+
+.model-card span {
+  color:var(--muted);
+  font-size:10px;
+  line-height:1.5;
+}
+
+
+/* FEATURE IMPORTANCE */
+
+.importance-list {
+  display:flex;
+  flex-direction:column;
+  gap:9px;
 }
 
 .importance-row {
   display:grid;
   grid-template-columns:130px 1fr;
-  gap:15px;
+  gap:12px;
   align-items:center;
-  margin-bottom:13px;
 }
-
-.importance-row:last-child { margin-bottom:0; }
 
 .importance-label {
-  font-size:11px;
-  color:#596579;
-  text-align:right;
+  color:#475467;
+  font-size:10px;
 }
 
-.bar-track {
-  height:13px;
-  background:#edf0f4;
-  border-radius:7px;
+.importance-track {
+  height:28px;
+  border-radius:5px;
+  background:#f2f4f7;
   overflow:hidden;
 }
 
-.bar {
+.importance-bar {
   height:100%;
-  background:var(--blue);
-  border-radius:7px;
+  background:#dce7ff;
+  border-right:2px solid var(--blue);
+  display:flex;
+  align-items:center;
+  padding-left:9px;
+  color:#475467;
+  font-size:9px;
 }
 
 .bar-1 { width:88%; }
-.bar-2 { width:69%; }
-.bar-3 { width:54%; }
-.bar-4 { width:37%; }
+.bar-2 { width:72%; }
+.bar-3 { width:57%; }
+.bar-4 { width:43%; }
 
-.visual-warning {
-  margin-top:18px;
-  color:#8a94a6;
-  font-size:10px;
-  text-align:center;
+.placeholder-note {
+  margin-top:10px;
+  color:#98a2b3;
+  font-size:9px;
 }
 
-/* CALLOUT */
 
-.callout {
-  background:var(--blue-soft);
-  border-left:4px solid var(--blue);
-  border-radius:5px;
-  padding:23px 25px;
-  margin-top:28px;
-}
+/* RESULT */
 
-.callout-title {
-  color:#244d9c;
-  font-size:11px;
-  font-weight:800;
-  letter-spacing:.7px;
-  margin-bottom:6px;
-}
-
-.callout p {
-  color:#496080;
-  font-size:14px;
-  margin:0;
-}
-
-/* TECH STACK */
-
-.tech-stack {
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  margin-top:25px;
-}
-
-.tech-item {
-  background:white;
-  border:1px solid var(--line);
-  border-radius:7px;
-  padding:10px 14px;
-  font-size:12px;
-  font-weight:600;
-  color:#4d596b;
-}
-
-/* OUTCOME */
-
-.outcome-grid {
+.result-grid {
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:14px;
-  margin-top:28px;
+  gap:9px;
 }
 
-.outcome-card {
-  background:var(--navy);
-  color:white;
-  border-radius:9px;
-  padding:23px;
+.result-card {
+  min-height:125px;
+  padding:15px;
+  border:1px solid #dce1e9;
+  border-radius:7px;
+  background:#fafbfc;
 }
 
-.outcome-card strong {
+.result-label {
   display:block;
-  font-size:17px;
-  margin-bottom:7px;
+  margin-bottom:5px;
+  color:var(--blue);
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:.7px;
+  text-transform:uppercase;
 }
 
-.outcome-card span {
+.result-card strong {
   display:block;
-  color:#c3ccda;
+  margin-bottom:5px;
+  color:var(--navy);
   font-size:13px;
+}
+
+.result-card span {
+  color:var(--muted);
+  font-size:9px;
+  line-height:1.5;
+}
+
+
+/* REVIEW */
+
+.review {
+  margin-top:12px;
+  padding:13px 15px;
+  background:var(--review);
+  border:1px solid var(--review-border);
+  border-radius:7px;
+}
+
+.review strong {
+  display:block;
+  margin-bottom:4px;
+  color:#67530a;
+  font-size:9px;
+  letter-spacing:.7px;
+  text-transform:uppercase;
+}
+
+.review p {
+  margin:0;
+  color:#67530a;
+  font-size:10px;
   line-height:1.55;
 }
+
 
 /* FOOTER */
 
 footer {
-  background:white;
   border-top:1px solid var(--line);
+  background:white;
 }
 
 .footer-inner {
   max-width:1120px;
   margin:auto;
-  padding:30px 28px;
+  padding:28px;
   display:flex;
   justify-content:space-between;
+  gap:20px;
   color:var(--muted);
   font-size:13px;
 }
@@ -544,44 +562,65 @@ footer {
   text-decoration:none;
 }
 
-/* MOBILE */
+
+/* RESPONSIVE */
+
+@media(max-width:900px) {
+
+  .section-grid {
+    grid-template-columns:1fr;
+    gap:24px;
+  }
+
+}
 
 @media(max-width:760px) {
 
-  .nav-links { display:none; }
+  .nav-links {
+    display:none;
+  }
 
-  .project-hero-inner { padding-top:45px; }
+  .hero-inner {
+    padding-top:42px;
+  }
 
-  .challenge-grid,
+  .hero-meta,
+  .objective-grid,
   .feature-grid,
-  .model-workflow,
-  .outcome-grid {
+  .model-stack,
+  .result-grid {
     grid-template-columns:1fr;
   }
 
-  .pipeline-row {
-    grid-template-columns:1fr;
-    gap:8px;
+  .project-section {
+    padding:35px 0;
   }
 
-  .pipeline-arrow {
+  .ml-flow {
+    grid-template-columns:1fr;
+    gap:7px;
+  }
+
+  .arrow {
     transform:rotate(90deg);
   }
 
   .importance-row {
-    grid-template-columns:95px 1fr;
+    grid-template-columns:100px 1fr;
   }
 
   .footer-inner {
     flex-direction:column;
-    gap:8px;
   }
+
 }
 
 </style>
 </head>
 
+
 <body>
+
 
 <!-- NAVIGATION -->
 
@@ -594,10 +633,25 @@ footer {
     </a>
 
     <div class="nav-links">
-      <a href="index.html#work">Work</a>
-      <a href="index.html#focus">Technical Focus</a>
+
+      <a href="index.html#work">
+        Work
+      </a>
+
+      <a href="academic-projects.html">
+        Academic Projects
+      </a>
+
+      <a href="index.html#focus">
+        Technical Focus
+      </a>
+
       <a href="https://www.linkedin.com/in/mkarthikrao"
-         target="_blank">LinkedIn</a>
+         target="_blank"
+         rel="noopener noreferrer">
+        LinkedIn
+      </a>
+
     </div>
 
   </div>
@@ -605,59 +659,64 @@ footer {
 </nav>
 
 
+
 <!-- HERO -->
 
-<header class="project-hero">
+<header class="hero">
 
-  <div class="project-hero-inner">
+  <div class="hero-inner">
 
     <a class="back-link" href="index.html">
       ← Back to portfolio
     </a>
 
-    <div class="project-label">
-      PROJECT 02 · MACHINE LEARNING & PREDICTIVE ANALYTICS
+    <div class="hero-label">
+      PROJECT 02 · MACHINE LEARNING &amp; PREDICTIVE ANALYTICS
     </div>
 
     <h1>
       Predicting Conversion Through Machine Learning
     </h1>
 
-    <p class="project-summary">
-      Building regression-based machine learning models for a
-      U.S. property & casualty insurance carrier to predict user
+    <p class="hero-summary">
+      Building regression-based machine learning models for a U.S.
+      property &amp; casualty insurance carrier to predict user
       conversion likelihood, identify key drop-off factors and support
       more targeted, data-driven engagement decisions.
     </p>
 
-    <div class="hero-context">
 
-      <div class="context-item">
+    <div class="hero-meta">
+
+      <div class="meta-item">
         <strong>Industry</strong>
-        Property & Casualty Insurance
+        Property &amp; Casualty Insurance
       </div>
 
-      <div class="context-item">
+      <div class="meta-item">
         <strong>Problem</strong>
         Conversion Prediction
       </div>
 
-      <div class="context-item">
+      <div class="meta-item">
         <strong>Focus</strong>
         Predictive Modeling · Feature Engineering
       </div>
 
     </div>
 
-    <div class="tags">
-      <span class="tag">Machine Learning</span>
-      <span class="tag">Regression</span>
-      <span class="tag">Predictive Modeling</span>
-      <span class="tag">Feature Engineering</span>
-      <span class="tag">Python</span>
-      <span class="tag">scikit-learn</span>
-      <span class="tag">Pandas</span>
-      <span class="tag">NumPy</span>
+
+    <div class="hero-tags">
+
+      <span class="hero-tag">Machine Learning</span>
+      <span class="hero-tag">Regression</span>
+      <span class="hero-tag">Predictive Modeling</span>
+      <span class="hero-tag">Feature Engineering</span>
+      <span class="hero-tag">Python</span>
+      <span class="hero-tag">scikit-learn</span>
+      <span class="hero-tag">Pandas</span>
+      <span class="hero-tag">NumPy</span>
+
     </div>
 
   </div>
@@ -665,599 +724,749 @@ footer {
 </header>
 
 
-<main class="content">
+
+<main>
 
 
-<!-- 01 -->
+<!-- 01 PROBLEM -->
 
-<section class="content-section">
+<section class="project-section">
 
-  <div class="section-number">
-    01 · PROBLEM & OBJECTIVE
-  </div>
+  <div class="section-grid">
 
-  <h2>
-    Turning user behavior into a prediction problem
-  </h2>
+    <div class="section-copy">
 
-  <p class="lead">
-    The objective was to use historical user data to estimate conversion
-    likelihood and understand the factors associated with users dropping
-    out before conversion.
-  </p>
+      <div class="section-number">
+        01 · PROBLEM &amp; OBJECTIVE
+      </div>
 
-  <p>
-    Rather than using the model only as a prediction mechanism, the
-    analysis also focused on feature importance — identifying which
-    variables were most strongly associated with conversion and drop-off
-    behavior so that the results could inform engagement and user
-    experience decisions.
-  </p>
+      <h2>
+        Understanding which users are likely to convert
+      </h2>
 
-  <div class="challenge-grid">
+      <div class="section-question">
+        Can behavioural data help identify conversion likelihood
+        before a user drops out of the journey?
+      </div>
 
-    <div class="challenge-card">
-      <div class="challenge-label">Predict</div>
       <p>
-        Estimate the likelihood of a user progressing to conversion.
+        The project focused on using historical user data to build
+        predictive models that could estimate the likelihood of a
+        user converting.
       </p>
-    </div>
 
-    <div class="challenge-card">
-      <div class="challenge-label">Explain</div>
       <p>
-        Identify the features contributing most strongly to conversion
-        and drop-off behavior.
+        The objective was not only to generate a prediction, but also
+        to understand which factors were most strongly associated
+        with conversion and where users were more likely to drop off.
       </p>
-    </div>
 
-    <div class="challenge-card">
-      <div class="challenge-label">Apply</div>
       <p>
-        Use model insights to support targeted engagement and
-        data-driven UX decisions.
+        These insights could then support more targeted,
+        data-driven engagement decisions.
       </p>
+
     </div>
 
-  </div>
 
-  <div class="review-box">
+    <div>
 
-    <div class="review-label">
-      Karthik — business context to confirm
+      <div class="panel">
+
+        <div class="panel-title">
+          Analytical Objective
+        </div>
+
+        <div class="objective-grid">
+
+          <div class="objective-card">
+            <strong>Predict</strong>
+            <span>
+              Estimate the likelihood that a user will convert.
+            </span>
+          </div>
+
+          <div class="objective-card">
+            <strong>Explain</strong>
+            <span>
+              Identify the factors most associated with conversion
+              and drop-off.
+            </span>
+          </div>
+
+          <div class="objective-card">
+            <strong>Inform</strong>
+            <span>
+              Support more targeted engagement decisions using
+              model-derived insights.
+            </span>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="review">
+
+        <strong>
+          Input needed from Karthik · Target definition
+        </strong>
+
+        <p>
+          What exactly constituted a “conversion” in this project?
+          For example: quote completion, policy purchase, lead
+          progression or another business event?
+        </p>
+
+      </div>
+
     </div>
-
-    <p>
-      What exactly did “conversion” mean in this project? For example,
-      was it quote completion, policy purchase, lead conversion,
-      registration completion or another customer action?
-    </p>
-
-    <p>
-      Also add where in the insurance/customer journey the prediction
-      was intended to be used and who consumed the output.
-    </p>
 
   </div>
 
 </section>
 
 
-<!-- 02 -->
 
-<section class="content-section">
+<!-- 02 ML PIPELINE -->
 
-  <div class="section-number">
-    02 · ML PIPELINE
-  </div>
+<section class="project-section">
 
-  <h2>
-    From historical behavior to conversion insight
-  </h2>
+  <div class="section-grid">
 
-  <p>
-    The work covered the core predictive-modeling lifecycle: preparing
-    historical data, engineering useful model features, training
-    regression-based models, evaluating predictive performance and
-    analyzing the factors driving model output.
-  </p>
+    <div class="section-copy">
 
-  <div class="pipeline">
-
-    <div class="pipeline-title">
-      Predictive analytics workflow
-    </div>
-
-    <div class="pipeline-row">
-
-      <div class="pipeline-box">
-        <strong>Historical Data</strong>
-        <span>User / interaction data</span>
+      <div class="section-number">
+        02 · MACHINE LEARNING PIPELINE
       </div>
 
-      <div class="pipeline-arrow">→</div>
+      <h2>
+        Turning user behaviour into a predictive signal
+      </h2>
 
-      <div class="pipeline-box">
-        <strong>Data Preparation</strong>
-        <span>Clean · Transform · Prepare</span>
+      <div class="section-question">
+        Raw behavioural data had to be transformed into features
+        that a model could learn from.
       </div>
 
-      <div class="pipeline-arrow">→</div>
-
-      <div class="pipeline-box">
-        <strong>Feature Engineering</strong>
-        <span>Build predictive signals</span>
-      </div>
-
-      <div class="pipeline-arrow">→</div>
-
-      <div class="pipeline-box model">
-        <strong>ML Model</strong>
-        <span>Regression-based prediction</span>
-      </div>
-
-      <div class="pipeline-arrow">→</div>
-
-      <div class="pipeline-box">
-        <strong>Analysis</strong>
-        <span>Conversion likelihood · Drop-off factors</span>
-      </div>
-
-    </div>
-
-    <div class="pipeline-note">
-      Conceptual workflow. Dataset-specific details are omitted pending validation.
-    </div>
-
-  </div>
-
-  <div class="review-box">
-
-    <div class="review-label">
-      Karthik — data pipeline to confirm
-    </div>
-
-    <p>
-      Add the actual data source and approximate dataset size. What did
-      one row represent — a user, lead, session, quote, policy journey
-      or something else?
-    </p>
-
-    <p>
-      Also specify how the data was obtained and whether SQL, files,
-      APIs, notebooks or another mechanism formed part of the pipeline.
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- 03 -->
-
-<section class="content-section">
-
-  <div class="section-number">
-    03 · DATA PREPARATION & FEATURE ENGINEERING
-  </div>
-
-  <h2>
-    Converting raw behavior into useful model signals
-  </h2>
-
-  <p>
-    Feature engineering was a core part of the work. The objective was
-    not simply to feed available fields into a model, but to identify
-    variables that captured meaningful differences between users who
-    converted and users who dropped off.
-  </p>
-
-  <div class="feature-grid">
-
-    <div class="feature-card">
-      <h3>Data Preparation</h3>
       <p>
-        Prepared model-ready data by cleaning and transforming the
-        source dataset before training.
+        The modelling workflow moved from historical user data
+        through data preparation and feature engineering before
+        training regression-based machine learning models.
       </p>
-    </div>
 
-    <div class="feature-card">
-      <h3>Feature Engineering</h3>
       <p>
-        Derived and refined variables intended to expose patterns
-        associated with conversion behavior.
+        The resulting model produced a conversion-likelihood
+        prediction, while subsequent analysis helped identify
+        factors associated with user drop-off.
       </p>
+
     </div>
 
-    <div class="feature-card">
-      <h3>Feature Importance</h3>
+
+    <div class="panel">
+
+      <div class="panel-title">
+        ML Workflow
+      </div>
+
+      <div class="ml-flow">
+
+        <div class="flow-box">
+          <strong>Historical Data</strong>
+          <span>User behaviour and conversion outcomes</span>
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="flow-box">
+          <strong>Feature Engineering</strong>
+          <span>Prepare predictive variables</span>
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="flow-box highlight">
+          <strong>Regression Model</strong>
+          <span>Learn conversion patterns</span>
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="flow-box output">
+          <strong>Conversion Likelihood</strong>
+          <span>Prediction + factor analysis</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- 03 DATA & FEATURES -->
+
+<section class="project-section">
+
+  <div class="section-grid">
+
+    <div class="section-copy">
+
+      <div class="section-number">
+        03 · DATA &amp; FEATURE ENGINEERING
+      </div>
+
+      <h2>
+        Preparing the data for predictive modelling
+      </h2>
+
+      <div class="section-question">
+        Model quality depends heavily on how the underlying data
+        is prepared and represented.
+      </div>
+
       <p>
-        Analyzed the contribution of model features to understand the
-        factors associated with conversion and drop-off.
+        The project included feature engineering to transform the
+        available user data into variables that could be used for
+        predictive modelling.
       </p>
-    </div>
 
-    <div class="feature-card">
-      <h3>Business Interpretation</h3>
       <p>
-        Connected predictive signals back to user behavior so that
-        model findings could inform practical UX and engagement decisions.
+        Python-based data tooling was used as part of the modelling
+        workflow, including Pandas and NumPy for working with the
+        underlying datasets.
       </p>
-    </div>
 
-  </div>
+      <p>
+        Feature importance analysis was subsequently used to
+        understand which variables contributed most strongly to
+        the model's predictions.
+      </p>
 
-  <div class="review-box">
+      <div class="tags">
 
-    <div class="review-label">
-      First draft — Karthik to validate
-    </div>
+        <span class="tag">Python</span>
+        <span class="tag">Pandas</span>
+        <span class="tag">NumPy</span>
+        <span class="tag">Feature Engineering</span>
 
-    <p>
-      The raw dataset was first inspected for missing values, inconsistent
-      fields, categorical variables and attributes that would not provide
-      useful predictive signal. The data was then transformed into a
-      model-ready representation.
-    </p>
-
-    <p>
-      Candidate features were derived from available user and behavioral
-      information, and the feature set was iteratively refined based on
-      predictive performance and importance analysis.
-    </p>
-
-    <p>
-      <strong>Please replace with actual examples:</strong> What were
-      the strongest feature categories? Were there behavioral events,
-      timing/duration measures, customer attributes, journey stages,
-      previous interactions or other variables?
-    </p>
-
-    <p>
-      Also confirm how missing values, categorical features, outliers
-      and scaling/normalization were handled, where relevant.
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- 04 -->
-
-<section class="content-section">
-
-  <div class="section-number">
-    04 · MODEL DEVELOPMENT
-  </div>
-
-  <h2>
-    Building and refining the predictive model
-  </h2>
-
-  <p>
-    Regression-based machine learning models were developed to estimate
-    user conversion likelihood. Model development was iterative, with
-    feature engineering and evaluation feeding back into subsequent
-    refinements.
-  </p>
-
-  <div class="model-workflow">
-
-    <div class="model-step">
-      <div class="model-step-number">01</div>
-      <strong>Prepare Data</strong>
-      <span>Create the model-ready feature set.</span>
-    </div>
-
-    <div class="model-step">
-      <div class="model-step-number">02</div>
-      <strong>Train Model</strong>
-      <span>Fit regression-based predictive models.</span>
-    </div>
-
-    <div class="model-step">
-      <div class="model-step-number">03</div>
-      <strong>Evaluate</strong>
-      <span>Measure performance using defined metrics.</span>
-    </div>
-
-    <div class="model-step">
-      <div class="model-step-number">04</div>
-      <strong>Refine</strong>
-      <span>Iterate on features and model performance.</span>
-    </div>
-
-  </div>
-
-  <div class="review-box">
-
-    <div class="review-label">
-      Karthik — model details to confirm
-    </div>
-
-    <p>
-      Which regression-based algorithms were actually evaluated?
-      Please name only models that were genuinely used.
-    </p>
-
-    <p>
-      Describe the training approach: train/test split, validation
-      approach, class imbalance handling if relevant, hyperparameter
-      tuning and any baseline model used for comparison.
-    </p>
-
-    <p>
-      Also clarify whether “regression” in the project meant logistic
-      regression for a binary conversion outcome, another regression
-      technique, or a combination of models.
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- 05 -->
-
-<section class="content-section">
-
-  <div class="section-number">
-    05 · MODEL EVALUATION
-  </div>
-
-  <h2>
-    Measuring whether the model was useful — not just whether it ran
-  </h2>
-
-  <p>
-    Models were evaluated and refined using standard performance
-    metrics. Evaluation provided a basis for comparing iterations
-    and determining whether changes to the model or feature set
-    improved predictive performance.
-  </p>
-
-  <div class="review-box">
-
-    <div class="review-label">
-      First draft — Karthik to validate
-    </div>
-
-    <p>
-      Model performance was evaluated on data not used for fitting the
-      model, allowing predictive behavior to be assessed against
-      previously unseen examples.
-    </p>
-
-    <p>
-      The evaluation was used comparatively: model and feature changes
-      were retained when they produced a meaningful improvement rather
-      than simply increasing model complexity.
-    </p>
-
-    <p>
-      <strong>Add the actual metrics here.</strong> Depending on the
-      target and model, these may have included metrics such as accuracy,
-      precision, recall, F1, ROC-AUC or regression error metrics — but
-      the page should list only those actually used in this project.
-    </p>
-
-    <p>
-      If available, add the final model result and the baseline against
-      which it was compared.
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- 06 -->
-
-<section class="content-section">
-
-  <div class="section-number">
-    06 · FEATURE IMPORTANCE & DROP-OFF ANALYSIS
-  </div>
-
-  <h2>
-    Using the model to understand why users drop off
-  </h2>
-
-  <p>
-    Prediction was only part of the value. Feature-importance analysis
-    was used to identify the variables most associated with conversion
-    behavior and highlight factors that could contribute to user drop-off.
-  </p>
-
-  <div class="importance-box">
-
-    <div class="importance-title">
-      Illustrative feature-importance view
-    </div>
-
-    <div class="importance-row">
-      <div class="importance-label">Feature A</div>
-      <div class="bar-track">
-        <div class="bar bar-1"></div>
       </div>
+
     </div>
 
-    <div class="importance-row">
-      <div class="importance-label">Feature B</div>
-      <div class="bar-track">
-        <div class="bar bar-2"></div>
+
+    <div>
+
+      <div class="panel">
+
+        <div class="panel-title">
+          Data Preparation
+        </div>
+
+        <div class="feature-grid">
+
+          <div class="feature-card">
+            <strong>Raw Data</strong>
+            <span>
+              Historical user information and observed outcomes.
+            </span>
+          </div>
+
+          <div class="feature-card">
+            <strong>Data Preparation</strong>
+            <span>
+              Prepare the dataset for model development and analysis.
+            </span>
+          </div>
+
+          <div class="feature-card">
+            <strong>Feature Engineering</strong>
+            <span>
+              Derive variables that represent meaningful user
+              behaviour and characteristics.
+            </span>
+          </div>
+
+          <div class="feature-card">
+            <strong>Model Dataset</strong>
+            <span>
+              Structured features and target outcome used for
+              predictive modelling.
+            </span>
+          </div>
+
+        </div>
+
       </div>
-    </div>
 
-    <div class="importance-row">
-      <div class="importance-label">Feature C</div>
-      <div class="bar-track">
-        <div class="bar bar-3"></div>
+
+      <div class="review">
+
+        <strong>
+          Inputs needed from Karthik · Data &amp; features
+        </strong>
+
+        <p>
+          What was the source and approximate size of the dataset?
+          What types of user behaviour or attributes were available?
+          What data cleaning was required? Which features did you
+          engineer, and were categorical variables, missing values
+          or class imbalance handled in any specific way?
+        </p>
+
       </div>
+
     </div>
-
-    <div class="importance-row">
-      <div class="importance-label">Feature D</div>
-      <div class="bar-track">
-        <div class="bar bar-4"></div>
-      </div>
-    </div>
-
-    <div class="visual-warning">
-      Placeholder visualization — replace with actual feature names
-      and relative importance after confirmation.
-    </div>
-
-  </div>
-
-  <div class="review-box">
-
-    <div class="review-label">
-      Karthik — actual feature findings needed
-    </div>
-
-    <p>
-      Replace Feature A–D above with 3–5 real features or feature
-      categories from the project, ideally with their actual relative
-      importance if those values can be shared.
-    </p>
-
-    <p>
-      More importantly, explain what was learned from them. For example:
-      what behavior indicated likely drop-off, and what product,
-      engagement or UX decision did that insight influence?
-    </p>
 
   </div>
 
 </section>
 
 
-<!-- 07 -->
 
-<section class="content-section">
+<!-- 04 MODEL DEVELOPMENT -->
 
-  <div class="section-number">
-    07 · ENGINEERING IMPLEMENTATION
-  </div>
+<section class="project-section">
 
-  <h2>
-    The engineering behind the analysis
-  </h2>
+  <div class="section-grid">
 
-  <p>
-    The project combined machine-learning development with the practical
-    data-processing work required to prepare, analyze and iterate on
-    predictive models.
-  </p>
+    <div class="section-copy">
 
-  <div class="tech-stack">
+      <div class="section-number">
+        04 · MODEL DEVELOPMENT
+      </div>
 
-    <span class="tech-item">Python</span>
-    <span class="tech-item">scikit-learn</span>
-    <span class="tech-item">Pandas</span>
-    <span class="tech-item">NumPy</span>
-    <span class="tech-item">Regression</span>
-    <span class="tech-item">Feature Engineering</span>
-    <span class="tech-item">Predictive Modeling</span>
+      <h2>
+        Building and refining the predictive model
+      </h2>
 
-  </div>
+      <div class="section-question">
+        The modelling work focused on predicting conversion likelihood
+        using regression-based machine learning.
+      </div>
 
-  <div class="review-box">
+      <p>
+        Regression-based models were developed using Python and
+        scikit-learn to learn relationships between the engineered
+        features and observed conversion outcomes.
+      </p>
 
-    <div class="review-label">
-      Karthik — implementation details to add
+      <p>
+        Models were evaluated and refined using standard performance
+        metrics so that predictive performance could be compared
+        systematically rather than relying only on training results.
+      </p>
+
     </div>
 
-    <p>
-      Confirm the actual technical stack used specifically for this
-      project. Python, scikit-learn, Pandas and NumPy are listed in your
-      résumé as ML skills, but we should confirm which were used here.
-    </p>
 
-    <p>
-      Also describe how the work was executed in practice: notebooks,
-      Python scripts, scheduled jobs, APIs, database queries or another
-      workflow.
-    </p>
+    <div>
 
-    <p>
-      If the model was operationalized, explain how predictions were
-      generated and consumed. If this remained an analytics/modeling
-      exercise rather than a production deployment, say that directly —
-      do not imply an MLOps deployment that did not exist.
-    </p>
+      <div class="panel">
+
+        <div class="panel-title">
+          Model Development
+        </div>
+
+        <div class="model-stack">
+
+          <div class="model-card">
+            <strong>Training Data</strong>
+            <span>
+              Prepared features and historical conversion outcomes.
+            </span>
+          </div>
+
+          <div class="model-card highlight">
+            <strong>Regression Modeling</strong>
+            <span>
+              Predict conversion likelihood from observed user
+              characteristics and behaviour.
+            </span>
+          </div>
+
+          <div class="model-card">
+            <strong>Evaluation</strong>
+            <span>
+              Measure model performance using appropriate
+              evaluation metrics.
+            </span>
+          </div>
+
+          <div class="model-card">
+            <strong>Refinement</strong>
+            <span>
+              Iterate on features and modelling decisions based
+              on evaluation results.
+            </span>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="review">
+
+        <strong>
+          Inputs needed from Karthik · Model development
+        </strong>
+
+        <p>
+          Which specific regression algorithm or algorithms were
+          tested? How was the dataset split for training and testing?
+          Was cross-validation used? Was there a baseline model?
+          Was hyperparameter tuning performed?
+        </p>
+
+      </div>
+
+    </div>
 
   </div>
 
 </section>
 
 
-<!-- 08 -->
 
-<section class="content-section">
+<!-- 05 EVALUATION -->
 
-  <div class="section-number">
-    08 · BUSINESS APPLICATION
+<section class="project-section">
+
+  <div class="section-grid">
+
+    <div class="section-copy">
+
+      <div class="section-number">
+        05 · MODEL EVALUATION
+      </div>
+
+      <h2>
+        Measuring whether the model could generalize
+      </h2>
+
+      <div class="section-question">
+        A useful prediction model has to perform on data it did not
+        learn from.
+      </div>
+
+      <p>
+        Model performance was evaluated using standard machine
+        learning metrics and the results were used to refine the
+        modelling approach.
+      </p>
+
+      <p>
+        Evaluation provided a way to compare modelling decisions
+        objectively and determine whether the model was learning
+        meaningful conversion patterns rather than simply fitting
+        the training data.
+      </p>
+
+    </div>
+
+
+    <div>
+
+      <div class="panel">
+
+        <div class="panel-title">
+          Evaluation Logic
+        </div>
+
+        <div class="ml-flow">
+
+          <div class="flow-box">
+            <strong>Train</strong>
+            <span>Learn from historical observations</span>
+          </div>
+
+          <div class="arrow">→</div>
+
+          <div class="flow-box">
+            <strong>Predict</strong>
+            <span>Generate conversion likelihood</span>
+          </div>
+
+          <div class="arrow">→</div>
+
+          <div class="flow-box highlight">
+            <strong>Evaluate</strong>
+            <span>Compare predictions with outcomes</span>
+          </div>
+
+          <div class="arrow">→</div>
+
+          <div class="flow-box output">
+            <strong>Refine</strong>
+            <span>Improve features and modelling choices</span>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="review">
+
+        <strong>
+          Inputs needed from Karthik · Results
+        </strong>
+
+        <p>
+          Which metrics were used to evaluate the model and what
+          were the final results? If this was treated as a
+          classification-style conversion problem, confirm whether
+          metrics such as precision, recall, F1 or ROC-AUC were used.
+          We should publish only the metrics actually used.
+        </p>
+
+      </div>
+
+    </div>
+
   </div>
 
-  <h2>
-    Moving from prediction to decision support
-  </h2>
+</section>
 
-  <p>
-    The modeling work supported data-driven decision making by combining
-    conversion prediction with analysis of the factors contributing to
-    user drop-off.
-  </p>
 
-  <div class="outcome-grid">
 
-    <div class="outcome-card">
-      <strong>Conversion likelihood</strong>
-      <span>
-        Predictive models estimated the likelihood of user conversion.
-      </span>
+<!-- 06 FEATURE IMPORTANCE -->
+
+<section class="project-section">
+
+  <div class="section-grid">
+
+    <div class="section-copy">
+
+      <div class="section-number">
+        06 · FEATURE IMPORTANCE &amp; DROP-OFF ANALYSIS
+      </div>
+
+      <h2>
+        Moving from prediction to explanation
+      </h2>
+
+      <div class="section-question">
+        Knowing who might convert is useful; understanding why adds
+        another layer of value.
+      </div>
+
+      <p>
+        Feature-importance analysis was used to identify the variables
+        that contributed most strongly to conversion predictions.
+      </p>
+
+      <p>
+        This helped move the work beyond a simple predictive score
+        by providing insight into the factors associated with user
+        drop-off.
+      </p>
+
+      <p>
+        The resulting analysis could help the business understand
+        where engagement strategies might be focused more effectively.
+      </p>
+
     </div>
 
-    <div class="outcome-card">
-      <strong>Drop-off insight</strong>
-      <span>
-        Feature analysis surfaced factors associated with users
-        leaving the journey.
-      </span>
-    </div>
 
-    <div class="outcome-card">
-      <strong>Decision support</strong>
-      <span>
-        Model insights supported more targeted engagement and
-        user-experience decisions.
-      </span>
+    <div>
+
+      <div class="panel">
+
+        <div class="panel-title">
+          Feature Importance · Illustrative Layout
+        </div>
+
+        <div class="importance-list">
+
+          <div class="importance-row">
+            <div class="importance-label">Feature A</div>
+            <div class="importance-track">
+              <div class="importance-bar bar-1"></div>
+            </div>
+          </div>
+
+          <div class="importance-row">
+            <div class="importance-label">Feature B</div>
+            <div class="importance-track">
+              <div class="importance-bar bar-2"></div>
+            </div>
+          </div>
+
+          <div class="importance-row">
+            <div class="importance-label">Feature C</div>
+            <div class="importance-track">
+              <div class="importance-bar bar-3"></div>
+            </div>
+          </div>
+
+          <div class="importance-row">
+            <div class="importance-label">Feature D</div>
+            <div class="importance-track">
+              <div class="importance-bar bar-4"></div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="placeholder-note">
+          Placeholder visualization — replace with the actual feature
+          names/order once confirmed.
+        </div>
+
+      </div>
+
+
+      <div class="review">
+
+        <strong>
+          Inputs needed from Karthik · Feature importance
+        </strong>
+
+        <p>
+          What were the strongest predictors of conversion and the
+          key drop-off factors identified? How was feature importance
+          calculated? Once confirmed, the placeholder chart above can
+          be replaced with the real findings.
+        </p>
+
+      </div>
+
     </div>
 
   </div>
 
-  <div class="review-box">
+</section>
 
-    <div class="review-label">
-      Karthik — measurable outcome to add
+
+
+<!-- 07 BUSINESS APPLICATION -->
+
+<section class="project-section">
+
+  <div class="section-grid">
+
+    <div class="section-copy">
+
+      <div class="section-number">
+        07 · BUSINESS APPLICATION
+      </div>
+
+      <h2>
+        Connecting predictive modelling to engagement decisions
+      </h2>
+
+      <div class="section-question">
+        The value of the model was in turning behavioural data into
+        actionable insight.
+      </div>
+
+      <p>
+        The project combined conversion prediction with analysis of
+        the factors influencing user behaviour, providing a basis for
+        more targeted and data-driven engagement.
+      </p>
+
+      <p>
+        Rather than treating all users identically, conversion
+        likelihood and drop-off analysis could help identify where
+        intervention or engagement might have greater value.
+      </p>
+
     </div>
 
-    <p>
-      This section will become much stronger if there is a real outcome
-      that can be shared: model performance, improvement over baseline,
-      number of users/records scored, reduction in drop-off, campaign
-      improvement or a specific UX change driven by the analysis.
-    </p>
 
-    <p>
-      Use only outcomes that can be defended. If no business-impact
-      number is available, describe the actual decision or workflow the
-      analysis supported rather than inventing a percentage.
-    </p>
+    <div>
+
+      <div class="panel">
+
+        <div class="panel-title">
+          From Data to Decision
+        </div>
+
+        <div class="result-grid">
+
+          <div class="result-card">
+
+            <span class="result-label">
+              Prediction
+            </span>
+
+            <strong>
+              Conversion Likelihood
+            </strong>
+
+            <span>
+              Estimate which users are more or less likely to convert.
+            </span>
+
+          </div>
+
+
+          <div class="result-card">
+
+            <span class="result-label">
+              Insight
+            </span>
+
+            <strong>
+              Drop-off Factors
+            </strong>
+
+            <span>
+              Identify the variables most strongly associated with
+              conversion behaviour.
+            </span>
+
+          </div>
+
+
+          <div class="result-card">
+
+            <span class="result-label">
+              Application
+            </span>
+
+            <strong>
+              Targeted Engagement
+            </strong>
+
+            <span>
+              Use model-derived insights to support more focused
+              business decisions.
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="review">
+
+        <strong>
+          Inputs needed from Karthik · Implementation &amp; impact
+        </strong>
+
+        <p>
+          Was the model deployed or integrated into any application,
+          workflow or dashboard, or was this primarily an analytical
+          proof of concept? Who consumed the output? Was any measurable
+          business result recorded? We should not imply production
+          deployment or MLOps unless that actually happened.
+        </p>
+
+      </div>
+
+    </div>
 
   </div>
 
@@ -1265,6 +1474,7 @@ footer {
 
 
 </main>
+
 
 
 <footer>
@@ -1275,13 +1485,14 @@ footer {
       © Karthik Rao · Technical Portfolio
     </span>
 
-    <a href="index.html">
-      ← Back to all projects
+    <a href="index.html#work">
+      ← View featured work
     </a>
 
   </div>
 
 </footer>
+
 
 </body>
 </html>
