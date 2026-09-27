@@ -260,11 +260,11 @@
     }
 
 
-    /* ARCHITECTURE + MIDDLEWARE */
+    /* TARGET ARCHITECTURE */
 
     .architecture-layout {
       display: grid;
-      grid-template-columns: minmax(0,1fr) 370px;
+      grid-template-columns: minmax(0,1fr) 380px;
       gap: 36px;
       align-items: start;
       margin-top: 27px;
@@ -296,17 +296,17 @@
       font-size: 12px;
     }
 
-    .flow-box.middleware {
-      background: var(--blue-soft);
-      border-color: #cbdcff;
-      color: #214eae;
-      font-weight: 600;
-    }
-
     .flow-box.entra {
       background: var(--navy);
       border-color: var(--navy);
       color: white;
+      font-weight: 600;
+    }
+
+    .flow-box.highlight {
+      background: var(--blue-soft);
+      border-color: #cbdcff;
+      color: #214eae;
       font-weight: 600;
     }
 
@@ -330,15 +330,18 @@
       transform: rotate(45deg);
     }
 
-    .middleware-panel {
+
+    /* REUSABLE APPROACH */
+
+    .reuse-panel {
       background: var(--navy);
       border-radius: 12px;
       padding: 27px;
       color: white;
     }
 
-    .middleware-title {
-      margin-bottom: 17px;
+    .reuse-title {
+      margin-bottom: 10px;
       color: #8fb0ff;
       font-size: 11px;
       font-weight: 700;
@@ -346,7 +349,21 @@
       text-transform: uppercase;
     }
 
-    .middleware-step {
+    .reuse-heading {
+      margin: 0 0 15px;
+      color: white;
+      font-size: 19px;
+      line-height: 1.35;
+    }
+
+    .reuse-panel p {
+      margin: 0 0 17px;
+      color: rgba(255,255,255,.68);
+      font-size: 12px;
+      line-height: 1.65;
+    }
+
+    .reuse-step {
       padding: 10px 12px;
       border: 1px solid rgba(255,255,255,.17);
       border-radius: 6px;
@@ -354,20 +371,20 @@
       font-size: 12px;
     }
 
-    .middleware-arrow {
+    .reuse-arrow {
       width: 1px;
-      height: 13px;
+      height: 12px;
       margin: auto;
       background: rgba(255,255,255,.25);
     }
 
-    .middleware-note {
+    .reuse-note {
       margin-top: 16px;
       padding-top: 14px;
       border-top: 1px solid rgba(255,255,255,.12);
-      color: rgba(255,255,255,.62);
+      color: rgba(255,255,255,.58);
       font-size: 11px;
-      line-height: 1.6;
+      line-height: 1.55;
     }
 
     .protocol-strip {
@@ -528,6 +545,19 @@
       margin: 0;
       color: #67530a;
       font-size: 12px;
+    }
+
+    .review-note p + p {
+      margin-top: 6px;
+    }
+
+    .review-inline {
+      background: var(--review);
+      border-bottom: 2px solid var(--review-border);
+      padding: 1px 4px;
+      border-radius: 3px;
+      color: #67530a;
+      font-weight: 600;
     }
 
 
@@ -712,8 +742,8 @@
       Modernizing authentication for a leading U.S. insurance carrier
       by migrating 70+ .NET and .NET Core applications from SiteMinder
       to Microsoft Entra ID — combining application engineering,
-      reusable authentication middleware and enterprise identity
-      integration while maintaining business continuity.
+      reusable migration patterns and enterprise identity integration
+      while maintaining business continuity.
     </p>
 
 
@@ -746,7 +776,7 @@
 
       <span class="tag">.NET / .NET Core</span>
       <span class="tag">Microsoft Entra ID</span>
-      <span class="tag">SSO Middleware</span>
+      <span class="tag">Authentication Migration</span>
       <span class="tag">SAML</span>
       <span class="tag">OAuth 2.0</span>
       <span class="tag">OIDC</span>
@@ -762,7 +792,7 @@
 <main class="main">
 
 
-<!-- 01 -->
+<!-- 01 · ENGINEERING CHALLENGE -->
 
 <section class="content-section">
 
@@ -790,9 +820,10 @@
   </p>
 
   <p>
-    A three-person core team drove the modernization, making a reusable
-    integration approach important to delivering the migration at this
-    scale.
+    A three-person core team drove the modernization. At this scale,
+    repeating the same authentication engineering independently for
+    every application would have made the migration significantly more
+    difficult, creating the need for a reusable migration approach.
   </p>
 
 
@@ -824,71 +855,60 @@
 
 
 
-<!-- 02 -->
+<!-- 02 · AUTHENTICATION ENGINEERING -->
 
 <section class="content-section">
 
   <div class="section-number">
-    02 · AUTHENTICATION ARCHITECTURE &amp; MIDDLEWARE
+    02 · AUTHENTICATION ENGINEERING
   </div>
 
   <h2>
-    Engineering a reusable authentication layer
+    Standardizing the recurring application changes required for Entra
   </h2>
 
   <p class="lead">
-    Instead of implementing the complete Entra authentication flow
-    independently within every application, reusable middleware was
-    developed to provide a common authentication layer across the
-    .NET and .NET Core application portfolio.
+    Migrating more than 70 applications meant that many of the same
+    authentication changes would otherwise have to be implemented
+    repeatedly. A reusable middleware-based approach was developed to
+    standardize those recurring integration changes and make individual
+    application migrations easier to execute.
   </p>
 
   <p>
-    The middleware participated in the application's request pipeline.
-    When authentication was required, it initiated the redirect to
-    Microsoft Entra ID. After successful authentication, Entra redirected
-    the user back to the application with the returned token.
+    The reusable approach handled common parts of the Entra integration,
+    including initiating the authentication redirect, processing the
+    returned authentication response, extracting user information and
+    maintaining the authenticated context required by the application.
   </p>
 
   <p>
-    The middleware processed the authentication response, extracted the
-    required user information and persisted the returned Entra token in
-    a cookie so the authenticated context could be maintained within the
-    application.
-  </p>
-
-  <p>
-    When the token expired, the user was routed through the Entra
-    authentication flow again rather than the middleware implementing
-    a separate token-refresh mechanism.
+    This repeatability was an engineering enabler for the migration:
+    individual applications could adopt the common authentication
+    approach while application-specific behaviour could still be handled
+    where necessary.
   </p>
 
 
   <div class="architecture-layout">
 
 
-    <!-- AUTHENTICATION FLOW -->
+    <!-- TARGET AUTHENTICATION FLOW -->
 
     <div class="architecture-panel">
 
       <div class="architecture-title">
-        Runtime Authentication Flow
+        Target Authentication Flow (OIDC / OAuth path)
       </div>
 
       <div class="flow-box">
-        User requests application
+        User accesses migrated .NET / .NET Core application
       </div>
 
       <div class="flow-arrow"></div>
 
       <div class="flow-box">
-        .NET / .NET Core Application
-      </div>
-
-      <div class="flow-arrow"></div>
-
-      <div class="flow-box middleware">
-        Reusable SSO Middleware
+        Authentication request / redirect
       </div>
 
       <div class="flow-arrow"></div>
@@ -900,72 +920,111 @@
       <div class="flow-arrow"></div>
 
       <div class="flow-box">
-        Authentication → Token + Redirect
-      </div>
-
-      <div class="flow-arrow"></div>
-
-      <div class="flow-box middleware">
-        Middleware processes authentication response
+        Authentication completed
       </div>
 
       <div class="flow-arrow"></div>
 
       <div class="flow-box">
-        Authenticated application context
+        Token + redirect to application
+      </div>
+
+      <div class="flow-arrow"></div>
+
+      <div class="flow-box highlight">
+        Authenticated application session
       </div>
 
     </div>
 
 
-    <!-- MIDDLEWARE RESPONSIBILITIES -->
+    <!-- REUSABLE MIGRATION APPROACH -->
 
-    <div class="middleware-panel">
+    <div class="reuse-panel">
 
-      <div class="middleware-title">
-        Middleware Responsibilities
+      <div class="reuse-title">
+        Reusable Migration Approach
       </div>
 
-      <div class="middleware-step">
-        Check authentication state
+      <h3 class="reuse-heading">
+        Avoid rebuilding the same integration for every application
+      </h3>
+
+      <p>
+        Common authentication behaviour was implemented once and reused
+        as applications were migrated to Entra.
+      </p>
+
+      <div class="reuse-step">
+        Initiate Entra authentication redirect
       </div>
 
-      <div class="middleware-arrow"></div>
+      <div class="reuse-arrow"></div>
 
-      <div class="middleware-step">
-        Initiate Entra redirect
-      </div>
-
-      <div class="middleware-arrow"></div>
-
-      <div class="middleware-step">
+      <div class="reuse-step">
         Process returned token
       </div>
 
-      <div class="middleware-arrow"></div>
+      <div class="reuse-arrow"></div>
 
-      <div class="middleware-step">
-        Extract user information
+      <div class="reuse-step">
+        Extract required user information
       </div>
 
-      <div class="middleware-arrow"></div>
+      <div class="reuse-arrow"></div>
 
-      <div class="middleware-step">
-        Persist token in cookie
+      <div class="reuse-step">
+        Persist returned token in cookie
       </div>
 
-      <div class="middleware-arrow"></div>
+      <div class="reuse-arrow"></div>
 
-      <div class="middleware-step">
+      <div class="reuse-step">
         Establish authenticated context
       </div>
 
-      <div class="middleware-note">
-        Token expiry triggers authentication through Entra again rather
-        than a separate middleware token-refresh process.
+      <div class="reuse-note">
+        If the token expired, the user was routed through authentication
+        again rather than using a separate token-refresh mechanism.
       </div>
 
     </div>
+
+  </div>
+
+
+  <div class="review-note">
+
+    <strong>
+      Open questions for Karthik — confirm before publishing
+    </strong>
+
+    <p>
+      <span class="review-inline">Token flow type:</span> the diagram
+      shows Entra returning a token directly via redirect, then storing
+      it straight into a cookie — this reads like the older OAuth
+      "implicit" pattern. Was it actually an authorization-code flow
+      (code exchanged for a token server-side), which is the current
+      best-practice approach? If so, the diagram and steps above need
+      to be corrected to show that exchange step.
+    </p>
+
+    <p>
+      <span class="review-inline">Cookie security attributes:</span> was
+      the auth cookie set with <code>HttpOnly</code>, <code>Secure</code>,
+      and <code>SameSite</code>? Worth stating explicitly — as written,
+      "persist token in cookie" doesn't confirm the token was protected
+      from client-side script access.
+    </p>
+
+    <p>
+      <span class="review-inline">SAML not shown in diagram:</span> the
+      tags list SAML as one of the protocols used, but this flow diagram
+      only shows a token/redirect (OAuth/OIDC-style) path. If some
+      applications authenticated via SAML instead, that's a different
+      flow and should either get its own diagram or a note clarifying
+      which applications used which protocol.
+    </p>
 
   </div>
 
@@ -979,7 +1038,7 @@
 
 
 
-<!-- 03 -->
+<!-- 03 · IDENTITY PLATFORM CONFIGURATION -->
 
 <section class="content-section">
 
@@ -992,10 +1051,13 @@
   </h2>
 
   <p>
-    The application authentication flow was backed by Microsoft Entra ID
-    configuration for application identities and centralized access
-    management. Sensitive client secrets required by the integrations
-    were kept outside application code using AWS Secrets Manager.
+    Alongside the application changes, the migration required
+    Microsoft Entra ID configuration for application identities,
+    authentication and centralized access management. The applications
+    themselves were hosted on AWS, so sensitive client secrets used by
+    the integrations were kept outside application source code using
+    AWS Secrets Manager — with identity managed in Microsoft Entra ID
+    and application infrastructure remaining on AWS.
   </p>
 
 
@@ -1009,7 +1071,7 @@
 
       <p>
         Configured application identities within Microsoft Entra ID
-        to support the required authentication integrations.
+        to support authentication integration.
       </p>
 
     </div>
@@ -1059,6 +1121,26 @@
   </div>
 
 
+  <div class="review-note">
+
+    <strong>
+      Optional detail for Karthik — add if worth including
+    </strong>
+
+    <p>
+      <span class="review-inline">Why AWS Secrets Manager instead of
+      Azure Key Vault:</span> the current text assumes it's because the
+      applications themselves were hosted on AWS while identity lived
+      in Entra ID (a common hybrid-cloud pattern), but this reasoning
+      isn't confirmed. If there was a more specific driver — an
+      existing AWS secrets-management standard at the company,
+      cost/tooling preference, or something else — worth a short line
+      here. Not essential to publish without it.
+    </p>
+
+  </div>
+
+
   <div class="security-strip">
     <strong>Enterprise access controls:</strong>
     Multi-Factor Authentication · Conditional Access · RBAC · Zero Trust
@@ -1068,12 +1150,12 @@
 
 
 
-<!-- 04 -->
+<!-- 04 · PRODUCTION MIGRATION -->
 
 <section class="content-section">
 
   <div class="section-number">
-    04 · PRODUCTION MIGRATION STRATEGY
+    04 · PRODUCTION MIGRATION
   </div>
 
   <h2>
@@ -1081,16 +1163,17 @@
   </h2>
 
   <p class="lead">
-    Authentication is a critical application dependency. The migration
-    was therefore handled application by application rather than as a
-    single portfolio-wide cutover.
+    Authentication is a critical application dependency. The portfolio
+    was therefore migrated application by application rather than
+    through a single large-scale cutover.
   </p>
 
   <p>
     For each application, the existing authentication flow and
-    dependencies were first understood. The Entra configuration and
-    application integration were then prepared, authentication scenarios
-    tested, and the application validated before production cutover.
+    dependencies were first understood. The reusable integration
+    approach could then be applied, the required Entra configuration
+    completed, authentication scenarios tested, and the application
+    validated before production cutover.
   </p>
 
 
@@ -1101,7 +1184,7 @@
     </div>
 
     <div class="migration-step">
-      Prepare Integration
+      Apply Integration Changes
     </div>
 
     <div class="migration-step">
@@ -1133,7 +1216,7 @@
 
       <span>
         For a set of applications, the core team performed the
-        application authentication integration and migration directly.
+        application authentication changes and migration directly.
       </span>
 
     </div>
@@ -1146,9 +1229,9 @@
       </strong>
 
       <span>
-        Other application teams implemented the defined integration
-        pattern, with guidance, Entra configuration review and
-        authentication validation before cutover.
+        Other application teams applied the migration approach with
+        guidance, Entra configuration review and authentication
+        validation before cutover.
       </span>
 
     </div>
@@ -1168,9 +1251,9 @@
 
     <p>
       One application included a third-party integration whose redirect
-      behaviour resulted in an anonymous-authentication condition. The
-      application therefore required additional handling around that
-      redirect while retaining the common authentication approach.
+      behaviour resulted in an anonymous-authentication condition.
+      The standard migration approach therefore required
+      application-specific handling for that integration.
     </p>
 
   </div>
@@ -1179,7 +1262,7 @@
   <div class="review-note">
 
     <strong>
-      Detail to confirm with Karthik
+      Open question for Karthik — confirm before publishing
     </strong>
 
     <p>
@@ -1194,7 +1277,7 @@
 
 
 
-<!-- 05 -->
+<!-- 05 · ENGINEERING RESULT -->
 
 <section class="content-section">
 
@@ -1203,15 +1286,16 @@
   </div>
 
   <h2>
-    From application-by-application authentication to a repeatable integration model
+    A scalable approach to migrating 70+ applications
   </h2>
 
   <p>
-    The engineering result was more than the replacement of SiteMinder
-    with Microsoft Entra ID. The migration established a reusable
-    application-side authentication pattern that could be applied across
-    the .NET portfolio while still allowing application-specific
-    handling where required.
+    With more than 70 applications to migrate, implementing recurring
+    authentication changes independently for every application would
+    have increased both engineering effort and migration complexity.
+    Reusing the common integration approach made the migration more
+    repeatable while still allowing individual applications to be
+    handled according to their own dependencies.
   </p>
 
 
@@ -1220,15 +1304,15 @@
     <div class="result-card">
 
       <span class="result-label">
-        Portfolio
+        Scale
       </span>
 
       <strong>
-        70+ applications migrated
+        70+ applications
       </strong>
 
       <span>
-        Production applications transitioned from SiteMinder
+        Enterprise applications transitioned from SiteMinder
         authentication to Microsoft Entra ID.
       </span>
 
@@ -1238,17 +1322,16 @@
     <div class="result-card">
 
       <span class="result-label">
-        Engineering
+        Engineering Approach
       </span>
 
       <strong>
-        One reusable authentication pattern
+        Reusable migration pattern
       </strong>
 
       <span>
-        Common middleware centralized recurring authentication behaviour
-        instead of rebuilding the complete Entra interaction separately
-        for every application.
+        Common authentication changes could be reused during migration
+        rather than engineered independently for every application.
       </span>
 
     </div>
@@ -1257,16 +1340,17 @@
     <div class="result-card">
 
       <span class="result-label">
-        Migration
+        Cutover
       </span>
 
       <strong>
-        Incremental production cutover
+        Application-by-application migration
       </strong>
 
       <span>
-        Applications could move independently to the new authentication
-        model while maintaining business continuity across the portfolio.
+        Applications could be migrated, tested and validated
+        independently while maintaining business continuity across
+        the wider portfolio.
       </span>
 
     </div>
