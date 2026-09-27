@@ -1,601 +1,635 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Commercial Lines Policy Administration Platform | Karthik Rao</title>
-
-  <style>
-    :root {
-      --bg: #f7f8fa;
-      --surface: #ffffff;
-      --text: #172033;
-      --muted: #667085;
-      --line: #e5e7eb;
-      --navy: #18253d;
-      --blue: #356ae6;
-      --blue-soft: #eef4ff;
-      --tag: #f2f4f7;
-      --review: #fff4bf;
-      --review-border: #e4c95c;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      font-family: Inter, Arial, Helvetica, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.65;
-    }
-
-
-    /* NAVIGATION */
-
-    .nav {
-      background: rgba(255,255,255,.96);
-      border-bottom: 1px solid var(--line);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    .nav-inner {
-      max-width: 1120px;
-      margin: auto;
-      height: 68px;
-      padding: 0 28px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .brand {
-      font-size: 22px;
-      font-weight: 700;
-      color: var(--navy);
-      text-decoration: none;
-      letter-spacing: -.3px;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 28px;
-    }
-
-    .nav-links a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 500;
-    }
-
-    .nav-links a:hover {
-      color: var(--blue);
-    }
-
-
-    /* HERO */
-
-    .project-hero {
-      background: var(--navy);
-      color: white;
-    }
-
-    .project-hero-inner {
-      max-width: 1120px;
-      margin: auto;
-      padding: 52px 28px 55px;
-    }
-
-    .back-link {
-      display: inline-block;
-      margin-bottom: 28px;
-      color: rgba(255,255,255,.65);
-      font-size: 13px;
-      text-decoration: none;
-    }
-
-    .back-link:hover {
-      color: white;
-    }
-
-    .project-label {
-      color: #8fb0ff;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 1.4px;
-      text-transform: uppercase;
-      margin-bottom: 14px;
-    }
-
-    h1 {
-      margin: 0;
-      max-width: 900px;
-      font-size: clamp(38px, 5vw, 54px);
-      line-height: 1.08;
-      letter-spacing: -1.6px;
-    }
-
-    .project-summary {
-      max-width: 850px;
-      margin: 21px 0 0;
-      color: rgba(255,255,255,.73);
-      font-size: 18px;
-      line-height: 1.7;
-    }
-
-    .hero-context {
-      display: grid;
-      grid-template-columns: repeat(3,1fr);
-      gap: 1px;
-      margin-top: 32px;
-      background: rgba(255,255,255,.12);
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: 9px;
-      overflow: hidden;
-    }
-
-    .context-item {
-      background: rgba(255,255,255,.035);
-      padding: 15px 18px;
-      color: rgba(255,255,255,.72);
-      font-size: 13px;
-    }
-
-    .context-item strong {
-      display: block;
-      margin-bottom: 4px;
-      color: white;
-      font-size: 11px;
-      letter-spacing: .7px;
-      text-transform: uppercase;
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 22px;
-    }
-
-    .tag {
-      border: 1px solid rgba(255,255,255,.17);
-      background: rgba(255,255,255,.07);
-      color: rgba(255,255,255,.82);
-      border-radius: 20px;
-      padding: 6px 10px;
-      font-size: 12px;
-    }
-
-
-    /* MAIN */
-
-    .main {
-      max-width: 1120px;
-      margin: auto;
-      padding: 0 28px 60px;
-    }
-
-    .content-section {
-      padding: 42px 0;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .content-section:last-child {
-      border-bottom: none;
-    }
-
-    .section-number {
-      color: var(--blue);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1.3px;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-
-    .content-section h2 {
-      margin: 0 0 16px;
-      color: var(--navy);
-      font-size: 28px;
-      line-height: 1.25;
-      letter-spacing: -.6px;
-    }
-
-    .content-section p {
-      max-width: 880px;
-      margin: 0 0 14px;
-      color: var(--muted);
-      font-size: 15px;
-    }
-
-    .content-section p:last-child {
-      margin-bottom: 0;
-    }
-
-    .lead {
-      font-size: 17px !important;
-      line-height: 1.7;
-      color: #475467 !important;
-    }
-
-
-    /* ARCHITECTURE */
-
-    .architecture-panel {
-      margin-top: 25px;
-      background: white;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 28px;
-    }
-
-    .architecture-title {
-      margin-bottom: 21px;
-      color: #61708a;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1.1px;
-      text-transform: uppercase;
-    }
-
-    .architecture-flow {
-      display: grid;
-      grid-template-columns: 1fr 38px 1.3fr 38px 1fr;
-      align-items: center;
-    }
-
-    .architecture-box {
-      min-height: 100px;
-      padding: 17px 12px;
-      border: 1px solid #d9dee8;
-      border-radius: 8px;
-      background: #fafbfc;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      text-align: center;
-    }
-
-    .architecture-box strong {
-      color: var(--navy);
-      font-size: 13px;
-    }
-
-    .architecture-box span {
-      margin-top: 5px;
-      color: var(--muted);
-      font-size: 11px;
-      line-height: 1.45;
-    }
-
-    .architecture-box.platform {
-      background: var(--blue-soft);
-      border-color: #cbdcff;
-    }
-
-    .architecture-arrow {
-      text-align: center;
-      color: #98a2b3;
-      font-size: 20px;
-    }
-
-    .stack-grid {
-      display: grid;
-      grid-template-columns: repeat(3,1fr);
-      gap: 12px;
-      margin-top: 14px;
-    }
-
-    .stack-card {
-      padding: 16px 18px;
-      background: #eef2f7;
-      border-radius: 8px;
-    }
-
-    .stack-card strong {
-      display: block;
-      margin-bottom: 4px;
-      color: var(--navy);
-      font-size: 13px;
-    }
-
-    .stack-card span {
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-
-    /* FEATURE FOCUS */
-
-    .feature-banner {
-      margin-top: 24px;
-      background: var(--navy);
-      border-radius: 12px;
-      padding: 30px;
-      color: white;
-    }
-
-    .feature-label {
-      color: #8fb0ff;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-
-    .feature-banner h3 {
-      margin: 0 0 10px;
-      color: white;
-      font-size: 22px;
-      letter-spacing: -.3px;
-    }
-
-    .feature-banner p {
-      margin: 0;
-      max-width: 850px;
-      color: rgba(255,255,255,.7);
-      font-size: 14px;
-      line-height: 1.7;
-    }
-
-
-    /* VYMO FLOW */
-
-    .vymo-flow {
-      margin-top: 18px;
-      background: white;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 27px;
-    }
-
-    .flow-label {
-      margin-bottom: 20px;
-      color: #61708a;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1.1px;
-      text-transform: uppercase;
-    }
-
-    .flow-row {
-      display: grid;
-      grid-template-columns: 1fr 35px 1fr 35px 1fr 35px 1fr;
-      align-items: center;
-    }
-
-    .flow-box {
-      min-height: 92px;
-      padding: 13px 9px;
-      border: 1px solid #d9dee8;
-      border-radius: 7px;
-      background: #fafbfc;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      text-align: center;
-    }
-
-    .flow-box strong {
-      color: var(--navy);
-      font-size: 12px;
-    }
-
-    .flow-box span {
-      margin-top: 5px;
-      color: var(--muted);
-      font-size: 10px;
-      line-height: 1.4;
-    }
-
-    .flow-box.vymo {
-      background: var(--navy);
-      border-color: var(--navy);
-    }
-
-    .flow-box.vymo strong {
-      color: white;
-    }
-
-    .flow-box.vymo span {
-      color: rgba(255,255,255,.65);
-    }
-
-    .flow-box.highlight {
-      background: var(--blue-soft);
-      border-color: #cbdcff;
-    }
-
-    .flow-arrow {
-      text-align: center;
-      color: #98a2b3;
-      font-size: 18px;
-    }
-
-
-    /* ENGINEERING QUESTIONS */
-
-    .engineering-grid {
-      display: grid;
-      grid-template-columns: repeat(2,1fr);
-      gap: 13px;
-      margin-top: 24px;
-    }
-
-    .engineering-card {
-      background: white;
-      border: 1px solid var(--line);
-      border-radius: 9px;
-      padding: 19px;
-    }
-
-    .engineering-card h3 {
-      margin: 0 0 7px;
-      color: var(--navy);
-      font-size: 15px;
-    }
-
-    .engineering-card p {
-      margin: 0;
-      font-size: 13px;
-      line-height: 1.6;
-    }
-
-
-    /* REVIEW NOTES */
-
-    .review-note {
-      margin-top: 14px;
-      padding: 14px 17px;
-      background: var(--review);
-      border: 1px solid var(--review-border);
-      border-radius: 7px;
-    }
-
-    .review-note strong {
-      display: block;
-      margin-bottom: 5px;
-      color: #67530a;
-      font-size: 10px;
-      letter-spacing: .8px;
-      text-transform: uppercase;
-    }
-
-    .review-note p {
-      margin: 0;
-      color: #67530a;
-      font-size: 12px;
-      line-height: 1.6;
-    }
-
-
-    /* CONTRIBUTION */
-
-    .contribution-grid {
-      display: grid;
-      grid-template-columns: repeat(3,1fr);
-      gap: 13px;
-      margin-top: 24px;
-    }
-
-    .contribution-card {
-      background: white;
-      border: 1px solid var(--line);
-      border-radius: 9px;
-      padding: 20px;
-    }
-
-    .contribution-card .card-label {
-      display: block;
-      margin-bottom: 5px;
-      color: var(--blue);
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: .8px;
-      text-transform: uppercase;
-    }
-
-    .contribution-card strong {
-      display: block;
-      margin-bottom: 6px;
-      color: var(--navy);
-      font-size: 16px;
-    }
-
-    .contribution-card span {
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.55;
-    }
-
-
-    /* FOOTER */
-
-    footer {
-      border-top: 1px solid var(--line);
-      background: white;
-    }
-
-    .footer-inner {
-      max-width: 1120px;
-      margin: auto;
-      padding: 28px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .footer-inner a {
-      color: var(--blue);
-      text-decoration: none;
-    }
-
-
-    /* RESPONSIVE */
-
-    @media(max-width:850px) {
-
-      .architecture-flow,
-      .flow-row {
-        grid-template-columns: 1fr;
-        gap: 8px;
-      }
-
-      .architecture-arrow,
-      .flow-arrow {
-        transform: rotate(90deg);
-      }
-
-      .stack-grid,
-      .contribution-grid {
-        grid-template-columns: 1fr;
-      }
-
-    }
-
-
-    @media(max-width:760px) {
-
-      .nav-links {
-        display: none;
-      }
-
-      .project-hero-inner {
-        padding-top: 42px;
-        padding-bottom: 44px;
-      }
-
-      .content-section {
-        padding: 35px 0;
-      }
-
-      .hero-context,
-      .engineering-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .footer-inner {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-    }
-
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Commercial Lines Policy Administration Platform | Karthik Rao</title>
+
+<style>
+:root {
+  --bg:#f7f8fa;
+  --surface:#ffffff;
+  --text:#172033;
+  --muted:#667085;
+  --line:#e5e7eb;
+  --navy:#18253d;
+  --blue:#356ae6;
+  --blue-soft:#eef4ff;
+  --tag:#f2f4f7;
+  --review:#fff4bf;
+  --review-border:#e4c95c;
+}
+
+* {
+  box-sizing:border-box;
+}
+
+html {
+  scroll-behavior:smooth;
+}
+
+body {
+  margin:0;
+  font-family:Inter,Arial,Helvetica,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.65;
+}
+
+
+/* NAVIGATION */
+
+.nav {
+  background:rgba(255,255,255,.97);
+  border-bottom:1px solid var(--line);
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+
+.nav-inner {
+  max-width:1120px;
+  margin:auto;
+  height:68px;
+  padding:0 28px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.brand {
+  font-size:22px;
+  font-weight:700;
+  color:var(--navy);
+  text-decoration:none;
+  letter-spacing:-.3px;
+}
+
+.nav-links {
+  display:flex;
+  gap:28px;
+}
+
+.nav-links a {
+  color:var(--muted);
+  text-decoration:none;
+  font-size:14px;
+  font-weight:500;
+}
+
+.nav-links a:hover {
+  color:var(--blue);
+}
+
+
+/* HERO */
+
+.hero {
+  background:var(--navy);
+  color:white;
+}
+
+.hero-inner {
+  max-width:1120px;
+  margin:auto;
+  padding:48px 28px 42px;
+}
+
+.back-link {
+  display:inline-block;
+  margin-bottom:25px;
+  color:rgba(255,255,255,.62);
+  text-decoration:none;
+  font-size:13px;
+}
+
+.back-link:hover {
+  color:white;
+}
+
+.hero-label {
+  color:#8fb0ff;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:1.4px;
+  text-transform:uppercase;
+  margin-bottom:11px;
+}
+
+.hero h1 {
+  max-width:900px;
+  margin:0;
+  font-size:clamp(40px,5vw,54px);
+  line-height:1.08;
+  letter-spacing:-1.6px;
+}
+
+.hero-summary {
+  max-width:880px;
+  margin:18px 0 0;
+  color:rgba(255,255,255,.75);
+  font-size:17px;
+  line-height:1.7;
+}
+
+.hero-meta {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;
+  margin-top:28px;
+  background:rgba(255,255,255,.13);
+  border:1px solid rgba(255,255,255,.13);
+  border-radius:9px;
+  overflow:hidden;
+}
+
+.meta-item {
+  padding:14px 17px;
+  background:rgba(255,255,255,.035);
+  color:rgba(255,255,255,.72);
+  font-size:12px;
+}
+
+.meta-item strong {
+  display:block;
+  margin-bottom:3px;
+  color:white;
+  font-size:10px;
+  letter-spacing:.7px;
+  text-transform:uppercase;
+}
+
+.hero-tags {
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin-top:19px;
+}
+
+.hero-tag {
+  padding:5px 9px;
+  border:1px solid rgba(255,255,255,.17);
+  background:rgba(255,255,255,.06);
+  border-radius:20px;
+  color:rgba(255,255,255,.82);
+  font-size:10px;
+}
+
+
+/* MAIN */
+
+main {
+  max-width:1120px;
+  margin:auto;
+  padding:0 28px 60px;
+}
+
+.project-section {
+  padding:42px 0;
+  border-bottom:1px solid var(--line);
+}
+
+.project-section:last-child {
+  border-bottom:none;
+}
+
+.section-grid {
+  display:grid;
+  grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);
+  gap:48px;
+  align-items:start;
+}
+
+.section-number {
+  margin-bottom:8px;
+  color:var(--blue);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:1.3px;
+  text-transform:uppercase;
+}
+
+.project-section h2 {
+  margin:0 0 12px;
+  color:var(--navy);
+  font-size:28px;
+  line-height:1.25;
+  letter-spacing:-.55px;
+}
+
+.section-question {
+  margin:0 0 17px;
+  color:#475467;
+  font-size:16px;
+  font-weight:500;
+}
+
+.section-copy p {
+  margin:0 0 13px;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.7;
+}
+
+.section-copy p:last-child {
+  margin-bottom:0;
+}
+
+
+/* TAGS */
+
+.tags {
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin-top:17px;
+}
+
+.tag {
+  padding:5px 9px;
+  border-radius:20px;
+  background:var(--tag);
+  color:#475467;
+  font-size:10px;
+}
+
+
+/* PANELS */
+
+.panel {
+  background:white;
+  border:1px solid var(--line);
+  border-radius:11px;
+  padding:20px;
+}
+
+.panel-title {
+  margin-bottom:16px;
+  color:#61708a;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+
+
+/* APPLICATION ARCHITECTURE */
+
+.architecture-stack {
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.arch-box {
+  padding:13px;
+  border:1px solid #dce1e9;
+  border-radius:7px;
+  background:#fafbfc;
+  text-align:center;
+}
+
+.arch-box.primary {
+  background:var(--blue-soft);
+  border-color:#cbdcff;
+}
+
+.arch-box strong {
+  display:block;
+  color:var(--navy);
+  font-size:11px;
+}
+
+.arch-box span {
+  display:block;
+  margin-top:3px;
+  color:var(--muted);
+  font-size:9px;
+}
+
+.arch-row {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+}
+
+.arch-arrow {
+  text-align:center;
+  color:#98a2b3;
+  font-size:15px;
+}
+
+
+/* ENGINEERING */
+
+.engineering-grid {
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:9px;
+}
+
+.engineering-card {
+  min-height:118px;
+  padding:15px;
+  border:1px solid #dce1e9;
+  border-radius:7px;
+  background:#fafbfc;
+}
+
+.engineering-card strong {
+  display:block;
+  margin-bottom:5px;
+  color:var(--navy);
+  font-size:12px;
+}
+
+.engineering-card span {
+  color:var(--muted);
+  font-size:10px;
+  line-height:1.5;
+}
+
+
+/* VYMO FLOW */
+
+.integration-flow {
+  display:grid;
+  grid-template-columns:1fr 25px 1.25fr 25px 1fr;
+  align-items:center;
+}
+
+.integration-box {
+  min-height:120px;
+  padding:13px 9px;
+  border:1px solid #dce1e9;
+  border-radius:7px;
+  background:#fafbfc;
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.integration-box.primary {
+  background:var(--blue-soft);
+  border-color:#cbdcff;
+}
+
+.integration-box.external {
+  background:var(--navy);
+  border-color:var(--navy);
+}
+
+.integration-box strong {
+  display:block;
+  color:var(--navy);
+  font-size:11px;
+}
+
+.integration-box.external strong {
+  color:white;
+}
+
+.integration-box span {
+  display:block;
+  margin-top:4px;
+  color:var(--muted);
+  font-size:9px;
+  line-height:1.45;
+}
+
+.integration-box.external span {
+  color:rgba(255,255,255,.65);
+}
+
+.arrow {
+  text-align:center;
+  color:#98a2b3;
+  font-size:16px;
+}
+
+.integration-note {
+  margin-top:10px;
+  padding:11px 13px;
+  border-left:3px solid var(--blue);
+  background:var(--blue-soft);
+  color:#475467;
+  font-size:10px;
+  line-height:1.5;
+}
+
+
+/* API ENGINEERING */
+
+.api-grid {
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:9px;
+}
+
+.api-card {
+  min-height:115px;
+  padding:15px;
+  border:1px solid #dce1e9;
+  border-radius:7px;
+  background:#fafbfc;
+}
+
+.api-card strong {
+  display:block;
+  margin-bottom:5px;
+  color:var(--navy);
+  font-size:12px;
+}
+
+.api-card span {
+  color:var(--muted);
+  font-size:10px;
+  line-height:1.5;
+}
+
+
+/* DELIVERY FLOW */
+
+.delivery-flow {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
+}
+
+.delivery-step {
+  min-height:105px;
+  padding:13px 8px;
+  border:1px solid #dce1e9;
+  border-radius:7px;
+  background:#fafbfc;
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.delivery-step strong {
+  color:var(--navy);
+  font-size:10px;
+}
+
+.delivery-step span {
+  margin-top:4px;
+  color:var(--muted);
+  font-size:8px;
+  line-height:1.45;
+}
+
+
+/* CONTRIBUTION */
+
+.contribution-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:9px;
+}
+
+.contribution-card {
+  min-height:130px;
+  padding:15px;
+  border:1px solid #dce1e9;
+  border-radius:7px;
+  background:#fafbfc;
+}
+
+.contribution-label {
+  display:block;
+  margin-bottom:5px;
+  color:var(--blue);
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:.7px;
+  text-transform:uppercase;
+}
+
+.contribution-card strong {
+  display:block;
+  margin-bottom:5px;
+  color:var(--navy);
+  font-size:13px;
+}
+
+.contribution-card span {
+  color:var(--muted);
+  font-size:9px;
+  line-height:1.5;
+}
+
+
+/* REVIEW */
+
+.review {
+  margin-top:12px;
+  padding:13px 15px;
+  background:var(--review);
+  border:1px solid var(--review-border);
+  border-radius:7px;
+}
+
+.review strong {
+  display:block;
+  margin-bottom:4px;
+  color:#67530a;
+  font-size:9px;
+  letter-spacing:.7px;
+  text-transform:uppercase;
+}
+
+.review p {
+  margin:0;
+  color:#67530a;
+  font-size:10px;
+  line-height:1.55;
+}
+
+
+/* FOOTER */
+
+footer {
+  border-top:1px solid var(--line);
+  background:white;
+}
+
+.footer-inner {
+  max-width:1120px;
+  margin:auto;
+  padding:28px;
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  color:var(--muted);
+  font-size:13px;
+}
+
+.footer-inner a {
+  color:var(--blue);
+  text-decoration:none;
+}
+
+
+/* RESPONSIVE */
+
+@media(max-width:900px) {
+
+  .section-grid {
+    grid-template-columns:1fr;
+    gap:24px;
+  }
+
+}
+
+@media(max-width:760px) {
+
+  .nav-links {
+    display:none;
+  }
+
+  .hero-inner {
+    padding-top:42px;
+  }
+
+  .hero-meta,
+  .engineering-grid,
+  .api-grid,
+  .contribution-grid {
+    grid-template-columns:1fr;
+  }
+
+  .project-section {
+    padding:35px 0;
+  }
+
+  .arch-row {
+    grid-template-columns:1fr;
+  }
+
+  .integration-flow {
+    grid-template-columns:1fr;
+    gap:7px;
+  }
+
+  .arrow {
+    transform:rotate(90deg);
+  }
+
+  .delivery-flow {
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .footer-inner {
+    flex-direction:column;
+  }
+
+}
+
+</style>
 </head>
 
 
@@ -618,6 +652,10 @@
         Work
       </a>
 
+      <a href="academic-projects.html">
+        Academic Projects
+      </a>
+
       <a href="index.html#focus">
         Technical Focus
       </a>
@@ -638,15 +676,15 @@
 
 <!-- HERO -->
 
-<header class="project-hero">
+<header class="hero">
 
-  <div class="project-hero-inner">
+  <div class="hero-inner">
 
     <a class="back-link" href="index.html">
       ← Back to portfolio
     </a>
 
-    <div class="project-label">
+    <div class="hero-label">
       PROJECT 03 · ENTERPRISE APPLICATION ENGINEERING
     </div>
 
@@ -654,41 +692,41 @@
       Commercial Lines Policy Administration Platform
     </h1>
 
-    <p class="project-summary">
+    <p class="hero-summary">
       Developing and enhancing an enterprise policy administration
-      platform for the commercial insurance domain — working across
-      application functionality, APIs, data integration and the
-      implementation of new business capabilities.
+      platform for the commercial insurance domain, working across
+      application functionality, APIs and system integration using
+      ASP.NET, Sencha Ext JS and MongoDB.
     </p>
 
 
-    <div class="hero-context">
+    <div class="hero-meta">
 
-      <div class="context-item">
+      <div class="meta-item">
         <strong>Domain</strong>
         Commercial Insurance
       </div>
 
-      <div class="context-item">
+      <div class="meta-item">
         <strong>Application</strong>
-        Policy Administration
+        Policy Administration Platform
       </div>
 
-      <div class="context-item">
-        <strong>Current Feature</strong>
+      <div class="meta-item">
+        <strong>Current Feature Focus</strong>
         Vymo Integration
       </div>
 
     </div>
 
 
-    <div class="tags">
+    <div class="hero-tags">
 
-      <span class="tag">ASP.NET</span>
-      <span class="tag">Sencha Ext JS</span>
-      <span class="tag">MongoDB</span>
-      <span class="tag">REST APIs</span>
-      <span class="tag">System Integration</span>
+      <span class="hero-tag">ASP.NET</span>
+      <span class="hero-tag">Sencha Ext JS</span>
+      <span class="hero-tag">MongoDB</span>
+      <span class="hero-tag">REST APIs</span>
+      <span class="hero-tag">System Integration</span>
 
     </div>
 
@@ -698,106 +736,123 @@
 
 
 
-<main class="main">
+<main>
 
 
-<!-- 01 · APPLICATION CONTEXT -->
+<!-- 01 APPLICATION CONTEXT -->
 
-<section class="content-section">
+<section class="project-section">
 
-  <div class="section-number">
-    01 · APPLICATION CONTEXT
-  </div>
+  <div class="section-grid">
 
-  <h2>
-    Building within a commercial insurance platform
-  </h2>
+    <div class="section-copy">
 
-  <p class="lead">
-    The platform supports commercial-lines insurance operations,
-    with Karthik working on application enhancements and new
-    functionality across the user interface, application layer,
-    APIs and data integrations.
-  </p>
-
-  <p>
-    The application is built using ASP.NET, Sencha Ext JS and MongoDB
-    and integrates with external systems through APIs. The work involves
-    extending an existing enterprise product rather than building
-    isolated standalone applications.
-  </p>
-
-
-  <div class="architecture-panel">
-
-    <div class="architecture-title">
-      Application Stack
-    </div>
-
-    <div class="architecture-flow">
-
-      <div class="architecture-box">
-
-        <strong>
-          User Interface
-        </strong>
-
-        <span>
-          Sencha Ext JS
-        </span>
-
+      <div class="section-number">
+        01 · APPLICATION CONTEXT
       </div>
 
-      <div class="architecture-arrow">
-        →
+      <h2>
+        Engineering within a commercial insurance platform
+      </h2>
+
+      <div class="section-question">
+        Enterprise policy systems bring together business workflows,
+        application logic, data and external integrations.
       </div>
 
-      <div class="architecture-box platform">
+      <p>
+        The platform supports policy administration within the
+        commercial insurance domain. Development work spans the
+        application interface, server-side functionality, data
+        handling and integrations with external systems.
+      </p>
 
-        <strong>
-          Policy Administration Application
-        </strong>
+      <p>
+        The application uses Sencha Ext JS on the user-interface
+        layer, ASP.NET for application functionality and MongoDB
+        for data persistence.
+      </p>
 
-        <span>
-          ASP.NET application functionality and services
-        </span>
-
-      </div>
-
-      <div class="architecture-arrow">
-        →
-      </div>
-
-      <div class="architecture-box">
-
-        <strong>
-          Data Layer
-        </strong>
-
-        <span>
-          MongoDB
-        </span>
-
-      </div>
+      <p>
+        The work therefore involves engineering across multiple
+        layers of an existing enterprise application rather than
+        developing an isolated standalone feature.
+      </p>
 
     </div>
 
-  </div>
+
+    <div>
+
+      <div class="panel">
+
+        <div class="panel-title">
+          Application Architecture
+        </div>
+
+        <div class="architecture-stack">
+
+          <div class="arch-box">
+            <strong>Commercial Lines Workflow</strong>
+            <span>Insurance business processes</span>
+          </div>
+
+          <div class="arch-arrow">↓</div>
+
+          <div class="arch-box primary">
+            <strong>Policy Administration Platform</strong>
+            <span>Enterprise application</span>
+          </div>
+
+          <div class="arch-arrow">↓</div>
+
+          <div class="arch-row">
+
+            <div class="arch-box">
+              <strong>UI</strong>
+              <span>Sencha Ext JS</span>
+            </div>
+
+            <div class="arch-box">
+              <strong>Application</strong>
+              <span>ASP.NET</span>
+            </div>
+
+            <div class="arch-box">
+              <strong>Data</strong>
+              <span>MongoDB</span>
+            </div>
+
+          </div>
+
+          <div class="arch-arrow">↓</div>
+
+          <div class="arch-box">
+            <strong>External Integrations</strong>
+            <span>REST APIs and connected systems</span>
+          </div>
+
+        </div>
+
+      </div>
 
 
-  <div class="review-note">
+      <div class="review">
 
-    <strong>
-      Inputs needed from Karthik
-    </strong>
+        <strong>
+          Input needed from Karthik · Application context
+        </strong>
 
-    <p>
-      What parts of the commercial policy lifecycle does this application
-      support? For example: quote, underwriting, policy issuance,
-      endorsement, renewal, servicing, or other workflows. Also confirm
-      the primary users of the application — agents, underwriters,
-      internal operations teams, or others.
-    </p>
+        <p>
+          Which parts of the commercial policy lifecycle does the
+          application support — for example quote, submission,
+          underwriting, binding, policy issuance, endorsement or
+          renewal? Who are the primary users of the platform?
+        </p>
+
+      </div>
+
+    </div>
 
   </div>
 
@@ -805,79 +860,144 @@
 
 
 
-<!-- 02 · APPLICATION ENGINEERING -->
+<!-- 02 APPLICATION ENGINEERING -->
 
-<section class="content-section">
+<section class="project-section">
 
-  <div class="section-number">
-    02 · APPLICATION ENGINEERING
-  </div>
+  <div class="section-grid">
 
-  <h2>
-    Working across the application stack
-  </h2>
+    <div class="section-copy">
 
-  <p>
-    Karthik's work involves developing and enhancing functionality
-    within the existing policy administration platform, including
-    application logic, front-end changes, APIs and integration with
-    external systems.
-  </p>
+      <div class="section-number">
+        02 · APPLICATION ENGINEERING
+      </div>
+
+      <h2>
+        Working across the application stack
+      </h2>
+
+      <div class="section-question">
+        Feature development often requires changes across the UI,
+        application logic, data layer and external interfaces.
+      </div>
+
+      <p>
+        Development work on the platform includes implementing and
+        enhancing application functionality, working with APIs and
+        integrating data across system boundaries.
+      </p>
+
+      <p>
+        Sencha Ext JS is used for the application interface while
+        ASP.NET supports server-side application functionality.
+        MongoDB forms part of the application's data layer.
+      </p>
+
+      <p>
+        The role also includes testing and validating changes as
+        features move toward production-quality delivery.
+      </p>
 
 
-  <div class="stack-grid">
+      <div class="tags">
 
-    <div class="stack-card">
+        <span class="tag">Application Development</span>
+        <span class="tag">ASP.NET</span>
+        <span class="tag">Sencha Ext JS</span>
+        <span class="tag">MongoDB</span>
+        <span class="tag">REST APIs</span>
 
-      <strong>
-        Front End
-      </strong>
-
-      <span>
-        Sencha Ext JS
-      </span>
-
-    </div>
-
-    <div class="stack-card">
-
-      <strong>
-        Application Layer
-      </strong>
-
-      <span>
-        ASP.NET
-      </span>
-
-    </div>
-
-    <div class="stack-card">
-
-      <strong>
-        Data
-      </strong>
-
-      <span>
-        MongoDB
-      </span>
+      </div>
 
     </div>
 
-  </div>
+
+    <div>
+
+      <div class="panel">
+
+        <div class="panel-title">
+          Engineering Across the Stack
+        </div>
+
+        <div class="engineering-grid">
+
+          <div class="engineering-card">
+
+            <strong>
+              User Interface
+            </strong>
+
+            <span>
+              Application screens and user-facing functionality
+              using Sencha Ext JS.
+            </span>
+
+          </div>
 
 
-  <div class="review-note">
+          <div class="engineering-card">
 
-    <strong>
-      Inputs needed from Karthik
-    </strong>
+            <strong>
+              Application Logic
+            </strong>
 
-    <p>
-      Give us 2–3 concrete examples of functionality you have personally
-      built or modified in this application apart from the Vymo
-      integration. Also confirm the .NET version / C# usage and any
-      other important technologies or frameworks you work with.
-    </p>
+            <span>
+              Server-side functionality within the ASP.NET
+              application.
+            </span>
+
+          </div>
+
+
+          <div class="engineering-card">
+
+            <strong>
+              Data
+            </strong>
+
+            <span>
+              Working with application data persisted through
+              MongoDB.
+            </span>
+
+          </div>
+
+
+          <div class="engineering-card">
+
+            <strong>
+              Integration
+            </strong>
+
+            <span>
+              Connecting application functionality with external
+              systems through APIs.
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="review">
+
+        <strong>
+          Inputs needed from Karthik · Engineering examples
+        </strong>
+
+        <p>
+          Give us two or three concrete features you have developed
+          or enhanced apart from the Vymo integration. Also confirm
+          the .NET version and whether the server-side code is
+          primarily C#.
+        </p>
+
+      </div>
+
+    </div>
 
   </div>
 
@@ -885,133 +1005,133 @@
 
 
 
-<!-- 03 · VYMO FEATURE -->
+<!-- 03 VYMO INTEGRATION -->
 
-<section class="content-section">
+<section class="project-section">
 
-  <div class="section-number">
-    03 · FEATURE FOCUS · VYMO INTEGRATION
-  </div>
+  <div class="section-grid">
 
-  <h2>
-    Bringing sales opportunities into the agent workflow
-  </h2>
+    <div class="section-copy">
 
-  <p class="lead">
-    One of the major features currently under development is an
-    integration with Vymo. The objective is to use existing customer
-    and policy information to help surface potential sales opportunities
-    that can be presented to agents within their working environment.
-  </p>
-
-
-  <div class="feature-banner">
-
-    <div class="feature-label">
-      Current Development
-    </div>
-
-    <h3>
-      Connecting policy data with sales intelligence
-    </h3>
-
-    <p>
-      The feature requires the policy administration platform and Vymo
-      to exchange information so that relevant customer or policy data
-      can contribute to opportunity identification and the resulting
-      information can be made useful to insurance agents.
-    </p>
-
-  </div>
-
-
-  <div class="vymo-flow">
-
-    <div class="flow-label">
-      Conceptual Integration Flow · To be confirmed
-    </div>
-
-    <div class="flow-row">
-
-      <div class="flow-box">
-
-        <strong>
-          Commercial Lines Platform
-        </strong>
-
-        <span>
-          Customer / policy information
-        </span>
-
+      <div class="section-number">
+        03 · FEATURE FOCUS · VYMO INTEGRATION
       </div>
 
-      <div class="flow-arrow">
-        →
+      <h2>
+        Connecting policy data with a sales engagement platform
+      </h2>
+
+      <div class="section-question">
+        How can information already held within the policy
+        administration system support downstream sales activity?
       </div>
 
-      <div class="flow-box highlight">
+      <p>
+        A current area of development is the integration of the
+        commercial lines application with Vymo, an external sales
+        engagement platform.
+      </p>
 
-        <strong>
-          Integration Layer
-        </strong>
+      <p>
+        The integration connects information from the policy
+        administration environment with Vymo so that relevant
+        customer or policy context can support lead and opportunity
+        workflows.
+      </p>
 
-        <span>
-          Data exchange / API integration
-        </span>
-
-      </div>
-
-      <div class="flow-arrow">
-        →
-      </div>
-
-      <div class="flow-box vymo">
-
-        <strong>
-          Vymo
-        </strong>
-
-        <span>
-          Sales intelligence / opportunity identification
-        </span>
-
-      </div>
-
-      <div class="flow-arrow">
-        →
-      </div>
-
-      <div class="flow-box">
-
-        <strong>
-          Agent Experience
-        </strong>
-
-        <span>
-          Potential opportunities / leads
-        </span>
-
-      </div>
+      <p>
+        From an engineering perspective, this introduces a system
+        boundary: information has to move between two applications
+        through a defined API integration while remaining usable
+        within the commercial-lines workflow.
+      </p>
 
     </div>
 
-  </div>
+
+    <div>
+
+      <div class="panel">
+
+        <div class="panel-title">
+          Integration Context
+        </div>
+
+        <div class="integration-flow">
+
+          <div class="integration-box">
+
+            <strong>
+              Policy Data
+            </strong>
+
+            <span>
+              Customer and commercial insurance context
+            </span>
+
+          </div>
+
+          <div class="arrow">
+            →
+          </div>
+
+          <div class="integration-box primary">
+
+            <strong>
+              Policy Administration Platform
+            </strong>
+
+            <span>
+              ASP.NET · Sencha Ext JS · MongoDB
+            </span>
+
+          </div>
+
+          <div class="arrow">
+            ⇄
+          </div>
+
+          <div class="integration-box external">
+
+            <strong>
+              Vymo
+            </strong>
+
+            <span>
+              External sales engagement platform
+            </span>
+
+          </div>
+
+        </div>
 
 
-  <div class="review-note">
+        <div class="integration-note">
+          This represents the integration context only. The exact
+          direction of each data exchange and the response objects
+          should be updated once the API flow is confirmed.
+        </div>
 
-    <strong>
-      Inputs needed from Karthik · Confirm the actual data flow
-    </strong>
+      </div>
 
-    <p>
-      What information is being sent to Vymo — customer data, policy
-      data, account information, transaction history, or something else?
-      Does our application push the data to Vymo, does Vymo call our
-      APIs, or is the integration bi-directional? What exactly comes
-      back from Vymo — leads, scores, recommendations, opportunities,
-      next-best actions, or another object?
-    </p>
+
+      <div class="review">
+
+        <strong>
+          Inputs needed from Karthik · Vymo flow
+        </strong>
+
+        <p>
+          What exact data is sent to Vymo? Does Vymo return leads,
+          opportunities, recommendations or another object? Is the
+          integration one-way or two-way? When is the API called —
+          in real time from a user action, through a scheduled
+          process, or through another trigger?
+        </p>
+
+      </div>
+
+    </div>
 
   </div>
 
@@ -1019,118 +1139,137 @@
 
 
 
-<!-- 04 · VYMO ENGINEERING -->
+<!-- 04 API ENGINEERING -->
 
-<section class="content-section">
+<section class="project-section">
 
-  <div class="section-number">
-    04 · ENGINEERING THE VYMO INTEGRATION
-  </div>
+  <div class="section-grid">
 
-  <h2>
-    Designing the application-to-platform integration
-  </h2>
+    <div class="section-copy">
 
-  <p>
-    The Vymo feature introduces an external-system integration into
-    the policy administration workflow. The implementation therefore
-    involves more than simply calling an API: the application needs
-    to prepare the appropriate business data, exchange it with the
-    external platform and handle the resulting information within the
-    existing application.
-  </p>
+      <div class="section-number">
+        04 · ENGINEERING THE INTEGRATION
+      </div>
 
+      <h2>
+        Turning an external API into application functionality
+      </h2>
 
-  <div class="engineering-grid">
-
-    <div class="engineering-card">
-
-      <h3>
-        Data Mapping
-      </h3>
+      <div class="section-question">
+        API integration involves more than simply making an
+        HTTP request.
+      </div>
 
       <p>
-        Mapping information from the policy administration domain into
-        the data structures required by the Vymo integration.
+        The Vymo feature requires the policy administration
+        application to communicate with an external platform through
+        an API and translate that interaction into functionality
+        usable within the existing application.
+      </p>
+
+      <p>
+        This means aligning the application's internal data with the
+        external API contract, handling the returned information and
+        making the integration part of the appropriate business
+        workflow.
+      </p>
+
+      <p>
+        The precise authentication, mapping, validation and
+        failure-handling mechanisms are being kept out of the public
+        description until the implementation details are confirmed.
       </p>
 
     </div>
 
 
-    <div class="engineering-card">
+    <div>
 
-      <h3>
-        API Integration
-      </h3>
+      <div class="panel">
 
-      <p>
-        Implementing the application-side integration required to
-        exchange information with Vymo.
-      </p>
+        <div class="panel-title">
+          Integration Engineering
+        </div>
+
+        <div class="api-grid">
+
+          <div class="api-card">
+
+            <strong>
+              Application Data
+            </strong>
+
+            <span>
+              Identify the internal customer or policy information
+              required by the external integration.
+            </span>
+
+          </div>
+
+
+          <div class="api-card">
+
+            <strong>
+              API Contract
+            </strong>
+
+            <span>
+              Map application data to the structure expected by
+              the external API.
+            </span>
+
+          </div>
+
+
+          <div class="api-card">
+
+            <strong>
+              Response Handling
+            </strong>
+
+            <span>
+              Process information returned by the external platform
+              for use within the application.
+            </span>
+
+          </div>
+
+
+          <div class="api-card">
+
+            <strong>
+              Application Workflow
+            </strong>
+
+            <span>
+              Surface the integrated information within the
+              appropriate commercial-lines workflow.
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="review">
+
+        <strong>
+          Inputs needed from Karthik · API implementation
+        </strong>
+
+        <p>
+          How is the Vymo API authenticated? What request and response
+          formats are used? What transformations or mappings are
+          required? Is returned data stored in MongoDB or retrieved
+          dynamically? How are failures, retries, validation and
+          duplicate records handled?
+        </p>
+
+      </div>
 
     </div>
-
-
-    <div class="engineering-card">
-
-      <h3>
-        Response Handling
-      </h3>
-
-      <p>
-        Handling information returned through the integration so that
-        it can be consumed by the commercial-lines application.
-      </p>
-
-    </div>
-
-
-    <div class="engineering-card">
-
-      <h3>
-        Agent Experience
-      </h3>
-
-      <p>
-        Integrating the resulting business information into the
-        application's existing workflow for agents.
-      </p>
-
-    </div>
-
-  </div>
-
-
-  <div class="review-note">
-
-    <strong>
-      Inputs needed from Karthik · Technical implementation
-    </strong>
-
-    <p>
-      Which of the above pieces are you personally building? What Vymo
-      APIs are being used? How is API authentication handled? What data
-      transformation or mapping is required? Are responses stored in
-      MongoDB or retrieved dynamically? How are failures, retries,
-      validation and duplicate records handled?
-    </p>
-
-  </div>
-
-
-  <div class="review-note">
-
-    <strong>
-      Inputs needed from Karthik · User experience
-    </strong>
-
-    <p>
-      Where will the Vymo opportunities appear in the application?
-      Is there a new screen/component in Sencha Ext JS? Can an agent
-      take an action on a lead from within this application? What
-      happens after the agent accepts, rejects or acts on an
-      opportunity?
-    </p>
 
   </div>
 
@@ -1138,98 +1277,201 @@
 
 
 
-<!-- 05 · ENGINEERING CONTRIBUTION -->
+<!-- 05 TESTING & DELIVERY -->
 
-<section class="content-section">
+<section class="project-section">
 
-  <div class="section-number">
-    05 · ENGINEERING CONTRIBUTION
+  <div class="section-grid">
+
+    <div class="section-copy">
+
+      <div class="section-number">
+        05 · TESTING &amp; DELIVERY
+      </div>
+
+      <h2>
+        Validating changes across application boundaries
+      </h2>
+
+      <div class="section-question">
+        Integration features need to work correctly both within the
+        application and across the connected systems.
+      </div>
+
+      <p>
+        Development work includes supporting QA and testing so that
+        application changes can be validated before release.
+      </p>
+
+      <p>
+        For an external integration, this means considering not only
+        the individual application feature but also the data exchanged
+        between systems and the resulting user workflow.
+      </p>
+
+    </div>
+
+
+    <div>
+
+      <div class="panel">
+
+        <div class="panel-title">
+          Delivery Flow
+        </div>
+
+        <div class="delivery-flow">
+
+          <div class="delivery-step">
+            <strong>Develop</strong>
+            <span>Implement application and integration changes</span>
+          </div>
+
+          <div class="delivery-step">
+            <strong>Integrate</strong>
+            <span>Connect application and external API behaviour</span>
+          </div>
+
+          <div class="delivery-step">
+            <strong>Test</strong>
+            <span>Validate functionality and data exchange</span>
+          </div>
+
+          <div class="delivery-step">
+            <strong>Release</strong>
+            <span>Support production-quality delivery</span>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="review">
+
+        <strong>
+          Input needed from Karthik · Testing
+        </strong>
+
+        <p>
+          What testing does Karthik personally perform — unit,
+          integration, API, regression or manual validation? What
+          tools are used? Does he participate in code review,
+          deployment or production support?
+        </p>
+
+      </div>
+
+    </div>
+
   </div>
 
-  <h2>
-    Full-stack development within an enterprise insurance product
-  </h2>
-
-  <p>
-    The project combines application development with enterprise
-    integration in a production insurance environment. The current
-    Vymo work adds an external sales-intelligence capability to the
-    existing policy administration platform, requiring coordination
-    across application functionality, APIs, data and the user
-    experience.
-  </p>
+</section>
 
 
-  <div class="contribution-grid">
 
-    <div class="contribution-card">
+<!-- 06 CONTRIBUTION -->
 
-      <span class="card-label">
-        Application
-      </span>
+<section class="project-section">
 
-      <strong>
-        Full-stack engineering
-      </strong>
+  <div class="section-grid">
 
-      <span>
-        Working across Sencha Ext JS, ASP.NET and MongoDB within
-        an existing enterprise application.
-      </span>
+    <div class="section-copy">
 
-    </div>
+      <div class="section-number">
+        06 · ENGINEERING CONTRIBUTION
+      </div>
 
+      <h2>
+        Building within an existing enterprise product
+      </h2>
 
-    <div class="contribution-card">
+      <div class="section-question">
+        The work combines application development with the practical
+        realities of extending a production business system.
+      </div>
 
-      <span class="card-label">
-        Integration
-      </span>
+      <p>
+        Karthik's work on the platform spans application functionality,
+        API integration, data handling and testing within an established
+        commercial insurance product.
+      </p>
 
-      <strong>
-        External-system integration
-      </strong>
-
-      <span>
-        Building application functionality that exchanges data
-        with external platforms through APIs.
-      </span>
+      <p>
+        The Vymo integration is a useful example of that work because
+        it crosses the boundary between application engineering and
+        system integration — connecting an existing policy platform
+        with an external service and bringing the resulting functionality
+        back into the user's workflow.
+      </p>
 
     </div>
 
 
-    <div class="contribution-card">
+    <div class="panel">
 
-      <span class="card-label">
-        Domain
-      </span>
+      <div class="panel-title">
+        Engineering Scope
+      </div>
 
-      <strong>
-        Commercial insurance
-      </strong>
+      <div class="contribution-grid">
 
-      <span>
-        Engineering software within the workflows and data model
-        of a commercial-lines policy administration product.
-      </span>
+        <div class="contribution-card">
+
+          <span class="contribution-label">
+            Application
+          </span>
+
+          <strong>
+            Feature Development
+          </strong>
+
+          <span>
+            Building and enhancing functionality within an enterprise
+            policy administration platform.
+          </span>
+
+        </div>
+
+
+        <div class="contribution-card">
+
+          <span class="contribution-label">
+            Integration
+          </span>
+
+          <strong>
+            API Engineering
+          </strong>
+
+          <span>
+            Connecting application workflows and data with external
+            systems.
+          </span>
+
+        </div>
+
+
+        <div class="contribution-card">
+
+          <span class="contribution-label">
+            Delivery
+          </span>
+
+          <strong>
+            Testing &amp; Validation
+          </strong>
+
+          <span>
+            Supporting application testing and production-quality
+            delivery of changes.
+          </span>
+
+        </div>
+
+      </div>
 
     </div>
-
-  </div>
-
-
-  <div class="review-note">
-
-    <strong>
-      Inputs needed from Karthik · Delivery &amp; ownership
-    </strong>
-
-    <p>
-      What parts of the Vymo feature do you own end-to-end? How are
-      changes tested? What is your role in code review, QA, release and
-      production support? Once the feature is live, is there a specific
-      technical or business result we can quantify?
-    </p>
 
   </div>
 
@@ -1249,7 +1491,7 @@
     </span>
 
     <a href="index.html#work">
-      ← View all featured work
+      ← View featured work
     </a>
 
   </div>
