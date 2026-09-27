@@ -4,9 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Commercial Lines Policy Administration Platform | Karthik Rao</title>
+<title>Commercial Lines Policy Administration | Karthik Rao</title>
 
 <style>
+
 :root {
   --bg:#f7f8fa;
   --surface:#ffffff;
@@ -17,8 +18,6 @@
   --blue:#356ae6;
   --blue-soft:#eef4ff;
   --tag:#f2f4f7;
-  --review:#fff4bf;
-  --review-border:#e4c95c;
 }
 
 * {
@@ -236,9 +235,6 @@ main {
   margin-bottom:0;
 }
 
-
-/* TAGS */
-
 .tags {
   display:flex;
   flex-wrap:wrap;
@@ -274,94 +270,139 @@ main {
 }
 
 
-/* APPLICATION ARCHITECTURE */
+/* LIFECYCLE */
 
-.architecture-stack {
+.lifecycle {
   display:flex;
   flex-direction:column;
-  gap:8px;
+  gap:7px;
 }
 
-.arch-box {
-  padding:13px;
+.lifecycle-row {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:7px;
+}
+
+.lifecycle-box {
+  min-height:74px;
+  padding:10px 7px;
   border:1px solid #dce1e9;
   border-radius:7px;
   background:#fafbfc;
   text-align:center;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
 }
 
-.arch-box.primary {
+.lifecycle-box.primary {
   background:var(--blue-soft);
   border-color:#cbdcff;
 }
 
-.arch-box strong {
-  display:block;
+.lifecycle-box strong {
   color:var(--navy);
-  font-size:11px;
-}
-
-.arch-box span {
-  display:block;
-  margin-top:3px;
-  color:var(--muted);
   font-size:9px;
 }
 
-.arch-row {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:8px;
+.lifecycle-box span {
+  margin-top:3px;
+  color:var(--muted);
+  font-size:8px;
+  line-height:1.4;
 }
 
-.arch-arrow {
+.lifecycle-user {
+  margin-top:10px;
+  padding:11px;
+  border-radius:7px;
+  background:var(--navy);
+  color:white;
   text-align:center;
-  color:#98a2b3;
-  font-size:15px;
+  font-size:10px;
+}
+
+.lifecycle-user span {
+  display:block;
+  margin-top:2px;
+  color:rgba(255,255,255,.65);
+  font-size:8px;
 }
 
 
-/* ENGINEERING */
+/* APPLICATION ARCHITECTURE */
 
-.engineering-grid {
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:9px;
+.app-stack {
+  display:flex;
+  flex-direction:column;
+  gap:7px;
 }
 
-.engineering-card {
-  min-height:118px;
-  padding:15px;
+.app-box {
+  padding:12px;
   border:1px solid #dce1e9;
   border-radius:7px;
   background:#fafbfc;
+  text-align:center;
 }
 
-.engineering-card strong {
+.app-box.primary {
+  background:var(--blue-soft);
+  border-color:#cbdcff;
+}
+
+.app-box.dark {
+  background:var(--navy);
+  border-color:var(--navy);
+}
+
+.app-box strong {
   display:block;
-  margin-bottom:5px;
   color:var(--navy);
-  font-size:12px;
-}
-
-.engineering-card span {
-  color:var(--muted);
   font-size:10px;
-  line-height:1.5;
+}
+
+.app-box.dark strong {
+  color:white;
+}
+
+.app-box span {
+  display:block;
+  margin-top:3px;
+  color:var(--muted);
+  font-size:8px;
+}
+
+.app-box.dark span {
+  color:rgba(255,255,255,.67);
+}
+
+.app-row {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:7px;
+}
+
+.arrow-down {
+  text-align:center;
+  color:#98a2b3;
+  font-size:14px;
+  line-height:1;
 }
 
 
-/* VYMO FLOW */
+/* VYMO */
 
 .integration-flow {
   display:grid;
-  grid-template-columns:1fr 25px 1.25fr 25px 1fr;
+  grid-template-columns:1fr 28px 1fr 28px 1fr;
   align-items:center;
 }
 
 .integration-box {
   min-height:120px;
-  padding:13px 9px;
+  padding:12px;
   border:1px solid #dce1e9;
   border-radius:7px;
   background:#fafbfc;
@@ -376,7 +417,7 @@ main {
   border-color:#cbdcff;
 }
 
-.integration-box.external {
+.integration-box.dark {
   background:var(--navy);
   border-color:var(--navy);
 }
@@ -384,10 +425,10 @@ main {
 .integration-box strong {
   display:block;
   color:var(--navy);
-  font-size:11px;
+  font-size:10px;
 }
 
-.integration-box.external strong {
+.integration-box.dark strong {
   color:white;
 }
 
@@ -395,91 +436,18 @@ main {
   display:block;
   margin-top:4px;
   color:var(--muted);
-  font-size:9px;
-  line-height:1.45;
-}
-
-.integration-box.external span {
-  color:rgba(255,255,255,.65);
-}
-
-.arrow {
-  text-align:center;
-  color:#98a2b3;
-  font-size:16px;
-}
-
-.integration-note {
-  margin-top:10px;
-  padding:11px 13px;
-  border-left:3px solid var(--blue);
-  background:var(--blue-soft);
-  color:#475467;
-  font-size:10px;
-  line-height:1.5;
-}
-
-
-/* API ENGINEERING */
-
-.api-grid {
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:9px;
-}
-
-.api-card {
-  min-height:115px;
-  padding:15px;
-  border:1px solid #dce1e9;
-  border-radius:7px;
-  background:#fafbfc;
-}
-
-.api-card strong {
-  display:block;
-  margin-bottom:5px;
-  color:var(--navy);
-  font-size:12px;
-}
-
-.api-card span {
-  color:var(--muted);
-  font-size:10px;
-  line-height:1.5;
-}
-
-
-/* DELIVERY FLOW */
-
-.delivery-flow {
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:8px;
-}
-
-.delivery-step {
-  min-height:105px;
-  padding:13px 8px;
-  border:1px solid #dce1e9;
-  border-radius:7px;
-  background:#fafbfc;
-  text-align:center;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-}
-
-.delivery-step strong {
-  color:var(--navy);
-  font-size:10px;
-}
-
-.delivery-step span {
-  margin-top:4px;
-  color:var(--muted);
   font-size:8px;
   line-height:1.45;
+}
+
+.integration-box.dark span {
+  color:rgba(255,255,255,.67);
+}
+
+.integration-arrow {
+  color:#98a2b3;
+  text-align:center;
+  font-size:15px;
 }
 
 
@@ -492,61 +460,24 @@ main {
 }
 
 .contribution-card {
-  min-height:130px;
+  min-height:125px;
   padding:15px;
   border:1px solid #dce1e9;
   border-radius:7px;
   background:#fafbfc;
 }
 
-.contribution-label {
-  display:block;
-  margin-bottom:5px;
-  color:var(--blue);
-  font-size:9px;
-  font-weight:700;
-  letter-spacing:.7px;
-  text-transform:uppercase;
-}
-
 .contribution-card strong {
   display:block;
   margin-bottom:5px;
   color:var(--navy);
-  font-size:13px;
+  font-size:11px;
 }
 
 .contribution-card span {
   color:var(--muted);
   font-size:9px;
   line-height:1.5;
-}
-
-
-/* REVIEW */
-
-.review {
-  margin-top:12px;
-  padding:13px 15px;
-  background:var(--review);
-  border:1px solid var(--review-border);
-  border-radius:7px;
-}
-
-.review strong {
-  display:block;
-  margin-bottom:4px;
-  color:#67530a;
-  font-size:9px;
-  letter-spacing:.7px;
-  text-transform:uppercase;
-}
-
-.review p {
-  margin:0;
-  color:#67530a;
-  font-size:10px;
-  line-height:1.55;
 }
 
 
@@ -591,22 +522,13 @@ footer {
     display:none;
   }
 
-  .hero-inner {
-    padding-top:42px;
-  }
-
-  .hero-meta,
-  .engineering-grid,
-  .api-grid,
-  .contribution-grid {
+  .hero-meta {
     grid-template-columns:1fr;
   }
 
-  .project-section {
-    padding:35px 0;
-  }
-
-  .arch-row {
+  .lifecycle-row,
+  .app-row,
+  .contribution-grid {
     grid-template-columns:1fr;
   }
 
@@ -615,12 +537,12 @@ footer {
     gap:7px;
   }
 
-  .arrow {
+  .integration-arrow {
     transform:rotate(90deg);
   }
 
-  .delivery-flow {
-    grid-template-columns:repeat(2,1fr);
+  .project-section {
+    padding:35px 0;
   }
 
   .footer-inner {
@@ -694,9 +616,9 @@ footer {
 
     <p class="hero-summary">
       Developing and enhancing an enterprise policy administration
-      platform for the commercial insurance domain, working across
-      application functionality, APIs and system integration using
-      ASP.NET, Sencha Ext JS and MongoDB.
+      platform supporting the full commercial insurance lifecycle,
+      working across application functionality, APIs and system
+      integration using ASP.NET, Sencha Ext JS and MongoDB.
     </p>
 
 
@@ -713,8 +635,8 @@ footer {
       </div>
 
       <div class="meta-item">
-        <strong>Current Feature Focus</strong>
-        Vymo Integration
+        <strong>Primary Users</strong>
+        Insurance Agents
       </div>
 
     </div>
@@ -752,103 +674,91 @@ footer {
       </div>
 
       <h2>
-        Engineering within a commercial insurance platform
+        Supporting the full commercial policy lifecycle
       </h2>
 
       <div class="section-question">
-        Enterprise policy systems bring together business workflows,
-        application logic, data and external integrations.
+        An enterprise platform used by insurance agents across the
+        lifecycle of a commercial insurance policy.
       </div>
 
       <p>
-        The platform supports policy administration within the
-        commercial insurance domain. Development work spans the
-        application interface, server-side functionality, data
-        handling and integrations with external systems.
+        The application supports the end-to-end commercial policy
+        lifecycle, covering quote and submission through underwriting,
+        binding, policy issuance, endorsements and renewal.
       </p>
 
       <p>
-        The application uses Sencha Ext JS on the user-interface
-        layer, ASP.NET for application functionality and MongoDB
-        for data persistence.
-      </p>
-
-      <p>
-        The work therefore involves engineering across multiple
-        layers of an existing enterprise application rather than
-        developing an isolated standalone feature.
+        Insurance agents are the primary users of the platform,
+        managing policy-related activities across these different
+        stages within a single application.
       </p>
 
     </div>
 
 
-    <div>
+    <div class="panel">
 
-      <div class="panel">
-
-        <div class="panel-title">
-          Application Architecture
-        </div>
-
-        <div class="architecture-stack">
-
-          <div class="arch-box">
-            <strong>Commercial Lines Workflow</strong>
-            <span>Insurance business processes</span>
-          </div>
-
-          <div class="arch-arrow">↓</div>
-
-          <div class="arch-box primary">
-            <strong>Policy Administration Platform</strong>
-            <span>Enterprise application</span>
-          </div>
-
-          <div class="arch-arrow">↓</div>
-
-          <div class="arch-row">
-
-            <div class="arch-box">
-              <strong>UI</strong>
-              <span>Sencha Ext JS</span>
-            </div>
-
-            <div class="arch-box">
-              <strong>Application</strong>
-              <span>ASP.NET</span>
-            </div>
-
-            <div class="arch-box">
-              <strong>Data</strong>
-              <span>MongoDB</span>
-            </div>
-
-          </div>
-
-          <div class="arch-arrow">↓</div>
-
-          <div class="arch-box">
-            <strong>External Integrations</strong>
-            <span>REST APIs and connected systems</span>
-          </div>
-
-        </div>
-
+      <div class="panel-title">
+        Commercial Policy Lifecycle
       </div>
 
+      <div class="lifecycle">
 
-      <div class="review">
+        <div class="lifecycle-row">
 
-        <strong>
-          Input needed from Karthik · Application context
-        </strong>
+          <div class="lifecycle-box">
+            <strong>Quote</strong>
+            <span>Policy initiation</span>
+          </div>
 
-        <p>
-          Which parts of the commercial policy lifecycle does the
-          application support — for example quote, submission,
-          underwriting, binding, policy issuance, endorsement or
-          renewal? Who are the primary users of the platform?
-        </p>
+          <div class="lifecycle-box">
+            <strong>Submission</strong>
+            <span>Application details</span>
+          </div>
+
+          <div class="lifecycle-box primary">
+            <strong>Underwriting</strong>
+            <span>Risk assessment</span>
+          </div>
+
+          <div class="lifecycle-box">
+            <strong>Bind</strong>
+            <span>Coverage confirmation</span>
+          </div>
+
+        </div>
+
+
+        <div class="lifecycle-row">
+
+          <div class="lifecycle-box">
+            <strong>Issue</strong>
+            <span>Policy issuance</span>
+          </div>
+
+          <div class="lifecycle-box">
+            <strong>Service</strong>
+            <span>Policy servicing</span>
+          </div>
+
+          <div class="lifecycle-box primary">
+            <strong>Endorse</strong>
+            <span>Policy changes</span>
+          </div>
+
+          <div class="lifecycle-box">
+            <strong>Renew</strong>
+            <span>Policy renewal</span>
+          </div>
+
+        </div>
+
+
+        <div class="lifecycle-user">
+          Insurance Agents
+          <span>Primary users across the policy lifecycle</span>
+        </div>
 
       </div>
 
@@ -873,35 +783,35 @@ footer {
       </div>
 
       <h2>
-        Working across the application stack
+        Engineering within an enterprise application
       </h2>
 
       <div class="section-question">
-        Feature development often requires changes across the UI,
-        application logic, data layer and external interfaces.
+        Development spans the user interface, application layer,
+        data layer and external integrations.
       </div>
 
       <p>
-        Development work on the platform includes implementing and
-        enhancing application functionality, working with APIs and
-        integrating data across system boundaries.
+        My work involves developing and enhancing functionality within
+        the existing policy administration platform, working across
+        application code, data and integration points.
       </p>
 
       <p>
-        Sencha Ext JS is used for the application interface while
-        ASP.NET supports server-side application functionality.
-        MongoDB forms part of the application's data layer.
+        The application uses Sencha Ext JS for the user interface,
+        ASP.NET for application functionality and MongoDB for the
+        data layer.
       </p>
 
       <p>
-        The role also includes testing and validating changes as
-        features move toward production-quality delivery.
+        The work combines application development with integration
+        into an established enterprise platform supporting complex
+        commercial insurance workflows.
       </p>
 
 
       <div class="tags">
 
-        <span class="tag">Application Development</span>
         <span class="tag">ASP.NET</span>
         <span class="tag">Sencha Ext JS</span>
         <span class="tag">MongoDB</span>
@@ -912,88 +822,46 @@ footer {
     </div>
 
 
-    <div>
+    <div class="panel">
 
-      <div class="panel">
-
-        <div class="panel-title">
-          Engineering Across the Stack
-        </div>
-
-        <div class="engineering-grid">
-
-          <div class="engineering-card">
-
-            <strong>
-              User Interface
-            </strong>
-
-            <span>
-              Application screens and user-facing functionality
-              using Sencha Ext JS.
-            </span>
-
-          </div>
-
-
-          <div class="engineering-card">
-
-            <strong>
-              Application Logic
-            </strong>
-
-            <span>
-              Server-side functionality within the ASP.NET
-              application.
-            </span>
-
-          </div>
-
-
-          <div class="engineering-card">
-
-            <strong>
-              Data
-            </strong>
-
-            <span>
-              Working with application data persisted through
-              MongoDB.
-            </span>
-
-          </div>
-
-
-          <div class="engineering-card">
-
-            <strong>
-              Integration
-            </strong>
-
-            <span>
-              Connecting application functionality with external
-              systems through APIs.
-            </span>
-
-          </div>
-
-        </div>
-
+      <div class="panel-title">
+        Application Architecture
       </div>
 
+      <div class="app-stack">
 
-      <div class="review">
+        <div class="app-box">
+          <strong>Agent Experience</strong>
+          <span>Commercial policy workflows</span>
+        </div>
 
-        <strong>
-          Inputs needed from Karthik · Engineering examples
-        </strong>
+        <div class="arrow-down">↓</div>
 
-        <p>
-          Give us two or three concrete features you have developed
-          or enhanced apart from the Vymo integration. Also confirm
-          the .NET version and whether the server-side code is
-          primarily C#.
-        </p>
+        <div class="app-row">
+
+          <div class="app-box">
+            <strong>UI</strong>
+            <span>Sencha Ext JS</span>
+          </div>
+
+          <div class="app-box primary">
+            <strong>Application</strong>
+            <span>ASP.NET</span>
+          </div>
+
+          <div class="app-box">
+            <strong>Data</strong>
+            <span>MongoDB</span>
+          </div>
+
+        </div>
+
+        <div class="arrow-down">↓</div>
+
+        <div class="app-box dark">
+          <strong>External Integrations</strong>
+          <span>REST APIs · Connected systems</span>
+        </div>
 
       </div>
 
@@ -1014,395 +882,36 @@ footer {
     <div class="section-copy">
 
       <div class="section-number">
-        03 · FEATURE FOCUS · VYMO INTEGRATION
+        03 · FEATURE FOCUS
       </div>
 
       <h2>
-        Connecting policy data with a sales engagement platform
+        Vymo integration
       </h2>
 
       <div class="section-question">
-        How can information already held within the policy
-        administration system support downstream sales activity?
+        Connecting an external platform to bring lead information
+        into the agent-facing application.
       </div>
 
       <p>
-        A current area of development is the integration of the
-        commercial lines application with Vymo, an external sales
-        engagement platform.
+        A key feature I am currently working on is the integration
+        between the commercial lines application and Vymo through
+        APIs.
       </p>
 
       <p>
-        The integration connects information from the policy
-        administration environment with Vymo so that relevant
-        customer or policy context can support lead and opportunity
-        workflows.
+        Vymo returns lead information that can be brought into the
+        policy administration experience for agents. The integration
+        requires the external service to work within the application's
+        existing logic, data structure and user workflow.
       </p>
 
       <p>
-        From an engineering perspective, this introduces a system
-        boundary: information has to move between two applications
-        through a defined API integration while remaining usable
-        within the commercial-lines workflow.
-      </p>
-
-    </div>
-
-
-    <div>
-
-      <div class="panel">
-
-        <div class="panel-title">
-          Integration Context
-        </div>
-
-        <div class="integration-flow">
-
-          <div class="integration-box">
-
-            <strong>
-              Policy Data
-            </strong>
-
-            <span>
-              Customer and commercial insurance context
-            </span>
-
-          </div>
-
-          <div class="arrow">
-            →
-          </div>
-
-          <div class="integration-box primary">
-
-            <strong>
-              Policy Administration Platform
-            </strong>
-
-            <span>
-              ASP.NET · Sencha Ext JS · MongoDB
-            </span>
-
-          </div>
-
-          <div class="arrow">
-            ⇄
-          </div>
-
-          <div class="integration-box external">
-
-            <strong>
-              Vymo
-            </strong>
-
-            <span>
-              External sales engagement platform
-            </span>
-
-          </div>
-
-        </div>
-
-
-        <div class="integration-note">
-          This represents the integration context only. The exact
-          direction of each data exchange and the response objects
-          should be updated once the API flow is confirmed.
-        </div>
-
-      </div>
-
-
-      <div class="review">
-
-        <strong>
-          Inputs needed from Karthik · Vymo flow
-        </strong>
-
-        <p>
-          What exact data is sent to Vymo? Does Vymo return leads,
-          opportunities, recommendations or another object? Is the
-          integration one-way or two-way? When is the API called —
-          in real time from a user action, through a scheduled
-          process, or through another trigger?
-        </p>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<!-- 04 API ENGINEERING -->
-
-<section class="project-section">
-
-  <div class="section-grid">
-
-    <div class="section-copy">
-
-      <div class="section-number">
-        04 · ENGINEERING THE INTEGRATION
-      </div>
-
-      <h2>
-        Turning an external API into application functionality
-      </h2>
-
-      <div class="section-question">
-        API integration involves more than simply making an
-        HTTP request.
-      </div>
-
-      <p>
-        The Vymo feature requires the policy administration
-        application to communicate with an external platform through
-        an API and translate that interaction into functionality
-        usable within the existing application.
-      </p>
-
-      <p>
-        This means aligning the application's internal data with the
-        external API contract, handling the returned information and
-        making the integration part of the appropriate business
-        workflow.
-      </p>
-
-      <p>
-        The precise authentication, mapping, validation and
-        failure-handling mechanisms are being kept out of the public
-        description until the implementation details are confirmed.
-      </p>
-
-    </div>
-
-
-    <div>
-
-      <div class="panel">
-
-        <div class="panel-title">
-          Integration Engineering
-        </div>
-
-        <div class="api-grid">
-
-          <div class="api-card">
-
-            <strong>
-              Application Data
-            </strong>
-
-            <span>
-              Identify the internal customer or policy information
-              required by the external integration.
-            </span>
-
-          </div>
-
-
-          <div class="api-card">
-
-            <strong>
-              API Contract
-            </strong>
-
-            <span>
-              Map application data to the structure expected by
-              the external API.
-            </span>
-
-          </div>
-
-
-          <div class="api-card">
-
-            <strong>
-              Response Handling
-            </strong>
-
-            <span>
-              Process information returned by the external platform
-              for use within the application.
-            </span>
-
-          </div>
-
-
-          <div class="api-card">
-
-            <strong>
-              Application Workflow
-            </strong>
-
-            <span>
-              Surface the integrated information within the
-              appropriate commercial-lines workflow.
-            </span>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="review">
-
-        <strong>
-          Inputs needed from Karthik · API implementation
-        </strong>
-
-        <p>
-          How is the Vymo API authenticated? What request and response
-          formats are used? What transformations or mappings are
-          required? Is returned data stored in MongoDB or retrieved
-          dynamically? How are failures, retries, validation and
-          duplicate records handled?
-        </p>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<!-- 05 TESTING & DELIVERY -->
-
-<section class="project-section">
-
-  <div class="section-grid">
-
-    <div class="section-copy">
-
-      <div class="section-number">
-        05 · TESTING &amp; DELIVERY
-      </div>
-
-      <h2>
-        Validating changes across application boundaries
-      </h2>
-
-      <div class="section-question">
-        Integration features need to work correctly both within the
-        application and across the connected systems.
-      </div>
-
-      <p>
-        Development work includes supporting QA and testing so that
-        application changes can be validated before release.
-      </p>
-
-      <p>
-        For an external integration, this means considering not only
-        the individual application feature but also the data exchanged
-        between systems and the resulting user workflow.
-      </p>
-
-    </div>
-
-
-    <div>
-
-      <div class="panel">
-
-        <div class="panel-title">
-          Delivery Flow
-        </div>
-
-        <div class="delivery-flow">
-
-          <div class="delivery-step">
-            <strong>Develop</strong>
-            <span>Implement application and integration changes</span>
-          </div>
-
-          <div class="delivery-step">
-            <strong>Integrate</strong>
-            <span>Connect application and external API behaviour</span>
-          </div>
-
-          <div class="delivery-step">
-            <strong>Test</strong>
-            <span>Validate functionality and data exchange</span>
-          </div>
-
-          <div class="delivery-step">
-            <strong>Release</strong>
-            <span>Support production-quality delivery</span>
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="review">
-
-        <strong>
-          Input needed from Karthik · Testing
-        </strong>
-
-        <p>
-          What testing does Karthik personally perform — unit,
-          integration, API, regression or manual validation? What
-          tools are used? Does he participate in code review,
-          deployment or production support?
-        </p>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<!-- 06 CONTRIBUTION -->
-
-<section class="project-section">
-
-  <div class="section-grid">
-
-    <div class="section-copy">
-
-      <div class="section-number">
-        06 · ENGINEERING CONTRIBUTION
-      </div>
-
-      <h2>
-        Building within an existing enterprise product
-      </h2>
-
-      <div class="section-question">
-        The work combines application development with the practical
-        realities of extending a production business system.
-      </div>
-
-      <p>
-        Karthik's work on the platform spans application functionality,
-        API integration, data handling and testing within an established
-        commercial insurance product.
-      </p>
-
-      <p>
-        The Vymo integration is a useful example of that work because
-        it crosses the boundary between application engineering and
-        system integration — connecting an existing policy platform
-        with an external service and bringing the resulting functionality
-        back into the user's workflow.
+        This work combines API integration with application
+        development — connecting the external service and handling
+        the returned information within an established enterprise
+        platform.
       </p>
 
     </div>
@@ -1411,23 +920,97 @@ footer {
     <div class="panel">
 
       <div class="panel-title">
-        Engineering Scope
+        Feature Integration
+      </div>
+
+      <div class="integration-flow">
+
+        <div class="integration-box">
+          <strong>Policy Platform</strong>
+          <span>Agent-facing commercial lines application</span>
+        </div>
+
+        <div class="integration-arrow">
+          →
+        </div>
+
+        <div class="integration-box primary">
+          <strong>API Integration</strong>
+          <span>Connect with external service</span>
+        </div>
+
+        <div class="integration-arrow">
+          ←
+        </div>
+
+        <div class="integration-box dark">
+          <strong>Vymo</strong>
+          <span>Returns lead information</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- 04 ENGINEERING CONTRIBUTION -->
+
+<section class="project-section">
+
+  <div class="section-grid">
+
+    <div class="section-copy">
+
+      <div class="section-number">
+        04 · ENGINEERING CONTRIBUTION
+      </div>
+
+      <h2>
+        Application development in a business-critical platform
+      </h2>
+
+      <div class="section-question">
+        Hands-on development across application functionality,
+        integrations and delivery.
+      </div>
+
+      <p>
+        My contribution spans application development, API integration
+        and testing within a platform that supports the complete
+        commercial policy lifecycle.
+      </p>
+
+      <p>
+        The work involves developing changes within an existing
+        enterprise application, integrating them with connected
+        systems and validating that new functionality works within
+        the broader agent and policy workflow.
+      </p>
+
+    </div>
+
+
+    <div class="panel">
+
+      <div class="panel-title">
+        Engineering Focus
       </div>
 
       <div class="contribution-grid">
 
         <div class="contribution-card">
 
-          <span class="contribution-label">
-            Application
-          </span>
-
           <strong>
-            Feature Development
+            Application Development
           </strong>
 
           <span>
-            Building and enhancing functionality within an enterprise
+            Enhancing functionality across an established commercial
             policy administration platform.
           </span>
 
@@ -1436,17 +1019,13 @@ footer {
 
         <div class="contribution-card">
 
-          <span class="contribution-label">
-            Integration
-          </span>
-
           <strong>
-            API Engineering
+            API Integration
           </strong>
 
           <span>
-            Connecting application workflows and data with external
-            systems.
+            Connecting external services with existing application
+            workflows and functionality.
           </span>
 
         </div>
@@ -1454,17 +1033,13 @@ footer {
 
         <div class="contribution-card">
 
-          <span class="contribution-label">
-            Delivery
-          </span>
-
           <strong>
             Testing &amp; Validation
           </strong>
 
           <span>
-            Supporting application testing and production-quality
-            delivery of changes.
+            Validating application and integration changes within the
+            broader platform.
           </span>
 
         </div>
