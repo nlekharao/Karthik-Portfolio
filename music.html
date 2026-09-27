@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Music & DJing | Karthik Rao</title>
+
+<style>
+
+:root {
+  --bg:#101827;
+  --navy:#18253d;
+  --navy-light:#22314d;
+  --text:#f5f7fa;
+  --muted:rgba(255,255,255,.66);
+  --soft:rgba(255,255,255,.08);
+  --line:rgba(255,255,255,.12);
+  --blue:#8fb0ff;
+  --white:#ffffff;
+}
+
+* {
+  box-sizing:border-box;
+}
+
+html {
+  scroll-behavior:smooth;
+}
+
+body {
+  margin:0;
+  font-family:Inter,Arial,Helvetica,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.7;
+}
+
+
+/* NAVIGATION */
+
+.nav {
+  background:rgba(16,24,39,.96);
+  border-bottom:1px solid var(--line);
+  position:sticky;
+  top:0;
+  z-index:100;
+  backdrop-filter:blur(10px);
+}
+
+.nav-inner {
+  max-width:1120px;
+  margin:auto;
+  height:68px;
+  padding:0 28px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.brand {
+  font-size:22px;
+  font-weight:700;
+  color:white;
+  text-decoration:none;
+  letter-spacing:-.3px;
+}
+
+.nav-links {
+  display:flex;
+  gap:28px;
+}
+
+.nav-links a {
+  color:rgba(255,255,255,.62);
+  text-decoration:none;
+  font-size:14px;
+  font-weight:500;
+}
+
+.nav-links a:hover {
+  color:white;
+}
+
+
+/* HERO */
+
+.hero {
+  max-width:1120px;
+  margin:auto;
+  padding:48px 28px 64px;
+}
+
+.back-link {
+  display:inline-block;
+  margin-bottom:30px;
+  color:rgba(255,255,255,.55);
+  text-decoration:none;
+  font-size:13px;
+}
+
+.back-link:hover {
+  color:white;
+}
+
+.hero-grid {
+  display:grid;
+  grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);
+  gap:65px;
+  align-items:center;
+}
+
+.hero-label {
+  margin-bottom:12px;
+  color:var(--blue);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:1.4px;
+  text-transform:uppercase;
+}
+
+.hero h1 {
+  margin:0;
+  max-width:520px;
+  color:white;
+  font-size:clamp(48px,6vw,70px);
+  line-height:1.02;
+  letter-spacing:-2.3px;
+}
+
+.hero-intro {
+  max-width:520px;
+  margin:22px 0 0;
+  color:var(--muted);
+  font-size:17px;
+  line-height:1.75;
+}
+
+.hero-image-wrap {
+  position:relative;
+}
+
+.hero-image {
+  width:100%;
+  height:470px;
+  display:block;
+  object-fit:cover;
+  border-radius:14px;
+}
+
+.image-caption {
+  margin-top:9px;
+  color:rgba(255,255,255,.4);
+  font-size:10px;
+}
+
+
+/* INTRO QUOTE */
+
+.music-thought {
+  max-width:900px;
+  margin:0 auto;
+  padding:12px 28px 70px;
+  text-align:center;
+}
+
+.music-thought p {
+  margin:0;
+  color:rgba(255,255,255,.88);
+  font-size:clamp(22px,3vw,31px);
+  line-height:1.5;
+  letter-spacing:-.4px;
+}
+
+
+/* STORIES */
+
+.stories {
+  max-width:1000px;
+  margin:auto;
+  padding:0 28px 70px;
+}
+
+.story {
+  display:grid;
+  grid-template-columns:180px minmax(0,1fr);
+  gap:55px;
+  padding:38px 0;
+  border-top:1px solid var(--line);
+}
+
+.story:last-child {
+  border-bottom:1px solid var(--line);
+}
+
+.story-number {
+  color:var(--blue);
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:1.2px;
+  text-transform:uppercase;
+}
+
+.story-content h2 {
+  margin:0 0 13px;
+  color:white;
+  font-size:26px;
+  line-height:1.25;
+  letter-spacing:-.5px;
+}
+
+.story-content p {
+  max-width:680px;
+  margin:0;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.8;
+}
+
+
+/* NEW YORK */
+
+.new-york {
+  max-width:1000px;
+  margin:0 auto 70px;
+  padding:0 28px;
+}
+
+.new-york-card {
+  padding:38px 42px;
+  border:1px solid var(--line);
+  border-radius:13px;
+  background:var(--navy);
+}
+
+.new-york-label {
+  margin-bottom:9px;
+  color:var(--blue);
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:1.2px;
+  text-transform:uppercase;
+}
+
+.new-york-card h2 {
+  margin:0;
+  color:white;
+  font-size:30px;
+  letter-spacing:-.6px;
+}
+
+.new-york-card p {
+  max-width:750px;
+  margin:15px 0 0;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.8;
+}
+
+
+/* CLOSING */
+
+.closing {
+  max-width:850px;
+  margin:auto;
+  padding:5px 28px 80px;
+  text-align:center;
+}
+
+.closing-line {
+  width:35px;
+  height:2px;
+  margin:0 auto 25px;
+  background:var(--blue);
+}
+
+.closing p {
+  margin:0;
+  color:rgba(255,255,255,.82);
+  font-size:19px;
+  line-height:1.7;
+}
+
+
+/* BACK TO WORK */
+
+.back-to-work {
+  max-width:1120px;
+  margin:auto;
+  padding:0 28px 65px;
+}
+
+.back-card {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:30px;
+  padding:22px 25px;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+
+.back-card span {
+  color:rgba(255,255,255,.5);
+  font-size:12px;
+}
+
+.back-card a {
+  color:var(--blue);
+  text-decoration:none;
+  font-size:12px;
+  font-weight:600;
+}
+
+.back-card a:hover {
+  color:white;
+}
+
+
+/* FOOTER */
+
+footer {
+  border-top:1px solid var(--line);
+}
+
+.footer-inner {
+  max-width:1120px;
+  margin:auto;
+  padding:28px;
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  color:rgba(255,255,255,.42);
+  font-size:12px;
+}
+
+.footer-inner a {
+  color:rgba(255,255,255,.6);
+  text-decoration:none;
+}
+
+.footer-inner a:hover {
+  color:white;
+}
+
+
+/* RESPONSIVE */
+
+@media(max-width:850px) {
+
+  .hero-grid {
+    grid-template-columns:1fr;
+    gap:35px;
+  }
+
+  .hero-image {
+    max-width:600px;
+    height:420px;
+  }
+
+}
+
+
+@media(max-width:760px) {
+
+  .nav-links {
+    display:none;
+  }
+
+  .hero {
+    padding-top:40px;
+  }
+
+  .hero-image {
+    height:360px;
+  }
+
+  .story {
+    grid-template-columns:1fr;
+    gap:8px;
+    padding:32px 0;
+  }
+
+  .new-york-card {
+    padding:28px;
+  }
+
+  .back-card {
+    align-items:flex-start;
+    flex-direction:column;
+    gap:8px;
+  }
+
+  .footer-inner {
+    flex-direction:column;
+  }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- NAVIGATION -->
+
+<nav class="nav">
+
+  <div class="nav-inner">
+
+    <a class="brand" href="index.html">
+      Karthik Rao
+    </a>
+
+    <div class="nav-links">
+
+      <a href="index.html#work">
+        Work
+      </a>
+
+      <a href="academic-projects.html">
+        Academic Projects
+      </a>
+
+      <a href="index.html#focus">
+        Technical Focus
+      </a>
+
+      <a href="https://www.linkedin.com/in/mkarthikrao"
+         target="_blank"
+         rel="noopener noreferrer">
+        LinkedIn
+      </a>
+
+    </div>
+
+  </div>
+
+</nav>
+
+
+
+<!-- HERO -->
+
+<header class="hero">
+
+  <a class="back-link" href="index.html">
+    ← Back to portfolio
+  </a>
+
+  <div class="hero-grid">
+
+    <div>
+
+      <div class="hero-label">
+        Beyond Engineering
+      </div>
+
+      <h1>
+        Music &amp;<br>
+        DJing
+      </h1>
+
+      <p class="hero-intro">
+        Music has always been something I've enjoyed, but DJing
+        changed the way I listen to it. It made me think about
+        rhythm, transitions and how different tracks can come
+        together to change the energy of a room.
+      </p>
+
+    </div>
+
+
+    <div class="hero-image-wrap">
+
+      <img
+        class="hero-image"
+        src="karthik-djing.jpg"
+        alt="Karthik DJing at an event">
+
+    </div>
+
+  </div>
+
+</header>
+
+
+
+<!-- PERSONAL THOUGHT -->
+
+<section class="music-thought">
+
+  <p>
+    “At some point, listening wasn't quite enough.
+    I wanted to understand how tracks could work together.”
+  </p>
+
+</section>
+
+
+
+<!-- STORIES -->
+
+<section class="stories">
+
+
+  <!-- WHY MUSIC -->
+
+  <article class="story">
+
+    <div class="story-number">
+      01 · Why Music
+    </div>
+
+    <div class="story-content">
+
+      <h2>
+        Drawn to electronic music
+      </h2>
+
+      <p>
+        I've always been drawn to electronic music — the rhythm,
+        the energy and the way different layers build over time.
+        There is a lot happening within a track, and the more I
+        listened, the more interested I became in how those
+        elements work together.
+      </p>
+
+    </div>
+
+  </article>
+
+
+
+  <!-- WHY DJING -->
+
+  <article class="story">
+
+    <div class="story-number">
+      02 · Why DJing
+    </div>
+
+    <div class="story-content">
+
+      <h2>
+        From listening to putting music together
+      </h2>
+
+      <p>
+        At some point, listening wasn't quite enough. I became
+        curious about how tracks could work together — how moving
+        from one sound or mood to another could change the way the
+        music felt. DJing gave me a way to engage with music rather
+        than only listen to it.
+      </p>
+
+    </div>
+
+  </article>
+
+
+
+  <!-- BEHIND THE DECKS -->
+
+  <article class="story">
+
+    <div class="story-number">
+      03 · Behind the Decks
+    </div>
+
+    <div class="story-content">
+
+      <h2>
+        Reading the room
+      </h2>
+
+      <p>
+        The best part is seeing people respond to what you're
+        playing. You might have an idea of where you want the set
+        to go, but you're also reacting to the room. When a
+        transition works and you can feel the energy change,
+        there's an immediate connection that you don't get when
+        you're listening to music on your own.
+      </p>
+
+    </div>
+
+  </article>
+
+
+</section>
+
+
+
+<!-- NEW YORK -->
+
+<section class="new-york">
+
+  <div class="new-york-card">
+
+    <div class="new-york-label">
+      A memorable experience
+    </div>
+
+    <h2>
+      Playing in New York
+    </h2>
+
+    <p>
+      I had the opportunity to play a couple of sets at events in
+      New York. I was still DJing for fun, but playing for an
+      actual room of people made it feel completely different.
+      What I remember most is seeing people respond to music I had
+      chosen and mixed — that was probably the point at which
+      DJing became more than something I just did at home.
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<!-- CLOSING -->
+
+<section class="closing">
+
+  <div class="closing-line"></div>
+
+  <p>
+    For me, DJing is still something I do because I enjoy it —
+    discovering music, experimenting with what works together
+    and occasionally getting the chance to share it with a room
+    full of people.
+  </p>
+
+</section>
+
+
+
+<!-- BACK TO WORK -->
+
+<section class="back-to-work">
+
+  <div class="back-card">
+
+    <span>
+      That's the part beyond engineering.
+    </span>
+
+    <a href="index.html#work">
+      Back to my engineering work →
+    </a>
+
+  </div>
+
+</section>
+
+
+
+<footer>
+
+  <div class="footer-inner">
+
+    <span>
+      © Karthik Rao · Technical Portfolio
+    </span>
+
+    <a href="https://www.linkedin.com/in/mkarthikrao"
+       target="_blank"
+       rel="noopener noreferrer">
+      LinkedIn
+    </a>
+
+  </div>
+
+</footer>
+
+
+</body>
+</html>
