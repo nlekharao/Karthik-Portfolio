@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>User Journey & Drop-off Analysis | Karthik Rao</title>
+<title>User Conversion & Drop-off Analysis | Karthik Rao</title>
 
 <style>
 
@@ -401,7 +401,7 @@ main {
 
 .model-flow {
   display:grid;
-  grid-template-columns:1fr 24px 1fr 24px 1fr;
+  grid-template-columns:1fr 20px 1fr 20px 1fr;
   align-items:center;
 }
 
@@ -696,15 +696,16 @@ footer {
     </div>
 
     <h1>
-      User Journey &amp; Drop-off Analysis
+      User Conversion &amp; Drop-off Analysis
     </h1>
 
     <p class="hero-summary">
       Analysed approximately 20,000 user interactions for a U.S.
-      property &amp; casualty insurance carrier to understand drop-off
-      across the application journey. Used Random Forest to examine
-      behavioural patterns and developed a web prototype incorporating
-      improvements suggested by the analysis.
+      property &amp; casualty insurance carrier to understand navigation
+      patterns and identify where users dropped off before converting.
+      Built Logistic Regression and Random Forest models to predict
+      conversion likelihood, then translated the findings into UX
+      recommendations and a web prototype.
     </p>
 
 
@@ -730,12 +731,13 @@ footer {
 
     <div class="hero-tags">
 
-      <span class="hero-tag">User Journey Analysis</span>
+      <span class="hero-tag">Conversion Analysis</span>
+      <span class="hero-tag">Logistic Regression</span>
       <span class="hero-tag">Random Forest</span>
       <span class="hero-tag">ROC Analysis</span>
+      <span class="hero-tag">Feature Importance</span>
       <span class="hero-tag">Python</span>
       <span class="hero-tag">scikit-learn</span>
-      <span class="hero-tag">Web Prototyping</span>
 
     </div>
 
@@ -761,31 +763,32 @@ footer {
       </div>
 
       <h2>
-        Understanding where users drop off
+        Understanding conversion and drop-off
       </h2>
 
       <div class="section-question">
-        Where in the application journey were users most likely
-        to leave — and what could the application team learn from it?
+        Where were users leaving the application journey before
+        converting — and what patterns could help explain why?
       </div>
 
       <p>
-        The project focused on understanding user navigation across
-        an insurance application, from the beginning of a journey
-        through completion, error or drop-off.
+        The project focused on understanding how users navigated through
+        an insurance application and identifying where they were most
+        likely to drop off before conversion.
       </p>
 
       <p>
-        Historical interaction data was analysed to identify where
-        users were leaving the journey and to examine behavioural
-        patterns associated with those drop-offs.
+        Approximately 20,000 historical user interactions provided
+        visibility into activity across the application journey, making
+        it possible to examine navigation patterns and the points at
+        which users stopped progressing.
       </p>
 
       <p>
-        The objective was not simply to predict an outcome. The
-        analysis was intended to help application owners identify
-        parts of the user experience that warranted closer
-        investigation and potential improvement.
+        The objective was to combine behavioural analysis with machine
+        learning to understand conversion likelihood, identify important
+        drivers of drop-off and give the application team a stronger
+        basis for improving the user experience.
       </p>
 
     </div>
@@ -810,22 +813,22 @@ footer {
 
           <div class="journey-box primary">
             <strong>Navigate</strong>
-            <span>Interactions and activities across the application</span>
+            <span>Interactions across the application</span>
           </div>
 
           <div class="arrow">→</div>
 
           <div class="journey-box dark">
             <strong>Outcome</strong>
-            <span>Complete · Error · Drop-off</span>
+            <span>Convert · Drop-off</span>
           </div>
 
         </div>
 
         <div class="journey-note">
-          The analysis looked across the journey to understand
-          where users were dropping and what interaction patterns
-          were associated with those outcomes.
+          The analysis examined activity across the journey to understand
+          where users dropped off before conversion and the behavioural
+          patterns associated with those outcomes.
         </div>
 
       </div>
@@ -851,39 +854,38 @@ footer {
       </div>
 
       <h2>
-        Working with real user journey data
+        Analysing user behaviour across the journey
       </h2>
 
       <div class="section-question">
-        Approximately 20,000 recorded interactions provided the
-        basis for analysing navigation behaviour.
+        Approximately 20,000 recorded interactions provided the basis
+        for understanding navigation and conversion behaviour.
       </div>
 
       <p>
-        Activity across the webpage was available for analysis,
-        providing visibility into how users moved through the
-        application and where their journeys ended.
+        Historical activity across the application was used to examine
+        how users moved through the journey and where they stopped
+        progressing before conversion.
       </p>
 
       <p>
-        The interaction data was prepared and normalised before
-        analysis. The focus was on making the navigation data
-        suitable for behavioural analysis rather than creating
-        an extensive engineered feature set.
+        The interaction data was prepared for analysis, with the focus
+        on understanding navigation behaviour and the relationship
+        between user activity, conversion and drop-off.
       </p>
 
       <p>
-        Looking at the journey rather than only the final outcome
-        made it possible to examine where drop-off was occurring
-        within the application experience.
+        Looking across the full journey rather than only the final
+        outcome provided the context needed for the subsequent
+        machine-learning analysis.
       </p>
 
       <div class="tags">
 
         <span class="tag">~20K Interactions</span>
         <span class="tag">Navigation Data</span>
+        <span class="tag">Conversion Analysis</span>
         <span class="tag">Data Preparation</span>
-        <span class="tag">Normalization</span>
 
       </div>
 
@@ -893,28 +895,28 @@ footer {
     <div class="panel">
 
       <div class="panel-title">
-        Preparing the Data
+        Analytical Flow
       </div>
 
       <div class="data-stack">
 
         <div class="data-box">
           <strong>Application Activity</strong>
-          <span>User interactions across the webpage</span>
+          <span>Historical user interactions</span>
         </div>
 
         <div class="data-arrow">↓</div>
 
         <div class="data-box">
-          <strong>Data Preparation</strong>
-          <span>Structure and normalize interaction data</span>
+          <strong>Journey Analysis</strong>
+          <span>Understand navigation and drop-off</span>
         </div>
 
         <div class="data-arrow">↓</div>
 
         <div class="data-box primary">
-          <strong>Journey Analysis</strong>
-          <span>Examine navigation behaviour and drop-off</span>
+          <strong>Conversion Analysis</strong>
+          <span>Examine patterns associated with conversion</span>
         </div>
 
       </div>
@@ -940,31 +942,38 @@ footer {
       </div>
 
       <h2>
-        Using Random Forest to examine drop-off patterns
+        Modelling conversion likelihood
       </h2>
 
       <div class="section-question">
-        Machine learning was used as an analytical tool within the
-        broader user journey study.
+        Logistic Regression and Random Forest were used to examine
+        conversion likelihood and the drivers associated with drop-off.
       </div>
 
       <p>
-        A Random Forest model was used to examine patterns in the
-        historical interaction data associated with user drop-off.
-        The available data was divided into training and testing
-        datasets using a 60:40 split.
+        Logistic Regression and Random Forest models were built using
+        the historical interaction data to predict the likelihood of
+        user conversion.
       </p>
 
       <p>
+        The data was divided using a 60:40 training and test split.
         Model performance was evaluated on the held-out test data,
-        with ROC analysis used to assess how effectively the model
-        distinguished between different journey outcomes.
+        with ROC analysis used as part of the evaluation.
       </p>
 
       <p>
-        The model was not developed as a production prediction
-        service. Its role was to support the analysis and provide
-        another way of understanding patterns within user behaviour.
+        Feature importance was also used to identify the key drivers
+        associated with user drop-off, helping connect the modelling
+        results back to the behaviour observed across the application
+        journey.
+      </p>
+
+      <p>
+        The models were used as part of an analytical study rather than
+        deployed as a live prediction service. Their purpose was to
+        generate insights that could inform application and UX
+        improvements.
       </p>
 
     </div>
@@ -973,7 +982,7 @@ footer {
     <div class="panel">
 
       <div class="panel-title">
-        Analytical Model
+        Machine Learning Approach
       </div>
 
       <div class="model-flow">
@@ -986,15 +995,15 @@ footer {
         <div class="arrow">→</div>
 
         <div class="model-box primary">
-          <strong>Random Forest</strong>
-          <span>Analyse patterns associated with drop-off</span>
+          <strong>ML Models</strong>
+          <span>Logistic Regression + Random Forest</span>
         </div>
 
         <div class="arrow">→</div>
 
         <div class="model-box dark">
           <strong>Evaluation</strong>
-          <span>Test data + ROC analysis</span>
+          <span>ROC analysis + feature importance</span>
         </div>
 
       </div>
@@ -1013,8 +1022,9 @@ footer {
       </div>
 
       <div class="model-note">
-        The model formed one part of the analytical study rather
-        than being deployed as a live prediction service.
+        The models were used to understand conversion likelihood and
+        identify drivers of drop-off rather than as a production
+        prediction service.
       </div>
 
     </div>
@@ -1025,7 +1035,7 @@ footer {
 
 
 
-<!-- 04 PROTOTYPE -->
+<!-- 04 FROM INSIGHT TO PROTOTYPE -->
 
 <section class="project-section">
 
@@ -1034,36 +1044,35 @@ footer {
     <div class="section-copy">
 
       <div class="section-number">
-        04 · FROM ANALYSIS TO PROTOTYPE
+        04 · FROM INSIGHT TO PROTOTYPE
       </div>
 
       <h2>
-        Turning findings into application changes
+        Translating analysis into application improvements
       </h2>
 
       <div class="section-question">
-        The work went beyond identifying drop-off patterns to
-        exploring how the application experience could be improved.
+        The analysis was taken beyond model results to explore how
+        conversion and the user experience could be improved.
       </div>
 
       <p>
-        Findings from the user journey analysis highlighted areas
-        where changes to the application experience could be
-        considered.
+        Findings from the journey analysis and machine-learning models
+        were translated into recommendations for improving conversion
+        and the overall user experience.
       </p>
 
       <p>
-        Based on the analysis, I developed a web prototype that
-        incorporated suggested changes to the user journey. This
-        provided a tangible way to explore how the findings could
-        translate into changes within the application.
+        Based on these findings, I developed a web prototype reflecting
+        the suggested changes. This provided a practical way to
+        demonstrate how insights from the analysis could translate into
+        changes within the application experience.
       </p>
 
       <p>
-        The prototype complemented the analytical report by giving
-        application owners both the underlying analysis and an
-        example of how potential improvements could be reflected
-        in the user experience.
+        The prototype complemented the analytical work by connecting
+        the data and modelling results to a tangible application
+        outcome.
       </p>
 
     </div>
@@ -1079,21 +1088,21 @@ footer {
 
         <div class="prototype-box">
           <strong>Analyse</strong>
-          <span>Understand navigation and drop-off behaviour</span>
+          <span>Understand conversion and drop-off behaviour</span>
         </div>
 
         <div class="arrow">→</div>
 
         <div class="prototype-box primary">
-          <strong>Identify</strong>
-          <span>Areas where the user journey could be improved</span>
+          <strong>Recommend</strong>
+          <span>Identify opportunities to improve conversion and UX</span>
         </div>
 
         <div class="arrow">→</div>
 
         <div class="prototype-box dark">
           <strong>Prototype</strong>
-          <span>Incorporate suggested application changes</span>
+          <span>Reflect suggested changes in a web experience</span>
         </div>
 
       </div>
@@ -1119,31 +1128,30 @@ footer {
       </div>
 
       <h2>
-        Supporting application improvement with data
+        Turning behavioural data into actionable recommendations
       </h2>
 
       <div class="section-question">
-        The final output combined analytical findings with a
-        practical demonstration of potential improvements.
+        The final output connected user behaviour, machine learning
+        and application development around a practical business problem.
       </div>
 
       <p>
-        The analysis and findings were consolidated into a report
-        for the application owners, providing a data-driven view of
-        user drop-off across the application journey.
+        The analysis identified patterns in user conversion and drop-off
+        and used machine learning to examine conversion likelihood and
+        the key drivers associated with users leaving the journey.
       </p>
 
       <p>
-        Together with the web prototype, the work gave the application
-        team a basis for considering further enhancements to the user
-        experience.
+        Findings were translated into recommendations for improving
+        conversion and UX, supported by a web prototype demonstrating
+        the suggested changes.
       </p>
 
       <p>
-        The project connected data analysis, machine learning and
-        application development around a practical product problem:
-        understanding where users were leaving and using that insight
-        to explore how the experience could be improved.
+        The results were presented to application stakeholders, giving
+        the team a data-driven basis for considering further
+        improvements to the application experience.
       </p>
 
     </div>
@@ -1165,7 +1173,7 @@ footer {
 
           <span>
             Analyse approximately 20,000 interactions to understand
-            user journeys and drop-off.
+            navigation, conversion and drop-off.
           </span>
 
         </div>
@@ -1174,12 +1182,12 @@ footer {
         <div class="outcome-card">
 
           <strong>
-            Explore
+            Model
           </strong>
 
           <span>
-            Use Random Forest and ROC analysis to examine patterns
-            in user behaviour.
+            Use Logistic Regression, Random Forest, ROC analysis and
+            feature importance to examine conversion behaviour.
           </span>
 
         </div>
@@ -1192,8 +1200,8 @@ footer {
           </strong>
 
           <span>
-            Translate findings into a report and web prototype for
-            application owners.
+            Translate findings into UX recommendations, a web prototype
+            and stakeholder presentation.
           </span>
 
         </div>
